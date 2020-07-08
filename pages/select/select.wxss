@@ -1,0 +1,75 @@
+/* pages/select/select.wxss */
+.VerticalNav.nav {
+  width: 200rpx;
+  white-space: initial;
+}
+ 
+.VerticalNav.nav .cu-item {
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  margin: 0;
+  border: none;
+  height: 50px;
+  position: relative;
+ padding-top:25px;
+ font-weight:bold;
+}
+ 
+.VerticalNav.nav .cu-item.cur {
+  background-color: #f1f1f1;
+}
+.VerticalNav.nav .cu-item.cur::after {
+  content: "";
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 10rpx 0 0 10rpx;
+  position: absolute;
+  background-color: currentColor;
+  top: 0;
+  right: 0rpx;
+  bottom: 0;
+  margin: auto;
+
+}
+.VerticalBox{
+  display: flex;
+}
+.VerticalMain{
+  background-color: #f1f1f1;
+}
+.VerticalBox .cu-bar{
+  background-color: rgb(216, 208, 208);
+  height:30px;}
+
+.action{
+  padding:5px;
+}
+
+
+.home{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.iconfunction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:auto;
+  height: auto;
+  max-width:100px;
+   
+}
+.icon{
+  margin: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50%;                                                                                 
+   background-color: rosybrown;
+}
+
+.tite{
+  width: 130rpx;
+  text-align: center;
+}

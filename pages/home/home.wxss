@@ -1,0 +1,29 @@
+/* pages/home/home.wxss */
+.home{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.iconfunction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:auto;
+  height: auto;
+  max-width:100px;
+   
+}
+.icon{
+  margin: 30rpx;
+  height: 110rpx;
+  width: 110rpx;
+  border-radius: 50%;                                                                                 
+   background-color: rosybrown;
+}
+
+.add{
+  height: 40px;
+  width: 90%;
+  /* border: 1px solid red; */
+  margin-top: 20px;
+}

@@ -1,0 +1,31 @@
+<!--pages/select/select.wxml-->
+<view class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:100vh">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:100vh" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr" style="min-height:100vh;" wx:for="{{list}}" wx:key id="main-{{index}}">
+          <view class='cu-bar solid-bottom bg-white'>
+            <view class='action'>
+                <text class='icon-title text-green'>{{item.name}} </text></view>
+            </view>
+            <block wx:for="{{item.titles}}" wx:for-item="twodata" wx:key="index0">
+              <view class="cu-list menu-avatar">
+                <view class="home">
+                      <block wx:for="{{twodata}}" wx:for-item="threedata" wx:key="index3">
+                        <view class="iconfunction">
+                          <image class="icon" src="/pages/image/home/test.png">
+                          </image>
+                          <view class="tite">
+                            <text>{{threedata.name}}</text>
+                          </view>
+                        </view>
+                      </block>
+                </view>      
+              </view> 
+            </block>
+    </view>   
+  </scroll-view>
+</view>

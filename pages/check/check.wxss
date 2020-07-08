@@ -1,0 +1,14 @@
+/* pages/check/check.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.takephone{
+  height: 80%;
+  width: 98%;
+  border: 1px solid red;
+}

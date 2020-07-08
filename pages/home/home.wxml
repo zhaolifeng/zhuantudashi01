@@ -1,0 +1,73 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+   <view class="home">
+      <view class="iconfunction"  data-gid="1" bindtap="check">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>身份证</text>
+      </view>
+
+       <view class="iconfunction" data-gid="2" bindtap="check">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>驾驶证</text>
+      </view>
+
+       <view class="iconfunction" >
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>行驶证</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" class="icon" src="/pages/image/home/passport.png">
+        </image><text>护照</text>
+      </view>
+   </view>
+
+   <view class="home">
+      <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>火车票</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>出租车票</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>行程单</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>轮船票</text>
+      </view>
+   </view>
+
+   <view class="home">
+      <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>增值发票</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>混贴票</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>金融票</text>
+      </view>
+
+       <view class="iconfunction">
+        <image class="icon" src="/pages/image/home/test.png">
+        </image><text>路桥票</text>
+      </view>
+   </view>
+   <!-- <view class="add" >
+   <button bindtap="initAddPage">更多...</button>
+   </view> -->
+   
+   
+</view>
