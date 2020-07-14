@@ -33,12 +33,21 @@ Page({
         wx.uploadFile({
           filePath: res.tempImagePath,
           name: 'file',
-         // url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
-          url: 'http://localhost:8050/uploadFile/upload',
+          formData:{"indexType":"001001"},
+          url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+         // url: 'http://localhost:8050/uploadFile/upload',
           success(res){
             wx.hideLoading();
-            console.log("*****success*****");
-            
+            console.log("*****success*****"+JSON.stringify(res.data));
+            let resultData=res.data;
+            wx.navigateTo({
+              url: '/pages/piaoju/piaoju',
+              success:function(res){
+                        console.log("****send******"+JSON.stringify(resultData))
+                    // 通过eventChannel向被打开页面传送数据
+                    res.eventChannel.emit('acceptDataFromOpenerPage', { data:resultData})
+              }
+            })
           },
           fail(res){
             wx.hideLoading();

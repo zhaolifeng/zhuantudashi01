@@ -1,0 +1,4 @@
+<!--pages/piaoju/piaoju.wxml-->
+<view wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName">
+  {{itemName.Name}}-----{{itemName.Value}}
+</view>
