@@ -1,4 +1,79 @@
 <!--pages/piaoju/piaoju.wxml-->
-<view wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName">
-  {{itemName.Name}}-----{{itemName.Value}}
+  <scroll-view  style="height:{{height}}" scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0}">
+  <view wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
+      <view wx:if="{{itemName.Value !=''}}" style="padding-left:10px"> 
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          <!-- <block wx:if="{{itemName.Name =='发票号码'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>
+          <block wx:if="{{itemName.Name =='发票代码'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>
+          <block wx:if="{{itemName.Name =='开票日期'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>          
+          <block wx:if="{{itemName.Name =='购买方名称'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>      
+          <block wx:if="{{itemName.Name =='购买方识别号'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>
+          <block wx:if="{{itemName.Name =='开户银行及账号'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>
+          <block wx:if="{{itemName.Name =='销售方名称'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>
+          <block wx:if="{{itemName.Name =='销售方识别号'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block>                            
+          <block wx:if="{{itemName.Name =='销售方开户行及账号'}}">
+          <view class="line">
+            <checkbox value="{{itemName.Value}}">
+              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            </checkbox>
+          </view>
+          </block> -->
+          
+      </view>
+</view>
+</scroll-view>
+<view class="bottom">
+<button type="primary">复制选中项</button>
 </view>

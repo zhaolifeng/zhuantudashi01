@@ -9,7 +9,7 @@
   <view>
   </view>
   <view>
-    <button type="primary" bindtap="startCamera" >拍照</button>
+    <button type="primary" bindtap="startCamera" data-typeCode="{{typeCode}}">拍照</button>
   </view>
   <!-- <view> 
       <image wx:if="{{src}}" mode="widthFix" src="{{src}}"></image>

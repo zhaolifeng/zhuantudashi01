@@ -73,8 +73,13 @@ Page({
 
   check:function(event){
     console.log(event.currentTarget.dataset.gid);
+    let gid=event.currentTarget.dataset.gid;
     wx.navigateTo({
       url: '/pages/check/check',
+      success:function(res){
+          // 通过eventChannel向被打开页面传送数据
+         res.eventChannel.emit('acceptDataFromOpenerPage', {typeCode:gid})
+    }
     })
   }
 })

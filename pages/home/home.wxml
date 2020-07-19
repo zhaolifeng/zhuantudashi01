@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class="container">
    <view class="home">
-      <view class="iconfunction"  data-gid="1" bindtap="check">
+      <view class="iconfunction"  data-gid="002002" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>身份证</text>
       </view>

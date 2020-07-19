@@ -12,11 +12,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const eventChannel = this.getOpenerEventChannel();
+    let that=this;
+    eventChannel.once('acceptDataFromOpenerPage', function(data) {
+      let typeCode=data.typeCode;
+      console.log("******recieve******"+JSON.stringify(typeCode));
+      that.setData({
+        typeCode:typeCode
+      })
+    })
 
   },
 
   
   startCamera: function () {
+    let typeCode=event.currentTarget.dataset.typeCode;
     this.ctx = wx.createCameraContext();
     this.ctx.takePhoto({
       quality : "high",
@@ -33,19 +43,27 @@ Page({
         wx.uploadFile({
           filePath: res.tempImagePath,
           name: 'file',
-          formData:{"indexType":"001001"},
+          formData:{"indexType":typeCode},
           url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
          // url: 'http://localhost:8050/uploadFile/upload',
           success(res){
             wx.hideLoading();
-            console.log("*****success*****"+JSON.stringify(res.data));
+            console.log("*****success*****"+JSON.stringify(res.data)); 
             let resultData=res.data;
+            resultData=resultData.replace(" ","");
+            let newData;
+            if(typeof resultData != 'object'){
+                resultData=resultData.replace(/\ufeff/g,"");
+                newData = JSON.parse(resultData);
+                console.log("newData:"+JSON.stringify(newData));
+                console.log("new code :" + newData.RequestId);
+              }
             wx.navigateTo({
               url: '/pages/piaoju/piaoju',
               success:function(res){
-                        console.log("****send******"+JSON.stringify(resultData))
+                  console.log("****send******"+JSON.stringify(newData))
                     // 通过eventChannel向被打开页面传送数据
-                    res.eventChannel.emit('acceptDataFromOpenerPage', { data:resultData})
+                   res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
               }
             })
           },

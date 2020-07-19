@@ -13,13 +13,12 @@ Page({
    */
   onLoad: function (options) {
         const eventChannel = this.getOpenerEventChannel();
-        let resultData;
         let that=this;
         eventChannel.once('acceptDataFromOpenerPage', function(data) {
-          let temp=data.VatInvoiceInfos;
-          console.log("******recieve******"+JSON.stringify(data.data.VatInvoiceInfos))
+          let temp=data.data;
+          console.log("******recieve******"+JSON.stringify(temp.VatInvoiceInfos));
           that.setData({
-            resultData:data.data.VatInvoiceInfos
+            resultData:temp.VatInvoiceInfos
           })
         })
   },
@@ -28,7 +27,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let that=this;
+    var obj = wx.createSelectorQuery().in(this);
+    obj.selectAll('.bottom').boundingClientRect(function(rect) {
+      let height = wx.getSystemInfoSync().windowHeight - rect[0].height  + "px"
+      that.setData({
+        height: height
+      })
+    })
+    obj.exec();
   },
 
   /**
