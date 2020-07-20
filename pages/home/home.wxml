@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class="container">
    <view class="home">
-      <view class="iconfunction"  data-gid="002002" bindtap="check">
+      <view class="iconfunction"  data-gid="002007" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>身份证</text>
       </view>
@@ -45,7 +45,7 @@
    </view>
 
    <view class="home">
-      <view class="iconfunction">
+      <view class="iconfunction" data-gid="001001" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>增值发票</text>
       </view>

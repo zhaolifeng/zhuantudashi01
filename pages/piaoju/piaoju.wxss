@@ -11,6 +11,7 @@
 .line{
   max-height: max-content;
   min-height:30px;
+  padding-left:10px;
 }
 .line-checkbox{
   max-width: 25px;

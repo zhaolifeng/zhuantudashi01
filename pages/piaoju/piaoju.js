@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+ 
   },
 
   /**
@@ -14,12 +14,24 @@ Page({
   onLoad: function (options) {
         const eventChannel = this.getOpenerEventChannel();
         let that=this;
+        let typeCode= options.typeCode;
         eventChannel.once('acceptDataFromOpenerPage', function(data) {
           let temp=data.data;
-          console.log("******recieve******"+JSON.stringify(temp.VatInvoiceInfos));
-          that.setData({
-            resultData:temp.VatInvoiceInfos
-          })
+          console.log("******recieve******"+JSON.stringify(temp));
+          if(typeCode=='001001'){
+            that.setData({
+              typeCode:typeCode,
+              resultData:temp.VatInvoiceInfos,
+            })
+          }
+
+          if(typeCode=='002007'){
+            that.setData({
+              typeCode:typeCode,
+              resultData002007:temp
+            })
+          }
+
         })
   },
 

@@ -78,7 +78,7 @@ Page({
       url: '/pages/check/check',
       success:function(res){
           // 通过eventChannel向被打开页面传送数据
-         res.eventChannel.emit('acceptDataFromOpenerPage', {typeCode:gid})
+         res.eventChannel.emit('acceptDataFromOpenerPage', {typeCode:gid,count:2})
     }
     })
   }
