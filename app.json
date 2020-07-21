@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/select/select",
     "pages/check/check",
-    "pages/piaoju/piaoju"
+    "pages/piaoju/piaoju",
+    "pages/kazheng/kazheng"
   ],
   "window": {
     "backgroundTextStyle": "light",

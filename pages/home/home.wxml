@@ -1,44 +1,44 @@
 <!--pages/home/home.wxml-->
 <view class="container">
    <view class="home">
-      <view class="iconfunction"  data-gid="002007" bindtap="check">
+      <view class="iconfunction"  data-gid="002007-2" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>身份证</text>
       </view>
 
-       <view class="iconfunction" data-gid="2" bindtap="check">
+       <view class="iconfunction" data-gid="003001-2" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>驾驶证</text>
       </view>
 
-       <view class="iconfunction" >
+       <view class="iconfunction"  data-gid="003003-2" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>行驶证</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction" data-gid="002011" bindtap="check">
         <image class="icon" class="icon" src="/pages/image/home/passport.png">
         </image><text>护照</text>
       </view>
    </view>
 
    <view class="home">
-      <view class="iconfunction">
+      <view class="iconfunction"  data-gid="001016" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>火车票</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction"  data-gid="001014" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>出租车票</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction"  data-gid="001007" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>行程单</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction"  data-gid="001013" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>轮船票</text>
       </view>
@@ -50,17 +50,17 @@
         </image><text>增值发票</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction"  data-gid="001011" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>混贴票</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction"  data-gid="001005" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>金融票</text>
       </view>
 
-       <view class="iconfunction">
+       <view class="iconfunction"  data-gid="001015" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>路桥票</text>
       </view>

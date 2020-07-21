@@ -12,16 +12,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const eventChannel = this.getOpenerEventChannel();
+    let count=1;
+    let typeCode=options.typeCode;
+    if(typeCode.indexOf("-") >0){
+      let temp =typeCode.split("-");
+      typeCode=temp[0];
+      count=temp[1];
+    }
     let that=this;
-    eventChannel.once('acceptDataFromOpenerPage', function(data) {
-      let typeCode=data.typeCode;
-      that.setData({
-        typeCode:typeCode,
-        count:2
-      })
+    that.setData({
+      typeCode:typeCode,
+      count:count
     })
-
+    console.log("*****data*****"+JSON.stringify(that.data));
   },
 
   
@@ -58,6 +61,7 @@ Page({
                 console.log("newData:"+JSON.stringify(newData));
                 console.log("new code :" + newData.RequestId);
               }
+              console.log("count:" +count);
             if(count==2){ // 需要正反面或者是两页扫描的情况
               
               if (Object.keys(that.data.newData).length === 0) {
@@ -70,9 +74,9 @@ Page({
                     }                   
                   } 
                   wx.navigateTo({
-                    url: '/pages/piaoju/piaoju?typeCode='+typeCode,
+                    url: '/pages/kazheng/kazheng?typeCode='+typeCode,
                     success:function(res){
-                        console.log("****send******"+JSON.stringify(newData))
+                        console.log("****kazheng******"+JSON.stringify(newData))
                           // 通过eventChannel向被打开页面传送数据
                          res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
                     }
