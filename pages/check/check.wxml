@@ -12,11 +12,5 @@
   <view>
     <button type="primary" bindtap="startCamera" data-typeCode="{{typeCode}}">{{typeCode}}拍照</button>
   </view>
-  <!-- <view> 
-      <image wx:if="{{src}}" mode="widthFix" src="{{src}}"></image>
-  </view>
-  <view>
-      <button type="primary" bindtap="uploadfile">上传</button>
-  </view> -->
 </view>
 

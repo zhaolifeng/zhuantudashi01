@@ -37,10 +37,6 @@ Page({
     this.ctx.takePhoto({
       quality : "high",
       success: (res) => {
-        this.setData({
-          src: res.tempImagePath
-        });
-        let base64 = wx.getFileSystemManager().readFileSync(res.tempImagePath, 'base64') ;
         wx.showLoading({
           title: '上传中...'
         });
@@ -51,6 +47,7 @@ Page({
           url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
           success(res){
             wx.hideLoading();
+            console.log("*****success*****"+res.data); 
             console.log("*****success*****"+JSON.stringify(res.data)); 
             let resultData=res.data;
             resultData=resultData.replace(" ","");
@@ -62,8 +59,9 @@ Page({
                 console.log("new code :" + newData.RequestId);
               }
               console.log("count:" +count);
+              var kanzheng=/^(002)/;
+              var piaojue=/^(001)/;
             if(count==2){ // 需要正反面或者是两页扫描的情况
-              
               if (Object.keys(that.data.newData).length === 0) {
                     that.data.newData=newData;
               }else{
@@ -73,6 +71,8 @@ Page({
                       newData[attr]=temJson[attr];
                     }                   
                   } 
+
+                 if(kanzheng.test(typeCode)){
                   wx.navigateTo({
                     url: '/pages/kazheng/kazheng?typeCode='+typeCode,
                     success:function(res){
@@ -81,16 +81,41 @@ Page({
                          res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
                     }
                   }) 
+                 }
+
+                 if(piaojue.test(typeCode)){
+                  wx.navigateTo({
+                    url: '/pages/piaoju/piaoju?typeCode='+typeCode,
+                    success:function(res){
+                        console.log("****send******"+JSON.stringify(newData))
+                          // 通过eventChannel向被打开页面传送数据
+                         res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                    }
+                  }) 
+                 }
               }         
             }else{
-              wx.navigateTo({
-                url: '/pages/piaoju/piaoju?typeCode='+typeCode,
-                success:function(res){
-                    console.log("****send******"+JSON.stringify(newData))
-                      // 通过eventChannel向被打开页面传送数据
-                     res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                }
-              })
+              if(kanzheng.test(typeCode)){
+                wx.navigateTo({
+                  url: '/pages/kazheng/kazheng?typeCode='+typeCode,
+                  success:function(res){
+                      console.log("****kazheng******"+JSON.stringify(newData))
+                        // 通过eventChannel向被打开页面传送数据
+                       res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                  }
+                }) 
+               }
+
+              if(piaojue.test(typeCode)){
+                wx.navigateTo({
+                  url: '/pages/piaoju/piaoju?typeCode='+typeCode,
+                  success:function(res){
+                      console.log("****send******"+JSON.stringify(newData))
+                        // 通过eventChannel向被打开页面传送数据
+                       res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                  }
+                }) 
+               }
             }
           },
           fail(res){

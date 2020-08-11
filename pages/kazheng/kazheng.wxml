@@ -9,8 +9,8 @@
       <view class="line">
           <checkbox value="{{resultData002007.Sex}}">
             性别：<text selectable="true">{{resultData002007.Sex}}</text>
-          </checkbox>
-      </view>
+          </checkbox> 
+      </view> 
       <view class="line">
           <checkbox value="{{resultData002007.Nation}}">
             名族：<text selectable="true">{{resultData002007.Nation}}</text>
@@ -39,7 +39,7 @@
       <view class="line">
           <checkbox value="{{resultData002007.Authority}}">
             发证机关：<text selectable="true">{{resultData002007.Authority}}</text>
-          </checkbox>
+          </checkbox> 
       </view>
 </view>
 

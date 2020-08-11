@@ -45,7 +45,7 @@
    </view>
 
    <view class="home">
-      <view class="iconfunction" data-gid="001001" bindtap="check">
+      <view class="iconfunction" data-gid="001001-1" bindtap="check">
         <image class="icon" src="/pages/image/home/test.png">
         </image><text>增值发票</text>
       </view>

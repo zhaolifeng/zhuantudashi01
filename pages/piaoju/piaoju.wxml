@@ -1,48 +1,5 @@
 <!--pages/piaoju/piaoju.wxml-->
 <scroll-view  style="height:{{height}}" scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0}">
-<view id="resultData002007" wx:if="{{resultData002007}}">
-      <view class="line">
-          <checkbox value="{{resultData002007.Name}}">
-            姓名：<text selectable="true">{{resultData002007.Name}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Sex}}">
-            性别：<text selectable="true">{{resultData002007.Sex}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Nation}}">
-            名族：<text selectable="true">{{resultData002007.Nation}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Birth}}">
-            出生日期：<text selectable="true">{{resultData002007.Birth}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Address}}">
-            住址：<text selectable="true">{{resultData002007.Address}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.IdNum}}">
-            公民身份号码：<text selectable="true">{{resultData002007.IdNum}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.ValidDate}}">
-            有效期：<text selectable="true">{{resultData002007.ValidDate}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Authority}}">
-            发证机关：<text selectable="true">{{resultData002007.Authority}}</text>
-          </checkbox>
-      </view>
-</view>
-
 <view id="resultData002002" wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
       <view wx:if="{{itemName.Value !=''}}" style="padding-left:10px"> 
           <view class="line">
@@ -114,6 +71,44 @@
           </view>
           </block> -->
           
+      </view>
+</view>
+
+<view id="resultData001018" wx:if="{{resultData001018}}">
+      <view class="line">
+          <checkbox value="{{resultData001018.waybillNum}}">
+            运单号：<text selectable="true">{{resultData001018.waybillNum}}</text>
+          </checkbox>
+      </view>
+      <view class="line">
+          <checkbox value="{{resultData001018.senderName}}">
+            发件人：<text selectable="true">{{resultData001018.senderName}}</text>
+          </checkbox>
+      </view>
+      <view class="line">
+          <checkbox value="{{resultData001018.senderNum}}">
+            发件人电话：<text selectable="true">{{resultData001018.senderNum}}</text>
+          </checkbox> 
+      </view> 
+      <view class="line">
+          <checkbox value="{{resultData001018.senderAddr}}">
+            发件人地址：<text selectable="true">{{resultData001018.senderAddr}}</text>
+          </checkbox>
+      </view>
+      <view class="line">
+          <checkbox value="{{resultData001018.recName}}">
+            收件人：<text selectable="true">{{resultData001018.recName}}</text>
+          </checkbox>
+      </view>
+      <view class="line">
+          <checkbox value="{{resultData001018.recName}}">
+            收件人电话：<text selectable="true">{{resultData001018.recNum}}</text>
+          </checkbox>
+      </view>
+      <view class="line">
+          <checkbox value="{{resultData001018.IdNum}}">
+            收件人地址：<text selectable="true">{{resultData001018.Addr}}</text>
+          </checkbox>
       </view>
 </view>
 </scroll-view>

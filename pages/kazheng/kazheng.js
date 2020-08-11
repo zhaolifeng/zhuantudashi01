@@ -20,10 +20,17 @@ Page({
           if(typeCode=='001001'){
             that.setData({
               typeCode:typeCode,
-              resultData:temp.VatInvoiceInfos,
+              resultData:temp,
             })
           }
 
+          if(typeCode=='001018'){
+            that.setData({
+              typeCode:typeCode,
+              resultData001018:temp,
+            })
+          }
+          
           if(typeCode=='002007'){
             that.setData({
               typeCode:typeCode,

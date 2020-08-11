@@ -24,7 +24,12 @@ Page({
               resultData:temp.VatInvoiceInfos,
             })
           }
-
+          if(typeCode=='001018'){
+            that.setData({
+              typeCode:typeCode,
+              resultData001018:temp,
+            })
+          }
           if(typeCode=='002007'){
             that.setData({
               typeCode:typeCode,
