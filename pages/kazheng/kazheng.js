@@ -16,27 +16,10 @@ Page({
         let typeCode= options.typeCode;
         eventChannel.once('acceptDataFromOpenerPage', function(data) {
           let temp=data.data;
-          console.log("******recieve******"+JSON.stringify(temp));
-          if(typeCode=='001001'){
-            that.setData({
-              typeCode:typeCode,
-              resultData:temp,
-            })
-          }
-
-          if(typeCode=='001018'){
-            that.setData({
-              typeCode:typeCode,
-              resultData001018:temp,
-            })
-          }
-          
-          if(typeCode=='002007'){
-            that.setData({
-              typeCode:typeCode,
-              resultData002007:temp
-            })
-          }
+          that.setData({
+            typeCode:typeCode,
+            resultData:temp,
+          })
 
         })
   },

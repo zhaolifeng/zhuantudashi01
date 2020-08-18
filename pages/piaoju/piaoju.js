@@ -17,26 +17,10 @@ Page({
         let typeCode= options.typeCode;
         eventChannel.once('acceptDataFromOpenerPage', function(data) {
           let temp=data.data;
-          console.log("******recieve******"+JSON.stringify(temp));
-          if(typeCode=='001001'){
-            that.setData({
-              typeCode:typeCode,
-              resultData:temp.VatInvoiceInfos,
-            })
-          }
-          if(typeCode=='001018'){
-            that.setData({
-              typeCode:typeCode,
-              resultData001018:temp,
-            })
-          }
-          if(typeCode=='002007'){
-            that.setData({
-              typeCode:typeCode,
-              resultData002007:temp
-            })
-          }
-
+          that.setData({
+            typeCode:typeCode,
+            resultData:temp,
+          })
         })
   },
 
@@ -53,6 +37,15 @@ Page({
       })
     })
     obj.exec();
+
+    var checkboxItems = that.data.resultData;
+    let lenI = checkboxItems.length;
+    for (var i = 0; i < lenI; ++i) {
+      checkboxItems[i].checked = false;
+    }
+    this.setData({
+      resultData: checkboxItems
+    });
   },
 
   /**
@@ -95,5 +88,46 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  checkboxChange:function(e){
+    this.setData({
+      resultData: e.detail.value
+    });
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+  },
+  selectAll:function(){
+      var checkboxItems = this.data.resultData;
+      let lenI = checkboxItems.length;
+      for (var i = 0; i < lenI; ++i) {
+        checkboxItems[i].checked = false;
+      }
+      for (var i = 0; i < lenI; ++i) {
+        checkboxItems[i].checked = true;
+      }
+      this.setData({
+        resultData: checkboxItems
+      });
+  },
+
+  onCopyInfo:function(){
+    var checkboxItems = this.data.resultData;
+    let lenI = checkboxItems.length;
+    var selected='';
+    for (var i = 0; i < lenI; ++i) {
+      if(checkboxItems[i].checked == true){
+        selected=selected + checkboxItems[i].name+":"+checkboxItems[i].value+"\n";
+      }
+    }
+    wx.setClipboardData({
+      data: selected,
+      success (res) {
+        wx.getClipboardData({
+          success (res) {
+            console.log(res.data) // data
+          }
+        })
+      }
+    })
   }
 })

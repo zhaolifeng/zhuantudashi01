@@ -1,119 +1,12 @@
 <!--pages/kazheng/kazheng.wxml-->
 <scroll-view  style="height:{{height}}" scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0}">
-<view id="resultData002007" wx:if="{{resultData002007}}">
-      <view class="line">
-          <checkbox value="{{resultData002007.Name}}">
-            姓名：<text selectable="true">{{resultData002007.Name}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Sex}}">
-            性别：<text selectable="true">{{resultData002007.Sex}}</text>
-          </checkbox> 
-      </view> 
-      <view class="line">
-          <checkbox value="{{resultData002007.Nation}}">
-            名族：<text selectable="true">{{resultData002007.Nation}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Birth}}">
-            出生日期：<text selectable="true">{{resultData002007.Birth}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Address}}">
-            住址：<text selectable="true">{{resultData002007.Address}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.IdNum}}">
-            公民身份号码：<text selectable="true">{{resultData002007.IdNum}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.ValidDate}}">
-            有效期：<text selectable="true">{{resultData002007.ValidDate}}</text>
-          </checkbox>
-      </view>
-      <view class="line">
-          <checkbox value="{{resultData002007.Authority}}">
-            发证机关：<text selectable="true">{{resultData002007.Authority}}</text>
-          </checkbox> 
-      </view>
-</view>
-
 <view id="resultData002002" wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
-      <view wx:if="{{itemName.Value !=''}}" style="padding-left:10px"> 
+      <view wx:if="{{itemName.value !=''}}" style="padding-left:10px"> 
           <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
+            <checkbox value="{{itemName.value}}">
+              {{itemName.name}}：<text selectable="true">{{itemName.value}}</text>
             </checkbox>
           </view>
-          <!-- <block wx:if="{{itemName.Name =='发票号码'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>
-          <block wx:if="{{itemName.Name =='发票代码'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>
-          <block wx:if="{{itemName.Name =='开票日期'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>          
-          <block wx:if="{{itemName.Name =='购买方名称'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>      
-          <block wx:if="{{itemName.Name =='购买方识别号'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>
-          <block wx:if="{{itemName.Name =='开户银行及账号'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>
-          <block wx:if="{{itemName.Name =='销售方名称'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>
-          <block wx:if="{{itemName.Name =='销售方识别号'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block>                            
-          <block wx:if="{{itemName.Name =='销售方开户行及账号'}}">
-          <view class="line">
-            <checkbox value="{{itemName.Value}}">
-              {{itemName.Name}}：<text selectable="true">{{itemName.Value}}</text>
-            </checkbox>
-          </view>
-          </block> -->
-          
       </view>
 </view>
 </scroll-view>
