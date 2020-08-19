@@ -4,7 +4,7 @@
     <view id="resultData002002" wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
           <view wx:if="{{itemName.value !=''}}" style="padding-left:10px"> 
               <view class="line">
-                <checkbox value="{{itemName.value}}" checked="{{itemName.checked}}">
+                <checkbox value="{{itemName.name}}" checked="{{itemName.checked}}">
                   {{itemName.name}}：<text selectable="true">{{itemName.value}}</text>
                 </checkbox>
               </view>

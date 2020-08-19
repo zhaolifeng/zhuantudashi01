@@ -91,33 +91,40 @@ Page({
   },
 
   checkboxChange:function(e){
-    this.setData({
-      resultData: e.detail.value
-    });
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+      this.setData({
+      selectData:e.detail.value
+    }); 
   },
   selectAll:function(){
       var checkboxItems = this.data.resultData;
       let lenI = checkboxItems.length;
+      var selectItems=[];
       for (var i = 0; i < lenI; ++i) {
         checkboxItems[i].checked = false;
       }
       for (var i = 0; i < lenI; ++i) {
         checkboxItems[i].checked = true;
+        selectItems[i]=checkboxItems[i].name;
       }
+    
       this.setData({
-        resultData: checkboxItems
+        resultData: checkboxItems,
+        selectData:selectItems
       });
   },
 
   onCopyInfo:function(){
-    var checkboxItems = this.data.resultData;
+    var checkboxItems = this.data.selectData;
+    var resultData=this.data.resultData;
     let lenI = checkboxItems.length;
+    let lenG = resultData.length;
     var selected='';
     for (var i = 0; i < lenI; ++i) {
-      if(checkboxItems[i].checked == true){
-        selected=selected + checkboxItems[i].name+":"+checkboxItems[i].value+"\n";
-      }
+        for(var j=0;j<lenG;j++){
+          if(checkboxItems[i] == resultData[j].name){
+            selected=selected + resultData[j].name+":"+resultData[j].value+"\n";
+          }
+        }
     }
     wx.setClipboardData({
       data: selected,

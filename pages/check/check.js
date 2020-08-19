@@ -71,19 +71,6 @@ Page({
                       newData[attr]=temJson[attr];
                     }                   
                   } 
-
-                 if(kanzheng.test(typeCode)){
-                  wx.navigateTo({
-                    url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-                    success:function(res){
-                        console.log("****kazheng******"+JSON.stringify(newData))
-                          // 通过eventChannel向被打开页面传送数据
-                         res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                    }
-                  }) 
-                 }
-
-                 if(piaojue.test(typeCode)){
                   wx.navigateTo({
                     url: '/pages/piaoju/piaoju?typeCode='+typeCode,
                     success:function(res){
@@ -92,21 +79,8 @@ Page({
                          res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
                     }
                   }) 
-                 }
               }         
             }else{
-              if(kanzheng.test(typeCode)){
-                wx.navigateTo({
-                  url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-                  success:function(res){
-                      console.log("****kazheng******"+JSON.stringify(newData))
-                        // 通过eventChannel向被打开页面传送数据
-                       res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                  }
-                }) 
-               }
-
-              if(piaojue.test(typeCode)){
                 wx.navigateTo({
                   url: '/pages/piaoju/piaoju?typeCode='+typeCode,
                   success:function(res){
@@ -114,8 +88,7 @@ Page({
                         // 通过eventChannel向被打开页面传送数据
                        res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
                   }
-                }) 
-               }
+                })
             }
           },
           fail(res){

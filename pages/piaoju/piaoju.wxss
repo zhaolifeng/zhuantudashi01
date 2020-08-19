@@ -20,3 +20,6 @@
 .bottom{
   height: 50px;
 }
+.primary{
+  padding-bottom: 20px;
+}
