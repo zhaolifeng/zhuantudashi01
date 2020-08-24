@@ -13,11 +13,13 @@
   height: 50px;
   position: relative;
  padding-top:25px;
- font-weight:bold;
+ font-weight:520;
+ color: rgb(29, 33, 36);
+ font-size: 17px;
 }
  
 .VerticalNav.nav .cu-item.cur {
-  background-color: #f1f1f1;
+  background-color: #e5eaf0;
 }
 .VerticalNav.nav .cu-item.cur::after {
   content: "";
@@ -37,13 +39,21 @@
 }
 .VerticalMain{
   background-color: #f1f1f1;
+  color: rgb(29, 33, 36);
+  font-size: 17px;
 }
 .VerticalBox .cu-bar{
-  background-color: rgb(216, 208, 208);
-  height:30px;}
+  background-color:#e5eaf0;
+  height:35px;
+   position: sticky;
+  left: 0px;
+  top: 0px;
+}
 
 .action{
-  padding:5px;
+  padding-left:5px;
+  line-height: 2em;
+  
 }
 
 
@@ -72,4 +82,7 @@
 .tite{
   width: 130rpx;
   text-align: center;
+  color: rgb(29, 33, 36);
+  font-size: 16px;
+  font-weight:normal;
 }

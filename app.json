@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/index/index",
+    "pages/home/home",
     "pages/logs/logs",
     "pages/select/select",
     "pages/check/check",
     "pages/piaoju/piaoju",
-    "pages/kazheng/kazheng"
+    "pages/kazheng/kazheng" 
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,7 +18,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/index/index",
         "iconPath": "pages/image/select/changyong.png",
         "selectedIconPath": "pages/image/select/unchangyong.png",
         "text": "常用"

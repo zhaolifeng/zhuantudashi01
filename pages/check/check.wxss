@@ -3,12 +3,67 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height:100vh;
   align-items: center;
-  padding: 20rpx 0;
+  justify-content: start;
+  padding: 0 4rpx;
+  box-sizing: border-box;
+  background-color: #f1f1f1;
 }
 
 .takephone{
-  height: 80%;
-  width: 98%;
-  border: 1px solid red;
+  height: 75vh;
+  width: 100%;
+  border: 1px solid rgb(140, 129, 129);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
 }
+.phone{
+  width:70px;
+  height:70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  word-spacing: 1.5em;
+  background:rgb(116, 110, 110) ;
+  color: white;
+  border-radius: 50%;
+  font-size:17px;
+  font-weight: 500;
+  border:solid 5px rgb(233, 223, 223);
+}
+.phone:hover{
+  background-color:rgb(72, 67, 67);
+}
+.getphone{
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.selectImage{
+  width: 100%;
+  height:5vh;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  align-items: center;
+  font-size:17px;
+  font-weight:450;
+
+}
+.selectImage view:nth-of-type(1){
+  width: 50%;
+  text-align: center;
+}
+
+.selectImage view:nth-of-type(2){
+  width: 50%;
+  text-align: center;
+}
+
+
+
+

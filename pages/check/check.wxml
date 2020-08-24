@@ -1,16 +1,16 @@
 <!--pages/check/check.wxml-->
 <view class="container">
-  <!-- <view>
-    <text>支持二代身份证人像面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限</text>
-  </view> -->
- 
   <view class="takephone">
-   <camera device-position="back" flash="auto" binderror="error" style="width: 100%; height:80vh;"></camera>
+   <camera device-position="back" flash="auto" binderror="error" style="width: 100%; height:100%"></camera>
   </view>
-  <view>
+  <view class="getphone">
+    <view class="phone" bindtap="startCamera"  data-typeCode="{{typeCode}}">
+      <!-- 拍   照 -->
+    </view>
   </view>
-  <view>
-    <button type="primary" bindtap="startCamera" data-typeCode="{{typeCode}}">{{typeCode}}拍照</button>
+  <view class="selectImage">
+     <view bindtap="chooseImage"  data-typeCode="{{typeCode}}">相册选择图>></view>
+     <view bindtap="chooseMessageFile"  data-typeCode="{{typeCode}}">聊天记录选图>></view>
   </view>
-</view>
+</view> 
 
