@@ -29,7 +29,7 @@
   height: 110rpx;
   width: 110rpx;
   border-radius: 50%;                                                                                 
-   background-color: rgba(224, 219, 219, 0.618);
+   background-color: rgb(222, 231, 233);
    border:solid 1px rgb(153, 186, 196);
    
 }
