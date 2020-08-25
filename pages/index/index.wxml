@@ -2,72 +2,104 @@
 <view class="container">
    <view class="home">
       <view class="iconfunction"  data-gid="002007-2" bindtap="check">
-        <image class="icon" src="/pages/image/select/codeId.png">
-        </image><text>身份证</text>
+        <view  class="icon">
+          <image  src="/pages/image/select/codeId.png"></image>
+        </view>
+        <text>身份证</text>
       </view>
 
        <view class="iconfunction" data-gid="003001-2" bindtap="check">
-        <image class="icon" src="/pages/image/select/driverId.png">
-        </image><text>驾驶证</text>
+        <view  class="icon">
+          <image src="/pages/image/select/driverId.png" >
+          </image>
+        </view>
+        <text>驾驶证</text>
       </view>
 
        <view class="iconfunction"  data-gid="003003-2" bindtap="check">
-        <image class="icon" src="/pages/image/select/carId.png" >
-        </image><text>行驶证</text>
+        <view class="icon">
+          <image src="/pages/image/select/carId.png" >
+          </image>
+        </view>
+        <text>行驶证</text>
       </view>
 
        <view class="iconfunction" data-gid="002011" bindtap="check">
-        <image class="icon" class="icon" src="/pages/image/select/passport.png">
-        </image><text>护照</text>
+        <view class="icon">
+          <image class="icon" class="icon" src="/pages/image/select/passport.png">
+          </image>
+        </view>
+        <text>护照</text>
       </view>
    </view>
 
    <view class="home">
       <view class="iconfunction"  data-gid="001016" bindtap="check">
-        <image class="icon" src="/pages/image/select/train.png">
-        </image><text>火车票</text>
+        <view  class="icon">
+          <image src="/pages/image/select/train.png">
+          </image>
+        </view>
+        <text>火车票</text>
       </view>
 
        <view class="iconfunction"  data-gid="001014" bindtap="check">
-        <image class="icon" src="/pages/image/select/taxi.png">
-        </image><text>出租车票</text>
+        <view  class="icon">
+          <image src="/pages/image/select/taxi.png">
+          </image>
+        </view>
+        <text>出租车票</text>
       </view>
 
        <view class="iconfunction"  data-gid="001007" bindtap="check">
-        <image class="icon" src="/pages/image/select/flight.png">
-        </image><text>行程单</text>
+        <view  class="icon">
+          <image src="/pages/image/select/flight.png">
+          </image>
+        </view>
+        <text>行程单</text>
       </view>
 
        <view class="iconfunction"  data-gid="001013" bindtap="check">
-        <image class="icon" src="/pages/image/select/ship.png">
-        </image><text>轮船票</text>
+        <view  class="icon">
+          <image src="/pages/image/select/ship.png">
+          </image>
+        </view>
+        <text>轮船票</text>
       </view>
    </view>
 
    <view class="home">
       <view class="iconfunction" data-gid="001001-1" bindtap="check">
-        <image class="icon" src="/pages/image/select/vatInvoice.png">
-        </image><text>增值发票</text>
+        <view  class="icon">
+          <image src="/pages/image/select/vatInvoice.png" >
+          </image>
+        </view>
+        <text>增值发票</text>
       </view>
 
        <view class="iconfunction"  data-gid="001011" bindtap="check">
-        <image class="icon" src="/pages/image/select/hunhe.png">
-        </image><text>混贴票</text>
+       <view  class="icon">
+          <image src="/pages/image/select/hunhe.png"> 
+          </image>
+       </view>
+       <text>混贴票</text>
       </view>
 
        <view class="iconfunction"  data-gid="001005" bindtap="check">
-        <image class="icon" src="/pages/image/select/jingrong.png">
-        </image><text>金融票</text>
+       <view  class="icon">
+        <image src="/pages/image/select/jingrong.png">
+        </image>
+       </view>
+       <text>金融票</text>
       </view>
 
        <view class="iconfunction"  data-gid="001015" bindtap="check">
-        <image class="icon" src="/pages/image/select/guolupiao.png">
-        </image><text>路桥票</text>
+        <view  class="icon">
+          <image  src="/pages/image/select/guolupiao.png"></image>
+        </view>
+        <text>路桥票</text>
       </view>
    </view>
-   <!-- <view class="add" >
-   <button bindtap="initAddPage">更多...</button>
-   </view> -->
+   
    
    
 </view>

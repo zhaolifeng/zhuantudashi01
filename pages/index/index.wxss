@@ -28,11 +28,21 @@
   margin: 30rpx;
   height: 110rpx;
   width: 110rpx;
-  border-radius: 50%;                                                                                 
-   background-color: rgb(222, 231, 233);
-   border:solid 1px rgb(153, 186, 196);
+  /* border-radius: 50%;                                                                                  */
+   /* background-color:#708090;*/
+    /* border:solid 1px rgb(153, 186, 196);  */
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
    
 }
+.icon image{
+  height: 40px;
+  width: 40px;
+  
+}
+
 
 .add{
   height: 40px;

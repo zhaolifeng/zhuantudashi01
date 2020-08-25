@@ -16,8 +16,10 @@
                 <view class="home">
                       <block wx:for="{{twodata}}" wx:for-item="threedata" wx:key="index3">
                         <view class="iconfunction"  bindtap="check" data-gid="{{threedata.code}}-1">
-                          <image class="icon" src="/pages/image/home/test.png">
-                          </image>
+                          <view class="icon">
+                            <image  src="{{threedata.image}}">
+                            </image>
+                          </view>
                           <view class="tite">
                             <text>{{threedata.name}}</text>
                           </view>

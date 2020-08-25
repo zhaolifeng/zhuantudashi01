@@ -73,10 +73,15 @@
 }
 .icon{
   margin: 20rpx;
-  height: 100rpx;
-  width: 100rpx;
-  border-radius: 50%;                                                                                 
-   background-color: rosybrown;
+  height: 110rpx;
+  width: 110rpx;
+  /* border-radius: 50%;                                                                                 
+   background-color: rosybrown; */
+}
+
+.icon image{
+  height: 40px;
+  width: 40px;
 }
 
 .tite{
