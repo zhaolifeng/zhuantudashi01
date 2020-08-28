@@ -1,16 +1,19 @@
+// pages/piaoju/piaoju.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
- 
+    typeCode:"002007",
+    resultData:[{"name":"姓名","value":"赵利锋","disable":"false"},{"name":"性别","value":"男","disable":"false"}]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("dddddddddddddddddddddddddddddddddddd")
         const eventChannel = this.getOpenerEventChannel();
         let that=this;
         let typeCode= options.typeCode;
@@ -20,7 +23,6 @@ Page({
             typeCode:typeCode,
             resultData:temp,
           })
-
         })
   },
 
@@ -37,6 +39,15 @@ Page({
       })
     })
     obj.exec();
+
+    var checkboxItems = that.data.resultData;
+    let lenI = checkboxItems.length;
+    for (var i = 0; i < lenI; ++i) {
+      checkboxItems[i].checked = false;
+    }
+    this.setData({
+      resultData: checkboxItems
+    });
   },
 
   /**
@@ -79,5 +90,82 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  checkboxChange:function(e){
+      this.setData({
+      selectData:e.detail.value
+    }); 
+  },
+  selectAll:function(){
+      var checkboxItems = this.data.resultData;
+      let lenI = checkboxItems.length;
+      var selectItems=[];
+      for (var i = 0; i < lenI; ++i) {
+        checkboxItems[i].checked = false;
+      }
+      for (var i = 0; i < lenI; ++i) {
+        checkboxItems[i].checked = true;
+        selectItems[i]=checkboxItems[i].name;
+      }
+    
+      this.setData({
+        resultData: checkboxItems,
+        selectData:selectItems
+      });
+  },
+
+  onCopyInfo:function(){
+    var checkboxItems = this.data.selectData;
+    var resultData=this.data.resultData;
+    let lenI = checkboxItems.length;
+    let lenG = resultData.length;
+    var selected='';
+    for (var i = 0; i < lenI; ++i) {
+        for(var j=0;j<lenG;j++){
+          if(checkboxItems[i] == resultData[j].name){
+            selected=selected + resultData[j].name+":"+resultData[j].value+"\n";
+          }
+        }
+    }
+    wx.setClipboardData({
+      data: selected,
+      success (res) {
+        wx.getClipboardData({
+          success (res) {
+            console.log(res.data) // data
+          }
+        })
+      }
+    })
+  },
+  onEditor:function(){
+    console.log("--------------");
+    var checkboxItems = this.data.selectData;
+    var resultData=this.data.resultData;
+    let lenI=0; 
+    lenI = checkboxItems.length;
+    let lenG = resultData.length;
+    for (var i = 0; i < lenI; ++i) {
+        for(var j=0;j<lenG;j++){
+          if(checkboxItems[i] == resultData[j].name){
+            resultData[j].disable=false;
+            resultData[j].checked=true;
+          }
+        }
+    }
+    this.setData({
+      editorData:resultData,
+      show:55
+    });
+  },
+  bindFormSubmit: function(e) {
+    console.log(e.detail.value)
+  },
+  closeEditor:function(){
+    this.setData({
+      editorData:{},
+      show:-111
+    });
   }
 })

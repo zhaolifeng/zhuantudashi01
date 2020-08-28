@@ -1,18 +1,32 @@
 <!--pages/piaoju/piaoju.wxml-->
-<scroll-view  style="height:{{height}}" scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0}">
+<view class="main">
+
+<!-- <scroll-view   scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0"> -->
 <checkbox-group bindchange="checkboxChange">
     <view id="resultData002002" wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
           <view wx:if="{{itemName.value !=''}}" style="padding-left:10px"> 
               <view class="line">
-                <checkbox value="{{itemName.name}}" checked="{{itemName.checked}}">
-                  {{itemName.name}}：<text selectable="true">{{itemName.value}}</text>
-                </checkbox>
-              </view>
+                <view style="width:10%">
+                  <checkbox value="{{itemName.name}}" checked="{{itemName.checked}}" style="width:20px"></checkbox>
+                </view>
+                <view style="width:90%">
+                  {{itemName.name}}： <textarea auto-height value="{{itemName.value}}"  style="backgroud-color:red"></textarea>
+                  
+                </view>  
+               
+                <!-- <input type="text" value="{{itemName.value}}" maxlength="999" style="width:60%"></input> -->
+              </view>            
           </view>
     </view>
 </checkbox-group>
-</scroll-view>
-<view class="bottom">
-<button type="primary" bindtap="selectAll">全选</button>
-<button type="primary" bindtap="onCopyInfo">复制选中项</button>
+<!-- </scroll-view> -->
+</view>
+<view class="menu" >
+<!-- <button type="primary" bindtap="selectAll">全选</button>
+<button type="primary" bindtap="onCopyInfo">复制选中项</button> -->
+<view bindtap="selectAll">全选</view>
+<view>编辑</view>
+<view>撤销</view>
+<view bindtap="onCopyInfo">复制</view>
+<view>导出</view>
 </view>

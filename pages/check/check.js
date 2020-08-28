@@ -132,6 +132,7 @@ Page({
     var typeCode=this.data.typeCode;
     var count=this.data.count;
     var that =this;
+    console.log("*****typeCode*****"+typeCode); 
     wx.uploadFile({
       filePath: filePath,
       name: 'file',
@@ -139,7 +140,7 @@ Page({
       url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
       success(res){
         wx.hideLoading();
-        console.log("*****success*****"+res.data); 
+       
         console.log("*****success*****"+JSON.stringify(res.data)); 
         let resultData=res.data;
         resultData=resultData.replace(" ","");
@@ -150,9 +151,7 @@ Page({
             console.log("newData:"+JSON.stringify(newData));
             console.log("new code :" + newData.RequestId);
           }
-          console.log("count:" +count);
-          var kanzheng=/^(002)/;
-          var piaojue=/^(001)/;
+          console.log("count:" +count); 
         if(count==2){ // 需要正反面或者是两页扫描的情况
           if (Object.keys(that.data.newData).length === 0) {
                 that.data.newData=newData;
@@ -173,10 +172,12 @@ Page({
               }) 
           }         
         }else{
+          console.log("****send**############################****"+JSON.stringify(newData))
+         
             wx.navigateTo({
               url: '/pages/piaoju/piaoju?typeCode='+typeCode,
               success:function(res){
-                  console.log("****send******"+JSON.stringify(newData))
+                console.log("****typeCode**############################****"+typeCode)
                     // 通过eventChannel向被打开页面传送数据
                    res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
               }

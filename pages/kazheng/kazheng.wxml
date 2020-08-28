@@ -1,16 +1,64 @@
-<!--pages/kazheng/kazheng.wxml-->
-<scroll-view  style="height:{{height}}" scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0}">
-<view id="resultData002002" wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
-      <view wx:if="{{itemName.value !=''}}" style="padding-left:10px"> 
-          <view class="line">
-            <checkbox value="{{itemName.value}}">
-              {{itemName.name}}：<text selectable="true">{{itemName.value}}</text>
-            </checkbox>
+<!--pages/piaoju/piaoju.wxml-->
+<view class="main">
+
+<!-- <scroll-view   scroll-y scroll-with-animation id="main0"  scroll-into-view="main-0"> -->
+<checkbox-group bindchange="checkboxChange">
+    <view id="resultData002002" wx:for="{{resultData}}" wx:for-index="idx" wx:for-item="itemName" s>
+          <view wx:if="{{itemName.value !=''}}" > 
+              <view class="line">
+                <checkbox value="{{itemName.name}}" checked="{{itemName.checked}}">
+                 
+                  
+                  <!-- <text selectable="true">{{itemName.value}}</text> -->
+                </checkbox>
+                <!-- <input type="text" value="{{itemName.value}}" maxlength="999" style="width:60%"></input> -->
+                 {{itemName.name}}：<textarea value="{{itemName.value}}" disabled="{{itemName.disable}}" auto-height="auto" ></textarea>
+              </view>    
           </view>
-      </view>
+    </view>
+</checkbox-group>
+<!-- </scroll-view> -->
 </view>
-</scroll-view>
-<view class="bottom">
-<button type="primary">复制选中项</button>
+<view class="menu" >
+<!-- <button type="primary" bindtap="selectAll">全选</button>
+<button type="primary" bindtap="onCopyInfo">复制选中项</button> -->
+<view bindtap="selectAll">
+<checkbox></checkbox>
+</view>
+<view bindtap="onEditor">编辑</view>
+<view>撤销</view>
+<view bindtap="onCopyInfo">复制</view>
+<view>导出</view>
+</view>
+
+<view class="showEditor" style="z-index:{{show}}">
+    <form bindsubmit="bindFormSubmit">
+    <view id="finish" bindtap="closeEditor">
+        <image src="/pages/image/select/close.png"></image>
+    </view>
+    <!-- <button id="finish" form-type='submit' plain='true'> <image src='/pages/image/select/finish.png' ></image></button> -->
+
+    <view class="editor">
+        <view wx:if="{{editorData}}">         
+            <view class="showEditorInfo" wx:for="{{editorData}}" wx:for-index="idx" wx:for-item="itemName">
+                    <view >
+                        {{itemName.name}}：                   
+                    </view>
+                    <view>
+                        <textarea  name="{{itemName.name}}" value="{{itemName.value}}"  auto-height="true" ></textarea> 
+                    </view>
+            </view>
+        </view>
+    </view>
+    <view class="subbmit">
+         <button  form-type='submit' plain='true' style="border:0"> 完 成 </button>
+         <!-- <button form-type="submit"> 提交 </button> -->
+    </view>
+<view>
+    <!-- <button class='share-button' open-type="share">
+        <image class="right" src="/pages/image/select/finish.png"></image>
+    </button> -->
+</view>
+   </form>
 </view>
 
