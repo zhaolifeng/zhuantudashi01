@@ -30,7 +30,7 @@
         "text": "通用"
       },
       {
-        "pagePath": "pages/kazheng/kazheng",
+        "pagePath": "pages/home/home",
         "iconPath": "pages/image/select/unmy.png",
         "selectedIconPath": "pages/image/select/my.png",
         "text": "我的"

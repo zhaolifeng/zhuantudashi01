@@ -175,7 +175,8 @@ Page({
           console.log("****send**############################****"+JSON.stringify(newData))
          
             wx.navigateTo({
-              url: '/pages/piaoju/piaoju?typeCode='+typeCode,
+              // url: '/pages/piaoju/piaoju?typeCode='+typeCode,
+              url: '/pages/kazheng/kazheng?typeCode='+typeCode,
               success:function(res){
                 console.log("****typeCode**############################****"+typeCode)
                     // 通过eventChannel向被打开页面传送数据
