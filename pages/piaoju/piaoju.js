@@ -5,13 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
- 
+    typeCode:"002007",
+    resultData:[{"name":"姓名","value":"赵利锋"},{"name":"性别","value":"男"},{"name":"民族","value":"汉"},{"name":"出生","value":"1981/6/20"},{"name":"住址","value":"山西省五寨县三岔镇三岔村三岔居委6区80号"},{"name":"公民身份号码","value":"14223019810620633X"},{"name":"发证机关","value":""},{"name":"证件有效期限","value":""}]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("dddddddddddddddddddddddddddddddddddd")
         const eventChannel = this.getOpenerEventChannel();
         let that=this;
         let typeCode= options.typeCode;
