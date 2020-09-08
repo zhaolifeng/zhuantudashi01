@@ -17,9 +17,7 @@
 </checkbox-group>
 </view>
 <view class="menu" >
-    <view bindtap="selectAll">
-        <checkbox></checkbox>
-    </view>
+    <view bindtap="selectAll">全选</view>
     <view bindtap="onEditor">编辑</view>
     <view bindtap="rest">撤销</view>
     <view bindtap="onCopyInfo">复制</view>

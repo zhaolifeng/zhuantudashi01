@@ -99,7 +99,5 @@
         <text>路桥票</text>
       </view>
    </view>
-   
-   
-   
+   <mytoast showMessage="111111"></mytoast>
 </view>

@@ -189,7 +189,7 @@ Page({
         }
       }
     }
-    console.log("&&&###WWWWWWWWWWWWWWWWW###&&"+JSON.stringify(orginalData));
+    console.log("&&&###WWWWWWWWWWWWWWWWW###&&"+JSON.stringify(orginalData)); 
     if(typeof orginalData != 'object'){
       orginalData=orginalData.replace(/\ufeff/g,"");
       this.orginalData= JSON.parse(orginalData);

@@ -18,7 +18,7 @@ Page({
         let that=this;
         let typeCode= options.typeCode;
         eventChannel.once('acceptDataFromOpenerPage', function(data) {
-          let temp=data.data;
+          let temp=data.data; 
           that.setData({
             typeCode:typeCode,
             resultData:temp,
