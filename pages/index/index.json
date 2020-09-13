@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "mytoast":"/pages/component/toast/message"
+    "mytoast":"/pages/component/toast/mytoast",
+    "exportfile":"/pages/component/exportfile/exportfile"
   },
   "navigationBarTitleText": "首页"
 }

@@ -1,0 +1,6 @@
+<!--pages/component/toast/mytoast.wxml-->
+<view class="toastmain" hidden="{{zindex}}">
+    <view class="message">
+      {{message}}
+    </view>
+</view>

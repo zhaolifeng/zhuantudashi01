@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mytoast":"/pages/component/toast/mytoast"
+  },
   "navigationBarTitleText": "拍照"
 }

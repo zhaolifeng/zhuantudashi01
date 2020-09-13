@@ -1,0 +1,35 @@
+/* pages/component/toast/mytoast.wxss */
+.toastmain{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message{
+  height: 25vw;
+  width: 40vw;
+  border: solid 5px rgb(70, 68, 68);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+  /* box-shadow: 2px 2px #000; */
+  background-color:rgba(65, 62, 62, 0.9);
+  border-radius:5%;
+  color:white;
+  font-size:17px;
+  font-weight:50;
+  letter-spacing:0.1em;
+ 
+ 
+}
+
+.message:hover{
+  transition: all 5s;
+  transform:  scale(0,0) ;
+}

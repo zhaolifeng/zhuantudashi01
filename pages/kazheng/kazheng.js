@@ -120,15 +120,21 @@ Page({
 
       console.log("-----selectAll-----------orginalData---2----"+JSON.stringify(this.orginalData))
   },
-
+ 
   onCopyInfo:function(){
     var checkboxItems = this.data.selectData;
     var resultData=this.data.resultData;
+    console.log("&&&###checkboxItems###&&"+(JSON.stringify(checkboxItems))); 
+    console.log("&&&###resultData###&&"+JSON.stringify(resultData));
+    if(checkboxItems==undefined || JSON.stringify(checkboxItems) == "{}"){
+      var mytoast01=this.selectComponent("#mytoast");
+      mytoast01.showMessage("请选择要复制信息");   
+      return
+    }
     let lenI = checkboxItems.length;
     let lenG = resultData.length;
     var selected='';
-    console.log("&&&###checkboxItems###&&"+JSON.stringify(checkboxItems));
-    console.log("&&&###resultData###&&"+JSON.stringify(resultData));
+
     for (var i = 0; i < lenI; ++i) {
         for(var j=0;j<lenG;j++){
           if(checkboxItems[i] == resultData[j].name){
@@ -152,6 +158,11 @@ Page({
     console.log("--------------");
     var checkboxItems = this.data.selectData;
     var resultData=this.data.resultData;
+    if(checkboxItems==undefined || JSON.stringify(checkboxItems) == "{}"){
+      var mytoast01=this.selectComponent("#mytoast");
+      mytoast01.showMessage("请选择要编辑信息");   
+      return
+    }
     let lenI=0; 
     lenI = checkboxItems.length;
     let lenG = resultData.length;

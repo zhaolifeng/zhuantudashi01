@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    zindex:true
   },
 
   /**
@@ -77,5 +77,14 @@ Page({
     wx.navigateTo({
       url: '/pages/check/check?typeCode='+gid
     })
+  },
+
+  showtoast:function () {
+      // var mytoast01=this.selectComponent("#exportfile");
+      // mytoast01.showMessage("请上传另一面")    
+      wx.navigateTo({
+        url: '/pages/multiResult/multiResult'
+      })
+
   }
 })

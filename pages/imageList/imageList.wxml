@@ -1,0 +1,12 @@
+<!--pages/imageList/imageList.wxml-->
+<view class="main">
+  <view class="images">
+    <view class="imageblock" wx:for="{{imageFiles}}" wx:for-index="idx" wx:for-item="image">
+        <image src="{{image.path}}" data-src="{{image.path}}"  style="width:{{image.width*0.15}}px ;height:{{image.height*0.15}}px" bindtap="previewImage"></image>
+    </view>
+  </view>
+  <view>
+      <button bindtap="toIdentify">开始识别</button>
+  </view>
+</view>
+

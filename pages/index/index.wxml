@@ -99,5 +99,8 @@
         <text>路桥票</text>
       </view>
    </view>
-   <mytoast showMessage="111111"></mytoast>
+   <mytoast id="mytoast"></mytoast>
+   <exportfile id="exportfile"></exportfile>
+   
 </view>
+<button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button>
