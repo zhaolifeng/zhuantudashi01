@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "editorMode":"/pages/component/editor/editor"
+  }
 }

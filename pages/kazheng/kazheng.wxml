@@ -36,7 +36,7 @@
                         {{itemName.name}}：                   
                     </view>
                     <view>
-                        <textarea  name="{{itemName.name}}" value="{{itemName.value}}"  auto-height="auto"/> 
+                        <textarea  name="{{itemName.name}}" value="{{itemName.value}}"  auto-height="true"/> 
                     </view>
             </view>
         </view>

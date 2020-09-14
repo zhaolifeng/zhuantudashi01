@@ -2,24 +2,28 @@
 <view class="main">
    <view class="infoItems" wx:for="{{result}}" wx:for-index="idh" wx:for-item="item">
      <view class="title">
-        <view>第{{idh}}页</view><view>...</view>
+        <view style="font-size:18px;font-weight:600">第{{idh+1}}页</view><view>...</view>
      </view>
      <view class="infoItem">
-        <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record">
-            {{record.name}}：{{record.value}}
+        <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" catchlongtap="editor">
+           <label style="font-size:18px;font-weight:600">
+           {{record.name}}：
+           </label>
+           {{record.value}}
         </view>
      </view>
    </view>
-   <view style="height:8vh;width:100vh"></view>
+   <view style="height:8vh;width:10vw"></view>
    <view class="menu">
-   <view> 
-    全部复制
-   </view>
-   <view>
-   全部导出
-   </view>
-   <view>
-   再次识别
-   </view>
+      <view> 
+      全部复制
+      </view>
+      <view>
+      全部导出
+      </view>
+      <view>
+      再次识别
+      </view>
    </view>
 </view>
+<editorMode id="editorMode" bind:updateText="editorText"></editorMode>

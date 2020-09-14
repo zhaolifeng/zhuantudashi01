@@ -301,5 +301,21 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  editorText:function(e){
+      var infos=e.detail.message.split(":!|#");
+      this.data.result[infos[0]].response[infos[1]].value=infos[2];
+      this.setData({
+        result:this.data.result
+      })
+  },
+  editor:function(e){
+    var editorMode=this.selectComponent("#editorMode");
+    let message=e.target.dataset.key;
+    console.log("----------------"+JSON.stringify(Page.onReachBottom));
+    if(message != undefined){
+        editorMode.startEditor(message);
+    }
+
+}
 })
