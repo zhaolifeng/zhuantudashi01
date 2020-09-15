@@ -2,14 +2,31 @@
 <view class="main">
    <view class="infoItems" wx:for="{{result}}" wx:for-index="idh" wx:for-item="item">
      <view class="title">
-        <view style="font-size:18px;font-weight:600">第{{idh+1}}页</view><view>...</view>
+        <view class="page" style="font-size:18px;font-weight:600">
+           第{{idh+1}}页
+        </view>
+        <view id="submenu" class="submenu" data-key="{{idh}}" catchtap="operator">
+          ...
+        </view>
+
+        <!-- <view class="operates">
+            <view class="operatesitem">原图</view>
+            <view class="operatesitem">复制</view>
+            <view class="operatesitem">导出</view>
+         </view> -->
      </view>
+
      <view class="infoItem">
-        <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" catchlongtap="editor">
-           <label style="font-size:18px;font-weight:600">
-           {{record.name}}：
-           </label>
-           {{record.value}}
+        <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" >
+           <view style="font-size:18px;font-weight:510;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+               {{record.name}}
+           </view>
+           <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+           ：
+           </view>
+           <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+               {{record.value}}
+           </view>
         </view>
      </view>
    </view>
@@ -26,4 +43,5 @@
       </view>
    </view>
 </view>
-<editorMode id="editorMode" bind:updateText="editorText"></editorMode>
+<!-- <editorMode id="editorMode" bind:updateText="editorText"></editorMode> -->
+     <operatorMode id="operatorMode"></operatorMode>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "editorMode":"/pages/component/editor/editor"
+    "editorMode":"/pages/component/editor/editor",
+    "operatorMode":"/pages/component/operator/operator"
   }
 }

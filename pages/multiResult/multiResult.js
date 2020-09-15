@@ -312,10 +312,32 @@ Page({
   editor:function(e){
     var editorMode=this.selectComponent("#editorMode");
     let message=e.target.dataset.key;
-    console.log("----------------"+JSON.stringify(Page.onReachBottom));
     if(message != undefined){
         editorMode.startEditor(message);
     }
+
+},
+operator:function(e){
+    console.log("#############"+JSON.stringify(e))
+    let index=e.target.dataset.key;
+    var operatorMode=this.selectComponent("#operatorMode");
+    var message=this.data.result[index]
+    var touchData=e.changedTouches[0]
+
+
+    const query = wx.createSelectorQuery()
+    query.select('#submenu').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    var top;
+    query.exec(function (res) {
+        console.log("################################################"+JSON.stringify(res[0].top))
+        top=res[0].top // #the-id节点的上边界坐标
+      res[1].scrollTop // 显示区域的竖直滚动位置
+    })
+
+    console.log("################################top################"+top)
+    operatorMode.startOper(message,top);
+    
 
 }
 })

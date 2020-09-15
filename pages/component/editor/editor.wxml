@@ -1,0 +1,15 @@
+<!--pages/component/editor/editor.wxml-->
+<view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}" >
+  <view class="eidtorArea">
+      <view class="close" bindtap="cancelEditor">
+        <image src="/pages/image/select/close.png"></image>
+      </view>
+      <view class="editorInfo">
+        <textarea id="editorInfo" value="{{message}}" focus="true" show-confirm-bar="true" style="height:140px" bindinput="inputText" maxlength="-1">
+        </textarea>
+      </view>
+      <view class="confirmInfo">
+        <button id="buttonInfo" style="background-color:#000033;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishEditor">   确     定   </button>
+      </view>
+  </view>
+</view>

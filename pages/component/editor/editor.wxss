@@ -1,0 +1,75 @@
+/* pages/component/editor/editor.wxss */
+.main{
+  height: 101vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+
+}
+.eidtorArea{
+  height:250px;
+  width:80vw;
+  display: flex;
+  flex-direction: column;
+  background:#fff;
+  border-radius: 3px;
+  border:solid 2px rgb(112, 111, 111);
+
+
+
+  
+
+
+
+}
+.close{
+  height:40px;
+  width: 40px;
+  border-radius:50%;
+  opacity: 1;
+  background-color:#fff;
+  position: relative;
+  top:-20px;
+  left: 75vw;
+  margin-right:0;
+}
+.close image{
+  height:40px;
+  width: 40px;
+
+}
+.editorInfo{
+  height:140px;
+  width:100%;
+ display: flex;
+ justify-content: center;
+}
+
+.editorInfo textarea{
+  height:100%;
+  width:90%;
+  font-size:20px;
+  font-weight:400;
+  border:solid 1px rgb(112, 107, 107);
+  border-radius:3px;
+  display: block;
+  letter-spacing:5rpx;
+}
+
+
+.confirmInfo{
+  height:70px;
+  width:80vw;
+  /* margin-bottom:0; */
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; */
+  align-items: center;
+  
+}
