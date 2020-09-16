@@ -2,11 +2,11 @@
 <view class="main">
   <view class="images">
     <view class="imageblock" wx:for="{{imageFiles}}" wx:for-index="idx" wx:for-item="image">
-        <image src="{{image.path}}" data-src="{{image.path}}"  style="width:{{image.width*0.15}}px ;height:{{image.height*0.15}}px" bindtap="previewImage"></image>
+        <image src="{{image.path}}" data-src="{{image.path}}"  style="width:{{image.width*0.2}}px ;height:{{image.height*0.2}}px" bindtap="previewImage"></image>
     </view>
   </view>
   <view>
-      <button bindtap="toIdentify">开始识别</button>
+     <button id="buttonInfo" style="background-color:#000033;width:62%;height:40px;color:white;letter-spacing:10rpx;" bindtap="toIdentify" >开始识别</button>
   </view>
 </view>
 

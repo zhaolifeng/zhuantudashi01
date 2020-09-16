@@ -1,6 +1,7 @@
 /* pages/imageList/imageList.wxss */
 .main{
   margin: auto;
+  background-color: #f1f1f1; 
 }
 .images{
   height:93vh;
@@ -10,8 +11,6 @@
   justify-content:start;
   flex-wrap: wrap;
   align-content: flex-start;
-
-
 }
 .imageblock{
   height:20vh;

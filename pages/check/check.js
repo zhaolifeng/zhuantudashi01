@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    maxCount:12,
     newData:{},
-    array:["相册选5张图片","聊天记录选5张图片"],
     mode:false, //单选多选模式 f
     takePhones:0,  //拍照数量
     takeImageFiles:[]
@@ -69,8 +69,8 @@ Page({
     this.ctx = wx.createCameraContext();
     console.log("*****typeCode*****"+typeCode);
     if(this.data.mode){ //多页识别
-         if(len >= 6){
-           mytoast01.showMessage("一批最多拍6张"); 
+         if(len >= this.data.maxCount){
+           mytoast01.showMessage("一批最多拍"+this.data.maxCount+"张");  
            return;  
          }
 
@@ -154,18 +154,28 @@ Page({
     })
   },
   chooseImages:function (e) {
-      var index=e.detail.value;
-      if(index==0){
-        this.mutliImageUpload();
-      } 
-      if(index==1){
-        this.mutliMessageImageUpload();
+    var that=this;
+    wx.showActionSheet({
+      itemList:["相册选"+that.data.maxCount+"张图片","聊天记录选"+that.data.maxCount+"张图片"],
+      success (res) {
+        console.log(res.tapIndex)
+        let index=res.tapIndex;
+        if(index==0){
+          that.mutliImageUpload();
+        } 
+        if(index==1){
+          that.mutliMessageImageUpload();
+        }
+      },
+      fail (res) {
+        console.log(res.errMsg)
       }
+    })
   },
   mutliImageUpload:function(){
     var that = this;
     wx.chooseImage({
-            count: 6,
+            count: that.data.maxCount,
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success: function(res){
@@ -184,7 +194,7 @@ Page({
   mutliMessageImageUpload:function(){
     var that = this;
     wx.chooseMessageFile({
-            count: 6,
+            count:  that.data.maxCount,
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success: function(res){

@@ -12,14 +12,14 @@
      <!-- <view bindtap="chooseImage"  data-typeCode="{{typeCode}}">相册选择图>></view>
      <view bindtap="chooseMessageFile"  data-typeCode="{{typeCode}}">聊天记录选图>></view> -->
       <label>
-          <picker bindchange="chooseImages" value="{{index}}" range="{{array}}">
-            <view class="picker">
+          <!-- <picker bindchange="chooseImages" value="{{index}}" range="{{array}}"> -->
+            <view class="picker" catchtap="chooseImages">
               选 图>>{{array[index]}} 
             </view>
-          </picker>
+          <!-- </picker> -->
      </label>
       <label style="z-index:{{mode ?999:-1}}">
-        <button catchtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}"> ({{takePhones}})</block>
+        <button disabled="{{takePhones == 0}}" bindtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}"> ({{takePhones}})</block>
         </button>
      </label>
      <label>
