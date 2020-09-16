@@ -37,7 +37,7 @@ Component({
         this.setData({
           zindex:false,
           top:touchData,
-          right:7
+          right:1
         });
       },
       operator:function (e) {

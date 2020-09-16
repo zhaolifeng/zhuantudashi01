@@ -325,18 +325,29 @@ operator:function(e){
     var touchData=e.changedTouches[0]
 
 
-    const query = wx.createSelectorQuery()
-    query.select('#submenu').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    var top;
-    query.exec(function (res) {
-        console.log("################################################"+JSON.stringify(res[0].top))
-        top=res[0].top // #the-id节点的上边界坐标
-      res[1].scrollTop // 显示区域的竖直滚动位置
-    })
+    wx.createSelectorQuery().select('#submenu'+index).boundingClientRect(function(rect){
+        rect.id      // 节点的ID
+        rect.dataset // 节点的dataset
+        rect.left    // 节点的左边界坐标
+        rect.right   // 节点的右边界坐标
+        rect.top     // 节点的上边界坐标
+        rect.bottom  // 节点的下边界坐标
+        rect.width   // 节点的宽度
+        rect.height  // 节点的高度
+
+        console.log("################################id################"+rect.id)
+        console.log("################################left################"+rect.left)
+        console.log("################################right################"+rect.right)
+        console.log("################################top################"+rect.top)
+        console.log("################################ rect.bottom################"+ rect.bottom) 
+        operatorMode.startOper(message,rect.top);
+
+      }).exec()
+
+
 
     console.log("################################top################"+top)
-    operatorMode.startOper(message,top);
+
     
 
 }

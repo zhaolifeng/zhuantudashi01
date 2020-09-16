@@ -5,7 +5,7 @@
         <view class="page" style="font-size:18px;font-weight:600">
            第{{idh+1}}页
         </view>
-        <view id="submenu" class="submenu" data-key="{{idh}}" catchtap="operator">
+        <view id="submenu{{idh}}" class="submenu" data-key="{{idh}}" catchtap="operator">
           ...
         </view>
 

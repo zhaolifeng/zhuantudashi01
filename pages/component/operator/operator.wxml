@@ -1,7 +1,7 @@
 <!--pages/component/operator/operator.wxml-->
 <view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}" catchtouchend="endOperator">
 <!-- <view class="main"  hidden="{{zindex}}"> -->
-  <view class="operates" style="  top:{{top+21}}px;right:{{right}}px;">
+  <view class="operates" style="  top:{{top+50}}px;right:{{right}}vw;">
       <view class="operatesitem" data-key="viewImage" catchtap="operator">原图</view>
       <view class="operatesitem" data-key="copySignal" catchtap="operator">复制</view>
       <view class="operatesitem" data-key="exportFile" catchtap="operator">导出</view>
