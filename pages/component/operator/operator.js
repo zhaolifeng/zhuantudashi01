@@ -40,8 +40,7 @@ Component({
           right:1
         });
       },
-      operator:function (e) {
-        
+      operator:function (e) {       
         let message=e.target.dataset.key;
         if(message == "viewImage"){
           console.log("********viewImage*******"+JSON.stringify(this.data.sourceData.path))
@@ -68,11 +67,9 @@ Component({
               })
             }
           })
-
-
         }
         if(message == "exportFile"){
-          console.log("*******exportFile********"+JSON.stringify(e))
+          this.exportFile();
         }
       },
       endOperator:function () {
@@ -111,6 +108,16 @@ Component({
                 console.log(res.data) // data
               }
             })
+          }
+        })
+      },
+      exportFile:function(){
+        var paht=this.data.sourceData.path;
+        wx.saveFile({
+          tempFilePath: paht,
+          success (res) {
+            const savedFilePath = res.savedFilePath
+            console.log("-------savedFilePath----------"+JSON.stringify(res)) 
           }
         })
       }
