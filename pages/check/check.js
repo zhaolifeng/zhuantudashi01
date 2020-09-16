@@ -7,8 +7,9 @@ Page({
   data: {
     newData:{},
     array:["相册选5张图片","聊天记录选5张图片"],
-    mode:false, //单选多选模式
-    phones:0  //拍照数量
+    mode:false, //单选多选模式 f
+    takePhones:0,  //拍照数量
+    takeImageFiles:[]
   },
 
   /**
@@ -27,176 +28,128 @@ Page({
       typeCode:typeCode,
       count:count
     })
-    console.log("*****data*****"+JSON.stringify(that.data));
   },
-
-  
+  //拍照模式
+  changeMode:function (e){
+    var isMulti = e.detail.value;
+    var len = this.data.takeImageFiles.length;
+    var that=this;
+    if(!isMulti && len > 0){
+        wx.showModal({
+          title: '提示',
+          content: '转换后会丢失已拍摄图片',
+          success (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              that.setData({
+                mode:false,
+                takePhones:0,
+                takeImageFiles:[]
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+              that.setData({
+                mode:true
+              })
+            }
+          }
+        })
+    }else{
+      that.setData({
+        mode:isMulti
+      })
+    }
+  },
   startCamera: function (event) {
+    var mytoast01=this.selectComponent("#mytoast");
     var typeCode=this.data.typeCode;
     var count=this.data.count;
+    var len=this.data.takeImageFiles.length;
     var that =this;
     this.ctx = wx.createCameraContext();
     console.log("*****typeCode*****"+typeCode);
-    wx.showLoading({
-      title: '上传中...'
-    })
-    this.ctx.takePhoto({
-      quality : "high",
-      success: (res) => {
-        wx.uploadFile({
-          filePath: res.tempImagePath,
-          name: 'file',
-          formData:{"indexType":typeCode},
-          url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
-          success(res){
-            wx.hideLoading();
-            console.log("*****success*****"+res.data); 
-            console.log("*****success*****"+JSON.stringify(res.data)); 
-            let resultData=res.data;
-            resultData=resultData.replace(" ","");
-            let newData;
-            if(typeof resultData != 'object'){
-                resultData=resultData.replace(/\ufeff/g,"");
-                newData = JSON.parse(resultData);
-                console.log("newData:"+JSON.stringify(newData));
-                console.log("new code :" + newData.RequestId);
-              }
-              console.log("count:" +count);
-            if(count==2){ // 需要正反面或者是两页扫描的情况
-              if (Object.keys(that.data.newData).length === 0) {
-                    that.data.newData=newData;
-                    var mytoast01=that.selectComponent("#mytoast");
-                    mytoast01.showMessage("请上传另一面");   
+    if(this.data.mode){ //多页识别
+         if(len >= 6){
+           mytoast01.showMessage("一批最多拍6张"); 
+           return;  
+         }
+
+      this.ctx.takePhoto({
+        quality : "high",
+        success: (res) => {
+          let temObj = {"path":res.tempImagePath}
+          that.data.takeImageFiles[len++] = temObj;
+          that.setData({
+            takePhones:len
+          })
+          console.log("####################"+JSON.stringify(that.data.takeImageFiles))
+        }
+      })
+    }else{ //单页识别
+      wx.showLoading({
+        title: '上传中...'
+      })
+      this.ctx.takePhoto({
+        quality : "high",
+        success: (res) => {
+          wx.uploadFile({
+            filePath: res.tempImagePath,
+            name: 'file',
+            formData:{"indexType":typeCode},
+            url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+            success(res){
+              wx.hideLoading();
+              let resultData=res.data;
+              resultData=resultData.replace(" ","");
+              let newData;
+              if(typeof resultData != 'object'){
+                  resultData=resultData.replace(/\ufeff/g,"");
+                  newData = JSON.parse(resultData);
+                }
+              if(count==2){ // 需要正反面或者是两页扫描的情况
+                if (Object.keys(that.data.newData).length === 0) {
+                      that.data.newData=newData;
+                      // var mytoast01=that.selectComponent("#mytoast");
+                      mytoast01.showMessage("请上传另一面");   
+                }else{
+                    let temJson=that.data.newData;
+                    for(var attr in temJson){
+                      if(temJson[attr] !=''){
+                        newData[attr]=temJson[attr];
+                      }                   
+                    } 
+                    wx.navigateTo({
+                      url: '/pages/kazheng/kazheng?typeCode='+typeCode,
+                      success:function(res){
+                           res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                      }
+                    }) 
+                }         
               }else{
-                  let temJson=that.data.newData;
-                  for(var attr in temJson){
-                    if(temJson[attr] !=''){
-                      newData[attr]=temJson[attr];
-                    }                   
-                  } 
                   wx.navigateTo({
-                    // url: '/pages/piaoju/piaoju?typeCode='+typeCode,
                     url: '/pages/kazheng/kazheng?typeCode='+typeCode,
                     success:function(res){
-                        console.log("****send******"+JSON.stringify(newData))
-                          // 通过eventChannel向被打开页面传送数据
                          res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
                     }
-                  }) 
-              }         
-            }else{
-                wx.navigateTo({
-                  // url: '/pages/piaoju/piaoju?typeCode='+typeCode,
-                  url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-                  success:function(res){
-                      console.log("****send******"+JSON.stringify(newData))
-                        // 通过eventChannel向被打开页面传送数据
-                       res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                  }
-                })
-            }
-          },
-          fail(res){
-           
-          },
-          complete(res){
-            wx.hideLoading();
-          }
-        })
-      }
-    });
-  },
-  chooseImage:function(){
-    let that=this;
-     wx.chooseImage({
-      count: 6,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-       success: (res) => {
-          let filePath=res.tempFilePaths[0];
-          console.log("------filepath----------"+res.tempFilePaths[0]);
-          console.log("------filepath----------"+JSON.stringify(res));
-          that.uploadFile(filePath);
-       },
-     }) 
-  },
-  chooseMessageFile:function(){
-    let that=this;
-    wx.chooseMessageFile({
-      count: 6,
-      type:"image",
-      success(res){
-        console.log("------filepath----------"+JSON.stringify(res));
-        console.log("------filepath----------"+res.tempFiles[0].path);
-        let filePath=res.tempFiles[0].path;
-        that.uploadFile(filePath);
-      }
-    })
-  },
-  uploadFile:function(filePath){
-    var typeCode=this.data.typeCode;
-    var count=this.data.count;
-    var that =this;
-    console.log("*****typeCode*****"+typeCode); 
-    wx.uploadFile({
-      filePath: filePath,
-      name: 'file',
-      formData:{"indexType":typeCode},
-      url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
-      success(res){
-        wx.hideLoading();
-       
-        console.log("*****success*****"+JSON.stringify(res.data)); 
-        let resultData=res.data;
-        resultData=resultData.replace(" ","");
-        let newData;
-        if(typeof resultData != 'object'){
-            resultData=resultData.replace(/\ufeff/g,"");
-            newData = JSON.parse(resultData);
-            console.log("newData:"+JSON.stringify(newData));
-            console.log("new code :" + newData.RequestId);
-          }
-          console.log("count:" +count); 
-        if(count==2){ // 需要正反面或者是两页扫描的情况
-          if (Object.keys(that.data.newData).length === 0) {
-                that.data.newData=newData;
-                var mytoast01=that.selectComponent("#mytoast");
-                mytoast01.showMessage("请上传另一面");  
-          }else{
-              let temJson=that.data.newData;
-              for(var attr in temJson){
-                if(temJson[attr] !=''){
-                  newData[attr]=temJson[attr];
-                }                   
-              } 
-              wx.navigateTo({
-                // url: '/pages/piaoju/piaoju?typeCode='+typeCode,
-                url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-                success:function(res){
-                    console.log("****send******"+JSON.stringify(newData))
-                      // 通过eventChannel向被打开页面传送数据
-                     res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                }
-              }) 
-          }         
-        }else{
-          console.log("****send**############################****"+JSON.stringify(newData))
-            wx.navigateTo({
-              // url: '/pages/piaoju/piaoju?typeCode='+typeCode,
-              url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-              success:function(res){
-                console.log("****typeCode**############################****"+typeCode)
-                    // 通过eventChannel向被打开页面传送数据
-                   res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                  })
               }
-            })
+            },
+            fail(res){          
+            },
+            complete(res){
+            }
+          })
         }
-      },
-      fail(res){
-        wx.hideLoading();
-      },
-      complete(res){
-        wx.hideLoading();
+      });
+    }
+  },
+  startDeal:function(){ //开始批量处理拍的照片
+    var that=this;
+    wx.navigateTo({
+      url: '/pages/imageList/imageList?typeCode='+that.data.typeCode,
+      success:function(res){
+            // 通过eventChannel向被打开页面传送数据
+           res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":that.data.takeImageFiles})
       }
     })
   },
@@ -208,15 +161,6 @@ Page({
       if(index==1){
         this.mutliMessageImageUpload();
       }
-      
-      console.log("-------------picker-----"+this.data.array[index])
-  },
-  changeMode:function (e){
-    this.setData({
-      mode:e.detail.value,
-      phones:0
-    })
-    console.log("-------------switch-----"+e.detail.value)
   },
   mutliImageUpload:function(){
     var that = this;
@@ -225,11 +169,15 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success: function(res){
-                var successUp = 0; //成功
-                var failUp = 0; //失败
-                var length = res.tempFiles.length; //总数
-                var count = 0; //第几张
-               that.uploadOneByOne(res.tempFiles,successUp,failUp,count,length);
+              var imageFiles=res.tempFiles;  
+              console.log("--------imageFiles----------"+JSON.stringify(imageFiles))
+              wx.navigateTo({
+                url: '/pages/imageList/imageList?typeCode='+that.data.typeCode,
+                success:function(res){
+                      // 通过eventChannel向被打开页面传送数据
+                     res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles})
+                }
+              })
             },        
     });
   },
@@ -240,13 +188,7 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success: function(res){
-                var successUp = 0; //成功
-                var failUp = 0; //失败
-                var length = res.tempFiles.length; //总数
-                var count = 0; //第几张
-              //  that.uploadOneByOne(res.tempFiles,successUp,failUp,count,length);
-                var imageFiles=res.tempFiles;
-                
+              var imageFiles=res.tempFiles;  
               wx.navigateTo({
                 url: '/pages/imageList/imageList?typeCode='+that.data.typeCode,
                 success:function(res){
@@ -254,48 +196,7 @@ Page({
                      res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles})
                 }
               })
-
             },        
     });
-  },
-  /**
-  * 采用递归的方式上传多张
-  */
- uploadOneByOne(imgPaths,successUp, failUp, count, length){
-  console.log("%%%%%%%%%%%%"+JSON.stringify(imgPaths))
-  var that = this;
-  var typeCode=that.data.typeCode;
-  wx.showLoading({
-     title: '正在上传第'+count+'张',
-   })
-  wx.uploadFile({
-    filePath: imgPaths[count].path,
-    name: 'file',
-    formData:{"indexType":typeCode},
-    url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
-    success:function(e){
-      successUp++;//成功+1
-    },
-    fail:function(e){
-      console.log("%%%%%%%%%%%%"+JSON.stringify(e))
-      failUp++;//失败+1
-    },
-    complete:function(e){
-      count++;//下一张
-      if(count == length){
-        //上传完毕，作一下提示
-        console.log('上传成功' + successUp + ',' + '失败' + failUp);
-        wx.showToast({
-          title: '上传成功' + successUp,
-          icon: 'success',
-          duration: 2000
-        })
-      }else{
-        //递归调用，上传下一张
-        that.uploadOneByOne(imgPaths, successUp, failUp, count, length);
-        console.log('正在上传第' + count + '张');
-      }
-    }
-  })
-}
+  }
 })

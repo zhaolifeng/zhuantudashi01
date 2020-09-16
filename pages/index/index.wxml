@@ -104,4 +104,4 @@
    
 </view>
 
-<button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button>
+<!-- <button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button> -->

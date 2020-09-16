@@ -19,7 +19,8 @@
           </picker>
      </label>
       <label style="z-index:{{mode ?999:-1}}">
-        <button style="width:40vw;">完成(5)</button>
+        <button catchtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}"> ({{takePhones}})</block>
+        </button>
      </label>
      <label>
         <switch checked="{{mode}}" bindchange="changeMode"/>批量
