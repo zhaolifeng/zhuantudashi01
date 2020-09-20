@@ -52,24 +52,10 @@ Component({
           })
         }
         if(message == "copySignal"){
-        var copyData=""
-          var sourceData=this.data.sourceData.response;
-          for(var i=0;i<sourceData.length;i++){          
-            copyData=copyData + sourceData[i].name+":"+sourceData[i].value+"\n";           
-          }
-          wx.setClipboardData({
-            data: copyData,
-            success (res) {
-              wx.getClipboardData({
-                success (res) {
-                  console.log("-----copyOk----------"+res.data) // data
-                }
-              })
-            }
-          })
+          this.copyInfo()
         }
-        if(message == "exportFile"){
-          this.exportFile();
+        if(message == "shareInfo"){
+          this.shareInfo();
         }
       },
       endOperator:function () {
@@ -78,34 +64,18 @@ Component({
           zindex:true
         });
       },
-      onCopyInfo:function(){
-        var checkboxItems = this.data.selectData;
-        var resultData=this.data.resultData;
-        console.log("&&&###checkboxItems###&&"+(JSON.stringify(checkboxItems))); 
-        console.log("&&&###resultData###&&"+JSON.stringify(resultData));
-        if(checkboxItems==undefined || JSON.stringify(checkboxItems) == "{}"){
-          var mytoast01=this.selectComponent("#mytoast");
-          mytoast01.showMessage("请选择要复制信息");   
-          return
+      copyInfo:function(){
+        var copyData=""
+        var sourceData=this.data.sourceData.response;
+        for(var i=0;i<sourceData.length;i++){          
+          copyData=copyData + sourceData[i].name+":"+sourceData[i].value+"\n";           
         }
-        let lenI = checkboxItems.length;
-        let lenG = resultData.length;
-        var selected='';
-    
-        for (var i = 0; i < lenI; ++i) {
-            for(var j=0;j<lenG;j++){
-              if(checkboxItems[i] == resultData[j].name){
-                selected=selected + resultData[j].name+":"+resultData[j].value+"\n";
-              }
-            }
-        }
-        console.log("&&&###resultData###&&"+selected);
         wx.setClipboardData({
-          data: selected,
+          data: copyData,
           success (res) {
             wx.getClipboardData({
               success (res) {
-                console.log(res.data) // data
+                console.log("-----copyOk----------"+res.data) // data
               }
             })
           }
@@ -120,6 +90,12 @@ Component({
             console.log("-------savedFilePath----------"+JSON.stringify(res)) 
           }
         })
+      },
+      shareInfo:function(){
+        // this.copyInfo();
+        console.log("-------shareInfo----------") 
+        var updateInfo="";
+        this.triggerEvent("toshare",{message:updateInfo});
       }
   }
 })

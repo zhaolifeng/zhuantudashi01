@@ -2,7 +2,9 @@
   "usingComponents": {
     "mytoast":"/pages/component/toast/mytoast",
     "exportfile":"/pages/component/exportfile/exportfile",
-    "editorMode":"/pages/component/editor/editor"
+    "editorMode":"/pages/component/editor/editor",
+    "operatorMode":"/pages/component/operator/operator",
+    "shareMode":"/pages/component/share/share"
   },
   "navigationBarTitleText": "首页"
 }

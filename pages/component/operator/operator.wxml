@@ -4,7 +4,10 @@
   <view class="operates" style="  top:{{top+50}}px;right:{{right}}vw;">
       <view class="operatesitem" data-key="viewImage" catchtap="operator">原图</view>
       <view class="operatesitem" data-key="copySignal" catchtap="operator">复制</view>
-      <view class="operatesitem" data-key="exportFile" catchtap="operator">导出</view>
+      <view class="operatesitem" data-key="shareInfo" catchtap="operator">
+        <!-- <button open-type='share' plain="true" style="height:100%;width:100%;background-color: #222248;;border-radius:0px;min-width:1px;border:0;padding:0;margin:0;color:white;letter-spacing:10rpx;display:flex;align-items:center;  justify-content: center;font-size:17px;font-weight:200">分享</button> -->
+        分享
+      </view>
   </view>
 </view> 
 

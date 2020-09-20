@@ -120,7 +120,7 @@ previewImage: function (e) {
   var that = this;
   var typeCode=that.data.typeCode;
   wx.showLoading({
-     title: '正在上传第'+(count+1)+'张',
+     title: '正上传第'+(count+1)+'张',
    })
    wx.uploadFile({
     filePath:that.data.imageFiles[count].path,

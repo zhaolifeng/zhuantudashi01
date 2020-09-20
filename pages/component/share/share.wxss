@@ -1,0 +1,51 @@
+/* pages/component/share/share.wxss */
+.main{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 111;
+}
+.infoArea{
+  height:250px;
+  width:80vw;
+  display: flex;
+  flex-direction: column;
+  background:#fff;
+  border-radius: 3px;
+  border:solid 2px rgb(112, 111, 111);
+}
+.close{
+  height:40px;
+  width: 40px;
+  border-radius:50%;
+  opacity: 1;
+  background-color:#fff;
+  position: relative;
+  top:-20px;
+  left: 75vw;
+  margin-right:0;
+}
+.close image{
+  height:40px;
+  width: 40px;
+}
+.info{
+  height:140px;
+  width:100%;
+ display: flex;
+ justify-content: center;
+}
+.confirmInfo{
+  height:70px;
+  width:80vw;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}

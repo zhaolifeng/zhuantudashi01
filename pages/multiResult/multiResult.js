@@ -93,5 +93,38 @@ operator:function(e){
         rect.top     // 节点的上边界坐标
         operatorMode.startOper(message,rect.top);
       }).exec()    
+},
+copyInfo:function(){
+  var copyData=""
+  var sourceData=this.data.result;
+  for(var i=0;i<sourceData.length;i++){   
+    copyData=copyData + "----------第"+(i+1)+"页-------------\n";    
+      let temp = sourceData[i].response;
+      if(temp != undefined){
+        for(var j=0;j<temp.length;j++){
+          copyData=copyData + temp[j].name+":"+temp[j].value+"\n";
+        }  
+      }         
+  }
+  var kk=0
+  wx.setClipboardData({
+    data: copyData,
+    success (res) {
+      wx.getClipboardData({
+        success (res) {
+          console.log("-----"+kk+"----------\n"+res.data) // data
+          kk++;
+          
+        }
+      })
+    }
+  })
+},
+shareMessage:function(e){
+  console.log("-----share------") // data
+   var share=this.selectComponent("#share");
+   share.toShare();
 }
 })
+
+

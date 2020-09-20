@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "editorMode":"/pages/component/editor/editor",
-    "operatorMode":"/pages/component/operator/operator"
+    "operatorMode":"/pages/component/operator/operator",
+    "shareMode":"/pages/component/share/share"
   }
 }

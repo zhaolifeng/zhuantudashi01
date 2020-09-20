@@ -32,16 +32,21 @@
    </view>
    <view style="height:8vh;width:10vw"></view>
    <view class="menu">
-      <view> 
+      <view  bindtap="copyInfo"> 
       全部复制
+      </view>
+      <view>
+      发送好友
       </view>
       <view>
       全部导出
       </view>
       <view>
-      再次识别
+      发送邮箱
       </view>
+  
    </view>
 </view>
-<!-- <editorMode id="editorMode" bind:updateText="editorText"></editorMode> -->
-     <operatorMode id="operatorMode"></operatorMode>
+<editorMode id="editorMode" bind:updateText="editorText"></editorMode>
+   <operatorMode id="operatorMode"></operatorMode>
+   <shareMode id="shareMode" bind:toshare="shareMessage"></shareMode>
