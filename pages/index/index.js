@@ -83,7 +83,7 @@ Page({
       // var mytoast01=this.selectComponent("#exportfile");
       // mytoast01.showMessage("请上传另一面")    
       wx.navigateTo({
-        url: '/pages/multiResult/multiResult'
+        url: '/pages/groupMultiResult/groupMutliResult'
       })
 
   }

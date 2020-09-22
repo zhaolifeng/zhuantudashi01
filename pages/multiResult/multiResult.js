@@ -124,6 +124,12 @@ shareMessage:function(e){
   console.log("-----share------") // data
    var share=this.selectComponent("#share");
    share.toShare();
+},
+shareAll:function(e){
+  console.log("#########################");
+  this.copyInfo();
+  var share=this.selectComponent("#share");
+  share.toShare();
 }
 })
 

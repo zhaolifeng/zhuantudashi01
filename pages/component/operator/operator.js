@@ -92,7 +92,7 @@ Component({
         })
       },
       shareInfo:function(){
-        // this.copyInfo();
+        this.copyInfo();
         console.log("-------shareInfo----------") 
         var updateInfo="";
         this.triggerEvent("toshare",{message:updateInfo});

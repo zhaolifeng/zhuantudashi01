@@ -156,7 +156,7 @@ Page({
   chooseImages:function (e) {
     var that=this;
     wx.showActionSheet({
-      itemList:["相册选"+that.data.maxCount+"张图片","聊天记录选"+that.data.maxCount+"张图片"],
+      itemList:["相册图片","聊天记录选图片"],
       success (res) {
         console.log(res.tapIndex)
         let index=res.tapIndex;
@@ -174,39 +174,82 @@ Page({
   },
   mutliImageUpload:function(){
     var that = this;
+    var takeCount=this.data.count;
     wx.chooseImage({
             count: that.data.maxCount,
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success: function(res){
-              var imageFiles=res.tempFiles;  
-              console.log("--------imageFiles----------"+JSON.stringify(imageFiles))
+              var imageFiles=res.tempFiles;
+              var redirectPath;
+              var finalFiles=[];
+              var index=0;
+              if(takeCount==2){
+                redirectPath="/pages/groupMultiResult/groupMutliResult?typeCode=";
+                var tempObj=[];
+                for(var i=0;i<imageFiles.length;i++){
+                  if(i%2==1 && i/2 <= (imageFiles.length-1)/2){
+                    tempObj[1]=imageFiles[i];
+                    finalFiles[index]=tempObj;
+                    tempObj=[];
+                    index++;
+                  }
+                  if(i%2==0 && i/2 <= (imageFiles.length-1)/2){
+                    tempObj[0]=imageFiles[i];
+                  }                  
+                }
+                imageFiles=finalFiles;
+              }else{
+                redirectPath="/pages/imageList/imageList?typeCode=";
+              }
               wx.navigateTo({
-                url: '/pages/imageList/imageList?typeCode='+that.data.typeCode,
+                url: redirectPath+that.data.typeCode,
                 success:function(res){
                       // 通过eventChannel向被打开页面传送数据
                      res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles})
                 }
               })
-            },        
+            }     
     });
   },
   mutliMessageImageUpload:function(){
     var that = this;
+    var takeCount=this.data.count;
     wx.chooseMessageFile({
-            count:  that.data.maxCount,
-            sizeType: ['original', 'compressed'],
-            sourceType: ['album', 'camera'],
-            success: function(res){
-              var imageFiles=res.tempFiles;  
-              wx.navigateTo({
-                url: '/pages/imageList/imageList?typeCode='+that.data.typeCode,
-                success:function(res){
-                      // 通过eventChannel向被打开页面传送数据
-                     res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles})
-                }
-              })
-            },        
+      count: that.data.maxCount,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res){
+        var imageFiles=res.tempFiles;
+        var redirectPath;
+        var finalFiles=[];
+        var index=0;
+        if(takeCount==2){
+          redirectPath="/pages/groupMultiResult/groupMutliResult?typeCode=";
+          var tempObj=[];
+          for(var i=0;i<imageFiles.length;i++){
+            if(i%2==1 && i/2 <= (imageFiles.length-1)/2){
+              tempObj[1]=imageFiles[i];
+              finalFiles[index]=tempObj;
+              tempObj=[];
+              index++;
+            }
+            if(i%2==0 && i/2 <= (imageFiles.length-1)/2){
+              tempObj[0]=imageFiles[i];
+            }                  
+          }
+          imageFiles=finalFiles;
+        }else{
+          redirectPath="/pages/imageList/imageList?typeCode=";
+        }
+        wx.navigateTo({
+          url: redirectPath+that.data.typeCode,
+          success:function(res){
+                // 通过eventChannel向被打开页面传送数据
+               res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles})
+          }
+        })
+      }       
     });
   }
 })

@@ -18,8 +18,10 @@ Page({
     let that=this;
    this.data.typeCode= options.typeCode;
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
+      
       that.data.imageFiles=data.imageFiles;
       that.setImageFileInfo();
+      console.log("############"+JSON.stringify(that.data.imageFiles));
     })
 },
 
@@ -51,6 +53,8 @@ setImageFileInfo:function(){
 previewImage: function (e) {
   var current = e.target.dataset.src;
   var that=this;
+  console.log("$$$$$$$$$$$$"+current);
+  console.log("$$$$$$$$$$$$"+JSON.stringify(e.target.dataset));
   wx.previewImage({
     current: current, // 当前显示图片的http链接  
     urls: that.data.imagePaths // 需要预览的图片http链接列表  

@@ -104,4 +104,4 @@
 <shareMode id="sdf"></shareMode>
 
 <operatorMode id="sodf"></operatorMode> 
-<!-- <button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button> -->
+<button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button>

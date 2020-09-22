@@ -1,14 +1,16 @@
 <!--pages/component/share/share.wxml-->
-<view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}"  catchtouchend="endOperator" >
+<view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}" >
   <view class="infoArea">
       <view class="close" bindtap="cancelEditor">
         <image src="/pages/image/select/close.png"></image>
       </view>
       <view class="info">
-         sdfasdfasdfasdfasdfasdfsdfsdf
+          <view>
+              <image src="/pages/image/select/share.png"></image>
+          </view>
       </view>
       <view class="confirmInfo">
-        <button  open-type='share' plain="true" style="background-color:#000033;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishEditor">   确     定   </button>
+        <button  open-type='share' plain="true" style="background-color:#000033;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishShare">   确     定   </button>
       </view>
   </view>
 </view>

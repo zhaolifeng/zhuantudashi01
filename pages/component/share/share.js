@@ -41,7 +41,7 @@ Component({
         zindex:true 
       })
     },    
-    endOperator:function () {
+    finishShare:function () {
       this.setData({
         zindex:true
       });
