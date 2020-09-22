@@ -1,0 +1,21 @@
+<!--pages/groupMultiResult/groupMutliResult.wxml-->
+<view class="main"> 
+   <scroll-view class="container" scroll-y="true">
+      <view class="group" wx:for="{{result}}" wx:for-index="idh" wx:for-item="tempItem">
+        <view class="index"> 第{{idh+1}}组</view>
+        <view class="item" wx:for="{{tempItem}}" wx:for-index="idj" wx:for-item="item">
+           <view class="del" > 
+              <image src="/pages/image/select/del.png" data-key="{{idh}}:!|#{{idj}}"  bindtap="delImage"></image>
+           </view>
+           <image data-src="{{item.path}}" src="{{item.path}}"  style="  max-width:30vw;max-height: 25vh;width:{{item.width*0.15}}px ;height:{{item.height*0.2}}px" bindtap="previewImage"></image>
+        </view>
+      </view>
+ 
+      <view wx:if="{{result.length == 0}}" class="add">
+         <image src="/pages/image/select/add.png"  catchtap="chooseImages"></image>
+      </view>
+   </scroll-view>
+   <view class="deal">
+      <button disabled="{{ !result.length}}">开始处理</button>
+   </view>
+</view>
