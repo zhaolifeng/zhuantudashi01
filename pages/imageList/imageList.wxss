@@ -2,6 +2,8 @@
 .main{
   margin: auto;
   background-color: #f1f1f1; 
+  height:100vh;
+  width: 100vw;
 }
 .images{
   height:93vh;
@@ -12,17 +14,32 @@
   flex-wrap: wrap;
   align-content: flex-start;
 }
+.item{
+  height:25vh;
+  width:40vw;
+  border:solid 1px #ccc;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 .imageblock{
-  height:20vh;
+  height:25vh;
   width:30vw;
   overflow: hidden;
-  border: solid 1px #ccc;
+  border: solid 1px red;
   margin-top:1vh;
   margin-left:2vw;
   display: flex;
   align-items: center;
   justify-content: center;
 
+}
+.bottom-line{
+  height:25vh;
+  width:99vw;
+  border-bottom:solid  1px red;
 }
 /* image{
   height:30vh;

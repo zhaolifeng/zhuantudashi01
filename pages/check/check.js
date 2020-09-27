@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    maxCount:12,
+    maxCount:8,
     newData:{},
     mode:false, //单选多选模式 f
     takePhones:0,  //拍照数量
@@ -145,18 +145,47 @@ Page({
   },
   startDeal:function(){ //开始批量处理拍的照片
     var that=this;
+    var imageFiles=that.data.takeImageFiles;
+    var redirectPath;
+    var finalFiles=[];
+    var index=0;
+    if(this.data.count==2){
+      redirectPath="/pages/groupMultiResult/groupMutliResult?typeCode=";
+      var tempObj=[];
+      for(var i=0;i<imageFiles.length;i++){
+        if(i%2==1 && i/2 <= (imageFiles.length-1)/2){
+          tempObj[1]=imageFiles[i];
+          finalFiles[index]=tempObj;
+          tempObj=[];
+          index++;
+        }
+        if(i%2==0 && i/2 <= (imageFiles.length-1)/2){
+          tempObj[0]=imageFiles[i];
+        }                  
+      }
+      imageFiles=finalFiles;
+    }else{
+      redirectPath="/pages/imageList/imageList?typeCode=";
+    }
     wx.navigateTo({
-      url: '/pages/imageList/imageList?typeCode='+that.data.typeCode,
+      url: redirectPath+that.data.typeCode,
       success:function(res){
             // 通过eventChannel向被打开页面传送数据
-           res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":that.data.takeImageFiles})
+           res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles})
       }
     })
   },
   chooseImages:function (e) {
     var that=this;
+    var count=this.data.count;
+    var tips;
+    if(count == 2){ //需要拍两面的完成的
+        tips=["相册连续两张图一组","聊天记录连续两张图一组"];
+    }else{
+        tips=["相册图片","聊天记录选图片"];
+    }
     wx.showActionSheet({
-      itemList:["相册图片","聊天记录选图片"],
+      itemList:tips,
       success (res) {
         console.log(res.tapIndex)
         let index=res.tapIndex;

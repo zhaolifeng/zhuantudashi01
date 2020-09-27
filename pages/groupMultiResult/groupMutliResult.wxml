@@ -9,13 +9,17 @@
            </view>
            <image data-src="{{item.path}}" src="{{item.path}}"  style="  max-width:30vw;max-height: 25vh;width:{{item.width*0.15}}px ;height:{{item.height*0.2}}px" bindtap="previewImage"></image>
         </view>
+        <view class="item" wx:if="{{tempItem.length < 2}}">
+           <image  src="/pages/image/select/add.png" data-key="{{idh}}" style="width:30vw;height:30vw" bindtap="chooseImages01"></image>
+        </view>
       </view>
- 
-      <view wx:if="{{result.length == 0}}" class="add">
-         <image src="/pages/image/select/add.png"  catchtap="chooseImages"></image>
+      <view class="group" wx:if="{{result.length < 4}}">
+         <view  class="add">
+            <image src="/pages/image/select/add.png"  catchtap="chooseImages"></image>
+         </view>
       </view>
    </scroll-view>
    <view class="deal">
-      <button disabled="{{ !result.length}}">开始处理</button>
+      <button disabled="{{ !result.length}}" style="background-color:#000033;width:62%;height:40px;color:white;letter-spacing:10rpx;" bindtap="toIdentify" >开始识别</button>
    </view>
 </view>

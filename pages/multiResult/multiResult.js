@@ -16,6 +16,7 @@ Page({
     let that=this;
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
+      console.log("^^^^^^^^^^^^^"+JSON.stringify(data.data))
       that.setData({
         result:temp       
       })

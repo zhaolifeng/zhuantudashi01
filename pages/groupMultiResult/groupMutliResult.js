@@ -6,7 +6,9 @@ Page({
    */
   data: {
     index:0,
-    result:[[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}],[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}],[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}]]
+    indexDeal:0,
+    result:[]
+    // result:[[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}],[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}],[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}]]
 
   },
 
@@ -14,15 +16,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  //   const eventChannel = this.getOpenerEventChannel();
-  //   let that=this;
-  //  this.data.typeCode= options.typeCode;
-  //   eventChannel.once('acceptDataFromOpenerPage', function(data) {
-  //     that.data.result=data.imageFiles;
-  //     that.setImageFiles();
-  //   })
-   
-
+    const eventChannel = this.getOpenerEventChannel();
+    let that=this;
+    this.data.typeCode= options.typeCode;
+    eventChannel.once('acceptDataFromOpenerPage', function(data) {
+      that.data.result=data.imageFiles;
+      that.setImageFiles();
+    })
   },
 
   /**
@@ -74,15 +74,15 @@ Page({
 
   },
   setImageFiles:function(){
-    
     var temdata=this.data.result;
+    console.log("&&&&&&&&&&&&&&&"+JSON.stringify(this.data.result))
     var that=this;
+    console.log("&&&&&&&&&&&&&&&"+that.data.index+"========"+temdata.length);
     if(that.data.index < temdata.length){
       var itemData =temdata[that.data.index];
-      var itemIndex=0;
+      var itemIndex=0; 
       var len=itemData.length
       if(itemIndex < itemData.length){
-        
         that.setItem(itemData,that,itemIndex,len)  
       }
     }
@@ -101,7 +101,7 @@ Page({
             that.setData({
               result:that.data.result      
             })
-            console.log("############"+JSON.stringify(that.data.result));
+            console.log("#######@@@@@@@@@@@@@@@@#####"+JSON.stringify(that.data.result));
           }
           itemIndex++
           console.log("@@@itemIndex@@@@"+itemData.length)
@@ -112,7 +112,6 @@ Page({
             that.data.index++ ;
             that.setImageFiles();
           }
-          
         },
         fail(res){
            console.log("&&&&&&&&&"+JSON.stringify(res))
@@ -129,16 +128,13 @@ Page({
   },
   delImage:function(e){
     var infos = e.target.dataset.key;
-    console.log("----------------infos ---------"+infos)
     var that=this;
     var x=infos.split(":!|#")[0];
     var y=infos.split(":!|#")[1];
-    console.log("----------------x ---------"+x)
-    console.log("----------------y ---------"+y)
     this.data.result[x].splice(y,1)
-    console.log("---------this.data.result------------"+JSON.stringify(this.data.result[x].length));
     if(this.data.result[x].length == 0){
       this.data.result.splice(x,1)
+      this.data.index= this.data.result.length-1;
       this.setData({
         result:this.data.result
       })
@@ -151,7 +147,7 @@ Page({
   chooseImages:function (e) {
     var that=this;
     wx.showActionSheet({
-      itemList:["相册图片","聊天记录选图片"],
+      itemList:["相册选两张一组图片","聊天记录选两张一组图片"],
       success (res) {
         console.log(res.tapIndex)
         let index=res.tapIndex;
@@ -161,6 +157,28 @@ Page({
         if(index==1){
           that.mutliMessageImageUpload();
         }
+        
+      },
+      fail (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
+  chooseImages01:function (e) {
+    var that=this;
+    var indexKey=e.target.dataset.key;
+    wx.showActionSheet({
+      itemList:["相册选一张图片","聊天记录选一张图片"],
+      success (res) {
+        console.log(res.tapIndex)
+        let index=res.tapIndex;
+        if(index==0){
+          that.mutliImageUpload01(indexKey);
+        } 
+        if(index==1){
+          that.mutliMessageImageUpload01(indexKey);
+        }
+        
       },
       fail (res) {
         console.log(res.errMsg)
@@ -170,13 +188,13 @@ Page({
   mutliImageUpload:function(){
     var that = this;
     wx.chooseImage({
-            count: that.data.maxCount,
+            count: 8,
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success: function(res){
               var imageFiles=res.tempFiles;
-              var finalFiles=[];
-              var index=0;
+              var finalFiles=that.data.result;
+              var index=that.data.result.length;
               var tempObj=[];
                 for(var i=0;i<imageFiles.length;i++){
                   if(i%2==1 && i/2 <= (imageFiles.length-1)/2){
@@ -189,22 +207,46 @@ Page({
                     tempObj[0]=imageFiles[i];
                   }                  
                 }
-                that.setData({
-                   result:finalFiles
-                })
+                that.setImageFiles();
+            }     
+    });
+  },
+  mutliImageUpload01:function(indexKey){
+    var index=indexKey;
+    var that = this;
+    wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success: function(res){
+              var imageFiles=res.tempFiles;
+              var finalData=that.data.result[index];
+              var tempObj={}
+              wx.getImageInfo({
+                src: imageFiles[0].path,
+                success (res) {
+                  tempObj["width"]=res.width;
+                  tempObj["height"]=res.height;     
+                  tempObj["path"]=res.path
+                  finalData[1]=tempObj;
+                  that.setData({
+                    result:that.data.result
+                  })
+                }
+              })
             }     
     });
   },
   mutliMessageImageUpload:function(){
     var that = this;
     wx.chooseMessageFile({
-      count: that.data.maxCount,
+      count: 8,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res){
         var imageFiles=res.tempFiles;
-        var finalFiles=[];
-        var index=0;
+        var finalFiles=that.data.result;
+        var index=that.data.result.length;
         var tempObj=[];
         for(var i=0;i<imageFiles.length;i++){
           if(i%2==1 && i/2 <= (imageFiles.length-1)/2){
@@ -217,10 +259,133 @@ Page({
             tempObj[0]=imageFiles[i];
           }                  
         }
-        that.setData({
-            result:finalFiles
+        that.setImageFiles();
+      }       
+    });
+  },
+  mutliMessageImageUpload01:function(indexKey){
+    var that = this;
+    var index=indexKey;
+    wx.chooseMessageFile({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res){
+        var imageFiles=res.tempFiles;
+        var finalData=that.data.result[index];
+        var tempObj={}
+        wx.getImageInfo({
+          src: imageFiles[0].path,
+          success (res) {
+            tempObj["width"]=res.width;
+            tempObj["height"]=res.height;     
+            tempObj["path"]=res.path
+            finalData[1]=tempObj;
+            that.setData({
+              result:that.data.result
+            })
+          }
         })
       }       
     });
+  },
+  toIdentify:function(){
+    this.setResponse()
+
+  },
+  setResponse:function(){
+    var temdata=this.data.result;
+    var that=this;
+    console.log("$$$$$result$$$$$"+JSON.stringify(temdata))
+    if(that.data.indexDeal < temdata.length){
+      var itemData =temdata[that.data.indexDeal];
+      var itemIndex=0; 
+      var len=itemData.length
+      if(itemIndex < itemData.length){
+        that.setResItem(itemData,that,itemIndex,len)  
+      }
+    }
+  },
+  setResItem:function(itemData,that,itemIndex,len){
+    var item = itemData[itemIndex];
+    var typeCode = this.data.typeCode;
+    var that=this;
+    console.log("#####item#######"+JSON.stringify(item)) 
+    
+    wx.uploadFile({
+      filePath:item.path,
+      name: 'file',
+      formData:{"indexType":typeCode},
+      url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+      success(res){
+          if(typeof res.data != 'object'){
+            item["response"] = JSON.parse(res.data.replace(/\ufeff/g,""));
+          }else{
+            item["response"] = res.data;
+          }  
+          console.log("*************"+JSON.stringify(that.data.result))
+          console.log("!!!!!!!!!!!!"+that.data.indexDeal+"====="+ that.data.result.length-1 )
+
+          itemIndex++
+          console.log("￥￥￥￥￥￥itemIndex￥￥￥￥￥￥￥￥￥￥"+that.data.indexDeal)
+          if(itemIndex < itemData.length){
+            that.setResItem(itemData,that,itemIndex,len);
+          }else{
+            if(that.data.indexDeal == that.data.result.length-1){
+              console.log("@@@@@@@finish@@@@@@@@@@@@@#####"+JSON.stringify(that.data.result));
+              that.megerObj()
+            }
+            that.data.indexDeal++ ;
+            that.setResponse();
+          }
+        },
+        fail(res){
+            console.log("---fail------"+JSON.stringify(res))
+        }
+      })
+  },
+  megerObj:function(){
+     var items=this.data.result;
+     var that=this;
+     console.log("----------Start----------"+JSON.stringify(this.data.result))
+     
+
+     var responseData=[];
+     for(var i=0;i<items.length;i++){
+       var temItem = items[i];
+       var temObj={};
+       var firstItem = temItem[0].response;
+       var secondItem = temItem[1].response;
+       console.log("----------firstItem----------"+JSON.stringify(firstItem))
+       console.log("----------secondItem----------"+JSON.stringify(secondItem))
+       for( var key in firstItem){
+        if(key !="path" && firstItem.hasOwnProperty(key) && (firstItem[key] !=null || firstItem[key] !=undefined || firstItem[key] !="")){
+          temObj[key]=firstItem[key];
+        }
+       }
+
+       for( var key in secondItem){
+        if(key !="path" && secondItem.hasOwnProperty(key) && (secondItem[key] !=null || secondItem[key] !=undefined || secondItem[key] !="")){
+          temObj[key]=secondItem[key];
+        }
+       }
+       var paths=[]
+       paths[0] = firstItem["path"]
+       paths[1] = secondItem["path"]
+       temObj["paths"]=paths;
+       responseData[i]= temObj;
+       console.log("----------finish----------"+JSON.stringify(temObj))
+     }
+     this.data.result = responseData;
+
+     console.log("----------finish----------"+JSON.stringify(this.data.result))
+     wx.navigateTo({
+      url: '/pages/multiResult/multiResult',
+      success:function(res){
+          console.log("****send******"+JSON.stringify(that.data.result))
+            // 通过eventChannel向被打开页面传送数据
+           res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.result})
+      }
+    })
   }
 })
