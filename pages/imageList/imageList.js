@@ -168,5 +168,27 @@ previewImage: function (e) {
       }
     }
   })
-}
+},
+delImage:function(e){
+  var index = e.target.dataset.key;
+  var that=this;
+console.log("-------index-----"+this.data.index)
+console.log("-------imageFilesArray-----"+JSON.stringify(this.data.imageFilesArray))
+console.log("-------imagePaths-----"+this.data.imagePaths)
+
+  var x=infos.split(":!|#")[0];
+  var y=infos.split(":!|#")[1];
+  this.data.result[x].splice(y,1)
+  if(this.data.result[x].length == 0){
+    this.data.result.splice(x,1)
+    this.data.index= this.data.result.length-1;
+    this.setData({
+      result:this.data.result
+    })
+  }else{
+    this.setData({
+      result:this.data.result
+    })
+  }
+},
 })

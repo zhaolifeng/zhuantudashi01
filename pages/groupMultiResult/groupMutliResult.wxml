@@ -5,7 +5,7 @@
         <view class="index"> 第{{idh+1}}组</view>
         <view class="item" wx:for="{{tempItem}}" wx:for-index="idj" wx:for-item="item">
            <view class="del" > 
-              <image src="/pages/image/select/del.png" data-key="{{idh}}:!|#{{idj}}"  bindtap="delImage"></image>
+              <image  src="/pages/image/select/del.png" data-key="{{idh}}:!|#{{idj}}"  bindtap="delImage"></image>
            </view>
            <image data-src="{{item.path}}" src="{{item.path}}"  style="  max-width:30vw;max-height: 25vh;width:{{item.width*0.15}}px ;height:{{item.height*0.2}}px" bindtap="previewImage"></image>
         </view>

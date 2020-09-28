@@ -43,11 +43,16 @@ Component({
       operator:function (e) {       
         let message=e.target.dataset.key;
         if(message == "viewImage"){
-          console.log("********viewImage*******"+JSON.stringify(this.data.sourceData.path))
+          var paths=[]
           var path=this.data.sourceData.path;
-          var paths=[path];
+          if(path instanceof Array){
+            paths=this.data.sourceData.path
+          }
+          if(typeof(path) == "string"){
+            paths=[this.data.sourceData.path];           
+          }      
           wx.previewImage({
-            current:path,  
+            current:paths[0],  
             urls: paths  
           })
         }

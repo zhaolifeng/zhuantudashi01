@@ -75,9 +75,7 @@ Page({
   },
   setImageFiles:function(){
     var temdata=this.data.result;
-    console.log("&&&&&&&&&&&&&&&"+JSON.stringify(this.data.result))
     var that=this;
-    console.log("&&&&&&&&&&&&&&&"+that.data.index+"========"+temdata.length);
     if(that.data.index < temdata.length){
       var itemData =temdata[that.data.index];
       var itemIndex=0; 
@@ -87,34 +85,25 @@ Page({
       }
     }
   },
-  setItem:function(itemData,that,itemIndex,len){
-    
+  setItem:function(itemData,that,itemIndex,len){    
     var item = itemData[itemIndex];
-    console.log("@@@+itemData.length@@@@"+JSON.stringify(item))  
       wx.getImageInfo({
         src: item.path,
         success (res) {
           item["width"]=res.width;
           item["height"]=res.height;       
-          console.log("@@@itemIndex@@@@")
           if(that.data.index == that.data.result.length-1){
             that.setData({
               result:that.data.result      
             })
-            console.log("#######@@@@@@@@@@@@@@@@#####"+JSON.stringify(that.data.result));
           }
           itemIndex++
-          console.log("@@@itemIndex@@@@"+itemData.length)
           if(itemIndex < itemData.length){
             that.setItem(itemData,that,itemIndex,len);
           }else{
-            console.log("@@@len@@@@"+len+"@@@@@@@@@@"+that.data.index)
             that.data.index++ ;
             that.setImageFiles();
           }
-        },
-        fail(res){
-           console.log("&&&&&&&&&"+JSON.stringify(res))
         }
       })
   },
@@ -291,12 +280,10 @@ Page({
   },
   toIdentify:function(){
     this.setResponse()
-
   },
   setResponse:function(){
     var temdata=this.data.result;
     var that=this;
-    console.log("$$$$$result$$$$$"+JSON.stringify(temdata))
     if(that.data.indexDeal < temdata.length){
       var itemData =temdata[that.data.indexDeal];
       var itemIndex=0; 
@@ -310,8 +297,6 @@ Page({
     var item = itemData[itemIndex];
     var typeCode = this.data.typeCode;
     var that=this;
-    console.log("#####item#######"+JSON.stringify(item)) 
-    
     wx.uploadFile({
       filePath:item.path,
       name: 'file',
@@ -323,62 +308,49 @@ Page({
           }else{
             item["response"] = res.data;
           }  
-          console.log("*************"+JSON.stringify(that.data.result))
-          console.log("!!!!!!!!!!!!"+that.data.indexDeal+"====="+ that.data.result.length-1 )
-
           itemIndex++
-          console.log("￥￥￥￥￥￥itemIndex￥￥￥￥￥￥￥￥￥￥"+that.data.indexDeal)
           if(itemIndex < itemData.length){
             that.setResItem(itemData,that,itemIndex,len);
           }else{
             if(that.data.indexDeal == that.data.result.length-1){
-              console.log("@@@@@@@finish@@@@@@@@@@@@@#####"+JSON.stringify(that.data.result));
               that.megerObj()
             }
             that.data.indexDeal++ ;
             that.setResponse();
           }
-        },
-        fail(res){
-            console.log("---fail------"+JSON.stringify(res))
         }
       })
   },
   megerObj:function(){
      var items=this.data.result;
      var that=this;
-     console.log("----------Start----------"+JSON.stringify(this.data.result))
-     
-
      var responseData=[];
      for(var i=0;i<items.length;i++){
        var temItem = items[i];
        var temObj={};
-       var firstItem = temItem[0].response;
-       var secondItem = temItem[1].response;
-       console.log("----------firstItem----------"+JSON.stringify(firstItem))
-       console.log("----------secondItem----------"+JSON.stringify(secondItem))
-       for( var key in firstItem){
-        if(key !="path" && firstItem.hasOwnProperty(key) && (firstItem[key] !=null || firstItem[key] !=undefined || firstItem[key] !="")){
-          temObj[key]=firstItem[key];
-        }
+       var firstItem = temItem[0];
+       var secondItem = temItem[1];
+       var paths=[];
+       paths[0]=firstItem.path;
+       paths[1]=secondItem.path;
+       temObj["path"]=paths;
+       var response1=firstItem.response;
+       var response2=secondItem.response;
+       var response=[];
+       for(var h=0;h<response1.length;h++){
+          if(response1[h].value != ""){
+            response.push(response1[h])
+          }
        }
-
-       for( var key in secondItem){
-        if(key !="path" && secondItem.hasOwnProperty(key) && (secondItem[key] !=null || secondItem[key] !=undefined || secondItem[key] !="")){
-          temObj[key]=secondItem[key];
-        }
+       for(var j=0;j<response2.length;j++){        
+          if(response2[j].value != ""){
+            response.push(response2[j])
+          }
        }
-       var paths=[]
-       paths[0] = firstItem["path"]
-       paths[1] = secondItem["path"]
-       temObj["paths"]=paths;
+     temObj["response"]=response;
        responseData[i]= temObj;
-       console.log("----------finish----------"+JSON.stringify(temObj))
      }
      this.data.result = responseData;
-
-     console.log("----------finish----------"+JSON.stringify(this.data.result))
      wx.navigateTo({
       url: '/pages/multiResult/multiResult',
       success:function(res){

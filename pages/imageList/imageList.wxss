@@ -10,31 +10,39 @@
   width:99vw;
   display: flex;
   flex-direction: row;
-  justify-content:start;
+  justify-content:space-evenly;
   flex-wrap: wrap;
   align-content: flex-start;
+  border: solid 1px red;
 }
-.item{
-  height:25vh;
-  width:40vw;
-  border:solid 1px #ccc;
-  margin: 0 10px;
+
+.imageblock{
+  height:20vh;
+  width:30vw;
+  border: solid 1px #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-top:15px;
+
 }
-.imageblock{
-  height:25vh;
-  width:30vw;
-  overflow: hidden;
-  border: solid 1px red;
-  margin-top:1vh;
-  margin-left:2vw;
+.del{
+  height:30px;
+  width:30px;
+  border: solid 1px #ccc;
+  border-radius: 50%;
+  position: absolute;
+  top:-14px;
+  right:-10px;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  background-color: rgb(240, 155, 155);
+}
+.del image{
+  height:25px;
+  width:25px;
 }
 .bottom-line{
   height:25vh;
