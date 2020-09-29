@@ -1,30 +1,32 @@
 /* pages/imageList/imageList.wxss */
 .main{
-  margin: auto;
   background-color: #f1f1f1; 
   height:100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 .images{
   height:93vh;
-  width:99vw;
+  width:97vw;
   display: flex;
   flex-direction: row;
-  justify-content:space-evenly;
   flex-wrap: wrap;
   align-content: flex-start;
-  border: solid 1px red;
 }
 
 .imageblock{
   height:20vh;
-  width:30vw;
+  width:29vw;
   border: solid 1px #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top:15px;
+  margin-top:2.5vh;
+  margin-left:2.1vw;
 
 }
 .del{
@@ -44,12 +46,17 @@
   height:25px;
   width:25px;
 }
-.bottom-line{
-  height:25vh;
-  width:99vw;
-  border-bottom:solid  1px red;
+.add{
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-/* image{
-  height:30vh;
-  width:30vw;
-} */
+.add image{
+  height:28vw;
+  width:28vw;
+}
+.deal{
+  height:7vh;
+  width: 100vw;
+}

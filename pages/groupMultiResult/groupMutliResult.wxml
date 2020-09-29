@@ -19,7 +19,7 @@
          </view>
       </view>
    </scroll-view>
-   <view class="deal">
-      <button disabled="{{ !result.length}}" style="background-color:#000033;width:62%;height:40px;color:white;letter-spacing:10rpx;" bindtap="toIdentify" >开始识别</button>
+   <view class="deal" bindtap="toIdentify">
+      <button disabled="{{ !result.length}}" style="background-color:#000033;width:62%;height:80%;color:white;letter-spacing:10rpx;"  >开始识别</button>
    </view>
 </view>

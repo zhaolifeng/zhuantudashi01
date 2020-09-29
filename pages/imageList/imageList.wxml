@@ -1,15 +1,20 @@
 <!--pages/imageList/imageList.wxml-->
 <view class="main">
   <view class="images">
-    <view class="imageblock" wx:for="{{imageFiles}}" wx:for-index="idx" wx:for-item="image">
-          <view class="del" > 
-              <image src="/pages/image/select/del.png" data-key="{{idx}}"  bindtap="delImage"></image>
+    <view class="imageblock" wx:for="{{imageFilesArray}}" wx:for-index="idx" wx:for-item="image">
+          <view class="del"   bindtap="delImage"> 
+              <image src="/pages/image/select/del.png" data-key="{{idx}}" ></image>
           </view>
-          <image src="{{image.path}}" data-src="{{image.path}}"  style="width:{{image.width*0.15}}px ;height:{{image.height*0.15}}px;max-width:30vw;max-height:20vh" bindtap="previewImage"></image>
+          <image src="{{image.path}}" data-src="{{image.path}}"  style="width:{{image.width*0.15}}px ;height:{{image.height*0.15}}px;max-width:29vw;max-height:20vh" bindtap="previewImage"></image>
+    </view>
+    <view class="imageblock" wx:if="{{imageFilesArray.length < 9}}">
+         <view  class="add">
+            <image src="/pages/image/select/add.png"  catchtap="chooseImages"></image>
+         </view>
     </view>
   </view>
-  <view>
-     <button id="buttonInfo" style="background-color:#000033;width:62%;height:40px;color:white;letter-spacing:10rpx;" bindtap="toIdentify" >开始识别</button>
+  <view class="deal"  bindtap="toIdentify">
+     <button id="buttonInfo" style="background-color:#000033;width:62%;height:80%;color:white;letter-spacing:10rpx;" >开始识别</button>
   </view>
 </view>
 

@@ -18,29 +18,27 @@ Page({
     let that=this;
    this.data.typeCode= options.typeCode;
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
-      
-      that.data.imageFiles=data.imageFiles;
+      that.data.imageFilesArray=data.imageFiles;
       that.setImageFileInfo();
       console.log("############"+JSON.stringify(that.data.imageFiles));
     })
 },
 
 setImageFileInfo:function(){
-      var temp=this.data.imageFiles;
+      var temp=this.data.imageFilesArray;
       var that=this;
       if(that.data.index<temp.length){
-      var tempObj={};
       wx.getImageInfo({
         src: temp[that.data.index].path,
         success (res) {
-          tempObj["width"]=res.width;
-          tempObj["height"]=res.height;
-          tempObj["path"]=res.path
-          that.data.imagePaths[that.data.index]=res.path;
-          that.data.imageFilesArray[that.data.index]=tempObj;
+          var temps=that.data.imageFilesArray[that.data.index];
+          temps["width"]=res.width;
+          temps["height"]=res.height;
+          temps["path"]=res.path
+          that.data.imagePaths[that.data.index]=res.path
           if(that.data.index==(temp.length-1)){
             that.setData({
-              imageFiles:that.data.imageFilesArray      
+              imageFilesArray:that.data.imageFilesArray      
             })
           }
           that.data.index++;;
@@ -112,7 +110,7 @@ previewImage: function (e) {
   toIdentify:function(){
     var successUp = 0; //成功
     var failUp = 0; //失败
-    var length = this.data.imageFiles.length; //总数
+    var length = this.data.imageFilesArray.length; //总数
     var count = 0; //第几张
     this.uploadOneByOne(successUp, failUp, count, length)
   },
@@ -120,14 +118,13 @@ previewImage: function (e) {
   * 采用递归的方式上传多张
   */
  uploadOneByOne(successUp, failUp, count, length){
-  var imgPaths=this.data.imageFiles;
   var that = this;
   var typeCode=that.data.typeCode;
   wx.showLoading({
      title: '正上传第'+(count+1)+'张',
    })
    wx.uploadFile({
-    filePath:that.data.imageFiles[count].path,
+    filePath:that.data.imageFilesArray[count].path,
     name: 'file',
     formData:{"indexType":typeCode},
     url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
@@ -135,9 +132,9 @@ previewImage: function (e) {
       wx.hideLoading();
       successUp++;//成功+1
       if(typeof res.data != 'object'){
-        that.data.imageFiles[count].response = JSON.parse(res.data.replace(/\ufeff/g,""));
+        that.data.imageFilesArray[count].response = JSON.parse(res.data.replace(/\ufeff/g,""));
       }else{
-        that.data.imageFiles[count].response=res.data;
+        that.data.imageFilesArray[count].response=res.data;
       }
     },
     fail(res){
@@ -149,16 +146,16 @@ previewImage: function (e) {
       if(count == length){
         //上传完毕，作一下提示
         wx.showToast({
-          title: '上传成功' + successUp+"张",
+          title: '处理成功' + successUp+"张",
           icon: 'success',
           duration: 2000
         })
         wx.navigateTo({
           url: '/pages/multiResult/multiResult',
           success:function(res){
-              console.log("****send******"+JSON.stringify(that.data.imageFiles))
+              console.log("****send******"+JSON.stringify(that.data.imageFilesArray))
                 // 通过eventChannel向被打开页面传送数据
-               res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.imageFiles})
+               res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.imageFilesArray})
           }
         }) 
       }else{
@@ -171,24 +168,92 @@ previewImage: function (e) {
 },
 delImage:function(e){
   var index = e.target.dataset.key;
+  this.data.imageFilesArray.splice(index,1);
+  this.data.imagePaths.splice(index,1);
+  this.data.index--;
+  this.setData({
+    imageFilesArray:this.data.imageFilesArray,
+    imagePaths:this.data.imagePaths
+  })
+},
+chooseImages:function (e) {
   var that=this;
-console.log("-------index-----"+this.data.index)
-console.log("-------imageFilesArray-----"+JSON.stringify(this.data.imageFilesArray))
-console.log("-------imagePaths-----"+this.data.imagePaths)
-
-  var x=infos.split(":!|#")[0];
-  var y=infos.split(":!|#")[1];
-  this.data.result[x].splice(y,1)
-  if(this.data.result[x].length == 0){
-    this.data.result.splice(x,1)
-    this.data.index= this.data.result.length-1;
-    this.setData({
-      result:this.data.result
-    })
-  }else{
-    this.setData({
-      result:this.data.result
-    })
-  }
+  wx.showActionSheet({
+    itemList:["相册选图","聊天记录选图"],
+    success (res) {
+      console.log(res.tapIndex)
+      let index=res.tapIndex;
+      if(index==0){
+        that.mutliImageUpload();
+      } 
+      if(index==1){
+        that.mutliMessageImageUpload();
+      }   
+    }
+  })
+},
+mutliImageUpload:function(){
+  var that = this;
+  wx.chooseImage({
+          count: 8,
+          sizeType: ['original', 'compressed'],
+          sourceType: ['album', 'camera'],
+          success: function(res){
+            var imageFiles=res.tempFiles;
+            var finalFiles=that.data.imageFilesArray;
+            var index=that.data.index;
+            var imagePaths=that.data.imagePaths;
+              for(var i=0;i<imageFiles.length;i++){
+                  finalFiles[index]=imageFiles[i];
+                  imagePaths[index]=imageFiles[i].path
+                  index++;               
+              }
+              that.setImageFiles(0,imageFiles);
+          }     
+  });
+},
+mutliMessageImageUpload:function(){
+  var that = this;
+  wx.chooseMessageFile({
+    count: 8,
+    sizeType: ['original', 'compressed'],
+    sourceType: ['album', 'camera'],
+    success: function(res){
+      var imageFiles=res.tempFiles;
+      var finalFiles=that.data.imageFilesArray;
+      var index=that.data.index;
+      var imagePaths=that.data.imagePaths;
+        for(var i=0;i<imageFiles.length;i++){
+            finalFiles[index]=imageFiles[i];
+            imagePaths[index]=imageFiles[i].path
+            index++;               
+        }
+        that.setImageFiles(0,imageFiles);
+    }           
+  });
+},
+setImageFiles:function(start,images){
+  var temp=this.data.imageFilesArray;
+  var that=this;
+  if(start<images.length){
+  wx.getImageInfo({
+    src: images[start].path,
+    success (res) {
+      var temps=that.data.imageFilesArray[that.data.index];
+      temps["width"]=res.width;
+      temps["height"]=res.height;
+      temps["path"]=res.path
+      start++
+      if(that.data.index==(temp.length-1)){
+        that.setData({
+          imageFilesArray:that.data.imageFilesArray      
+        })
+        console.log("***********"+JSON.stringify(that.data))
+      }
+      that.data.index++;;
+      that.setImageFiles(start++,images);
+    }
+  })
+} 
 },
 })

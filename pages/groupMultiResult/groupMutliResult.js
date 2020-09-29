@@ -289,7 +289,12 @@ Page({
       var itemIndex=0; 
       var len=itemData.length
       if(itemIndex < itemData.length){
+        wx.showLoading({
+          title: '正处理第'+(that.data.indexDeal+1)+'组',
+        })
+        console.log('&&&&&&&&&&&&&&&&&&&&&&&&&正处理第'+(itemIndex+1)+'组')
         that.setResItem(itemData,that,itemIndex,len)  
+
       }
     }
   },
@@ -313,6 +318,12 @@ Page({
             that.setResItem(itemData,that,itemIndex,len);
           }else{
             if(that.data.indexDeal == that.data.result.length-1){
+            //上传完毕，作一下提示
+            wx.showToast({
+              title: '处理成功' + that.data.result.length+"组",
+              icon: 'success',
+              duration: 2000
+            })
               that.megerObj()
             }
             that.data.indexDeal++ ;
