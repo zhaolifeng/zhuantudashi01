@@ -18,9 +18,15 @@
             </view>
           <!-- </picker> -->
      </label>
-      <label style="z-index:{{mode ?999:-1}}">
-        <button disabled="{{takePhones == 0}}" bindtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}"> ({{takePhones}})</block>
-        </button>
+      <label style="z-index:{{mode?999:-1}};">
+       <view hidden="{{!(count==2)}}">
+          <button  disabled="{{takePhones == 0 || takePhones%2 != count%2}}" bindtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
+          </button>
+       </view>
+       <view hidden="{{!(count!=2)}}">
+         <button  disabled="{{takePhones == 0}}" bindtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
+         </button>
+       </view>
      </label>
      <label>
         <switch checked="{{mode}}" bindchange="changeMode"/>批量

@@ -292,7 +292,6 @@ Page({
         wx.showLoading({
           title: '正处理第'+(that.data.indexDeal+1)+'组',
         })
-        console.log('&&&&&&&&&&&&&&&&&&&&&&&&&正处理第'+(itemIndex+1)+'组')
         that.setResItem(itemData,that,itemIndex,len)  
 
       }

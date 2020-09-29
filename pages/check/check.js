@@ -87,7 +87,7 @@ Page({
       })
     }else{ //单页识别
       wx.showLoading({
-        title: '上传中...'
+        title: '处理中...'
       })
       this.ctx.takePhoto({
         quality : "high",
