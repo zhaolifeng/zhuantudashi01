@@ -19,6 +19,9 @@ Page({
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
     this.data.typeCode= options.typeCode;
+    var statusBarHeight= wx.getSystemInfoSync().statusBarHeight
+    var windowHeight=wx.getSystemInfoSync().windowHeight;
+    this.data.mainHeight=(windowHeight-statusBarHeight-44)
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       that.data.result=data.imageFiles;
       that.setImageFiles();
@@ -94,7 +97,8 @@ Page({
           item["height"]=res.height;       
           if(that.data.index == that.data.result.length-1){
             that.setData({
-              result:that.data.result      
+              result:that.data.result,
+              mainHeight:that.data.mainHeight    
             })
           }
           itemIndex++

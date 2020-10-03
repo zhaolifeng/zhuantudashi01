@@ -2,17 +2,26 @@
 .main {
   width: 100vw;
   display: flex;
-  overflow:auto;
+  height: 100vh;
+  overflow:hidden;
   flex-direction: column;
-  align-items: center;
   font-size:18px;
-  background-color: #f1f1f1;
+  justify-content: stretch;
 
 }
-
+.infoItemScroll{
+  width: 99vw;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #f1f1f1;
+}
 .infoItems{
   width: 99vw;
-  height:92vh;
+  height:100%;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -79,8 +88,9 @@
   justify-content: space-evenly;
   background-color: #000033;
   background-color: #000027;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
+  margin-bottom:0vh;
 }
 .menu view{
   width:30vw;

@@ -4,7 +4,8 @@
     "exportfile":"/pages/component/exportfile/exportfile",
     "editorMode":"/pages/component/editor/editor",
     "operatorMode":"/pages/component/operator/operator",
-    "shareMode":"/pages/component/share/share"
+    "shareMode":"/pages/component/share/share",
+    "head":"/pages/component/navbar/navbar"
   },
   "navigationBarTitleText": "首页"
 }

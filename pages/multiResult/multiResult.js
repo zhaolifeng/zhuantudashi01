@@ -14,11 +14,15 @@ Page({
   onLoad: function (options) {
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
+    var statusBarHeight= wx.getSystemInfoSync().statusBarHeight
+    var windowHeight=wx.getSystemInfoSync().windowHeight;
+    this.data.mainHeight=(windowHeight-statusBarHeight-44)
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
       console.log("^^^^^^^^^^^^^"+JSON.stringify(data.data))
       that.setData({
-        result:temp       
+        result:temp,
+        mainHeight:that.data.mainHeight     
       })
     })
   },
@@ -131,6 +135,12 @@ shareAll:function(e){
   this.copyInfo();
   var share=this.selectComponent("#share");
   share.toShare();
+},
+backto:function(){
+  console.log("-------------")
+  wx.navigateBack({
+    delta: 2
+  })
 }
 })
 

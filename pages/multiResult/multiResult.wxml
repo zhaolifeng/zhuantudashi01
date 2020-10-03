@@ -1,36 +1,32 @@
 <!--pages/multiResult/multiResult.wxml-->
-<view class="main">
-   <view class="infoItems" wx:for="{{result}}" wx:for-index="idh" wx:for-item="item">
-     <view class="title">
-        <view class="page" style="font-size:18px;font-weight:600">
-           第{{idh+1}}页
-        </view>
-        <view id="submenu{{idh}}" class="submenu" data-key="{{idh}}" catchtap="operator">
-          ...
-        </view>
+<view class="main" >
+   <head customBackReturn="true" title="识别结果" bind:customBackReturn="backto"></head>
+   <scroll-view class="infoItemScroll" scroll-y="true" style="height:{{mainHeight}}px" >
+      <view class="infoItems" wx:for="{{result}}" wx:for-index="idh" wx:for-item="item">
+         <view class="title">
+            <view class="page" style="font-size:18px;font-weight:600">
+               第{{idh+1}}页
+            </view>
+            <view id="submenu{{idh}}" class="submenu" data-key="{{idh}}" catchtap="operator">
+               ...
+            </view>
+         </view>
 
-        <!-- <view class="operates">
-            <view class="operatesitem">原图</view>
-            <view class="operatesitem">复制</view>
-            <view class="operatesitem">导出</view>
-         </view> -->
-     </view>
-
-     <view class="infoItem">
-        <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" >
-           <view style="font-size:18px;font-weight:510;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-               {{record.name}}
-           </view>
-           <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-           ：
-           </view>
-           <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-               {{record.value}}
-           </view>
-        </view>
-     </view>
-   </view>
-   <view style="height:8vh;width:10vw"></view>
+         <view class="infoItem">
+               <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" >
+                  <view style="font-size:18px;font-weight:510;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                        {{record.name}}
+                  </view>
+                  <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                  ：
+                  </view>
+                  <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                        {{record.value}}
+                  </view>
+               </view>
+         </view>
+      </view>
+   </scroll-view>
    <view class="menu">
       <view  bindtap="copyInfo"> 
          全部复制

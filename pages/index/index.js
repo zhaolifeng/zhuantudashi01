@@ -84,6 +84,7 @@ Page({
       // mytoast01.showMessage("请上传另一面")    
       wx.navigateTo({
         url: '/pages/groupMultiResult/groupMutliResult'
+        // url: '/pages/multiResult/multiResult'
       })
 
   }

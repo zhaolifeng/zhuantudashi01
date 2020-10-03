@@ -2,6 +2,8 @@
   "usingComponents": {
     "editorMode":"/pages/component/editor/editor",
     "operatorMode":"/pages/component/operator/operator",
-    "shareMode":"/pages/component/share/share"
-  }
+    "shareMode":"/pages/component/share/share",
+    "head":"/pages/component/navbar/navbar"
+  },
+  "navigationStyle": "custom"
 }

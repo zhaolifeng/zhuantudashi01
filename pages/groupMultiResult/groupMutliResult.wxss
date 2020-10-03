@@ -3,14 +3,21 @@
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+  justify-content: stretch;
 }
 .container{
-  height: 93vh;
   width:98vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
+  overflow:auto;
+  position: relative;
+
 }
 .group{
   height: 30vh;
@@ -57,7 +64,7 @@
   align-items: center;
 }
 .deal{
-  height:7vh;
+  height:10vh;
   width: 100vw;
 }
 .add{
