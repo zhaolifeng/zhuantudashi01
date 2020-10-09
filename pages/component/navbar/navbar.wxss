@@ -1,0 +1,56 @@
+.topbar {
+  /* position: fixed;
+  left: 0;
+  top: 0; */
+  width: 100%;
+
+}
+.status {
+  width: 100%;
+}
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  border-bottom: solid 1px rgb(235, 233, 233);
+  /* background-color: #fff; */
+}
+
+.navbar_back {
+  padding: 0 14rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  border: solid 1px red;
+
+}
+
+.navbar_back image {
+  width: 35rpx;
+  height:35rpx;
+}
+
+.navbar_title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:solid 1px red;
+  z-index: -1;
+   background-color: #fff;
+}
+.navbar_title view {
+  width: 40%;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+}
