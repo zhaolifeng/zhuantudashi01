@@ -8,6 +8,10 @@ Component({
     customBackReturn: {
       type: Boolean,
       value: false
+    },
+    title: {
+      type: String,
+      value: "识别结果"
     }
   },
   data: {
@@ -16,19 +20,19 @@ Component({
   methods: {
     backClick() {
       console.log("$$$$$$$$$$$$$$")
-      // if (this.data.customBackReturn) {
-      //   this.triggerEvent("customBackReturn")
-      // } else {
-      //   if (getCurrentPages().length == 1) {
-      //     wx.switchTab({
-      //       url: '/pages/index/index',
-      //     })
-      //   } else {
-      //     wx.navigateBack({
-      //       delta: 1
-      //     })
-      //   } 
-      // }
+      if (this.data.customBackReturn) {
+        this.triggerEvent("customBackReturn")
+      } else {
+        if (getCurrentPages().length == 1) {
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        } else {
+          wx.navigateBack({
+            delta: 1
+          })
+        } 
+      }
     }
   },
   attached() {

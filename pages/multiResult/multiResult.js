@@ -12,6 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.typeCode=options.typeCode;
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
     var statusBarHeight= wx.getSystemInfoSync().statusBarHeight
@@ -137,10 +138,19 @@ shareAll:function(e){
   share.toShare();
 },
 backto:function(){
-  console.log("-------------")
-  wx.navigateBack({
-    delta: 2
-  })
+  
+  var value = wx.getStorageSync('typeCode')
+  console.log("-------------"+value)
+  if (value) {
+    wx.redirectTo({
+      url: '/pages/check/check?typeCode='+value
+    })
+  }else{
+    wx.redirectTo({
+      url: '/pages/index/index'
+    })
+  }
+
 }
 })
 

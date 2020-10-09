@@ -18,6 +18,8 @@ Page({
   onLoad: function (options) {
     let count=1;
     let typeCode=options.typeCode;
+    //一直向后传递的参数
+    wx.setStorageSync('typeCode', options.typeCode)
     if(typeCode.indexOf("-") >0){
       let temp =typeCode.split("-");
       typeCode=temp[0];

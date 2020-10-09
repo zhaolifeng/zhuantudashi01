@@ -6,7 +6,7 @@
       <image src='/pages/image/select/back.png'></image>
     </view>
     <view class='navbar_title' style="height:{{navHeight}}px">
-      <view>标题</view>
+      <view style="letter-spacing:1rpx;">{{title}} </view>
     </view>
   </view>
 </view>
