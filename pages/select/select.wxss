@@ -64,6 +64,7 @@
   justify-content: space-between;
   align-items: flex-start;
   width:95%;
+  padding-top:15px;
 }
 .iconfunction {
   display: flex;
