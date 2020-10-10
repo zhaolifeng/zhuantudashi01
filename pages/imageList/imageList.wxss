@@ -57,6 +57,6 @@
   width:28vw;
 }
 .deal{
-  height:7vh;
+  height:10vh;
   width: 100vw;
 }

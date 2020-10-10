@@ -1,41 +1,33 @@
 <!--pages/check/check.wxml-->
 <view class="container">
-  <view class="takephone">
-   <camera device-position="back" flash="auto" binderror="error" style="width: 100%; height:100%"></camera>
-  </view>
-  <view class="getphone">
-    <view class="phone" bindtap="startCamera"  data-typeCode="{{typeCode}}">
-      <!-- 拍   照 -->
+    <view class="takephone">
+      <camera device-position="back" flash="auto" binderror="error" style="width: 100%; height:100%"></camera>
     </view>
-  </view>
-  <view class="selectImage">
-     <!-- <view bindtap="chooseImage"  data-typeCode="{{typeCode}}">相册选择图>></view>
-     <view bindtap="chooseMessageFile"  data-typeCode="{{typeCode}}">聊天记录选图>></view> -->
-      <label>
-          <!-- <picker bindchange="chooseImages" value="{{index}}" range="{{array}}"> -->
-            <view class="picker" catchtap="chooseImages">
-              选 图>>{{array[index]}} 
-            </view>
-          <!-- </picker> -->
-     </label>
-      <label style="z-index:{{mode?999:-1}};">
-       <view hidden="{{!(count==2)}}">
-          <button  disabled="{{takePhones == 0 || takePhones%2 != count%2}}" bindtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
+    <view class="getphone">
+      <view class="phone" bindtap="startCamera"  data-typeCode="{{typeCode}}">
+      </view>
+    </view>
+    <view class="selectImage">
+        <label>
+              <view class="picker" bindtap="chooseImages">
+                选 图 > >
+              </view>
+      </label>
+        <label style="z-index:{{mode?999:-1}};">
+        <view hidden="{{!(count==2)}}">
+            <button  disabled="{{takePhones == 0 || takePhones%2 != count%2}}" bindtap="startDeal" style="width:30vw;height:50px;padding-top:13px;backgroup-color:#ccc; box-shadow: 0 2px 5px #ccc;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
+            </button>
+        </view>
+        <view hidden="{{!(count!=2)}}">
+          <button  disabled="{{takePhones == 0}}" bindtap="startDeal" style="width:30vw;height:50px;padding-top:13px;backgroup-color:#ccc; box-shadow: 0 2px 5px #ccc;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
           </button>
-       </view>
-       <view hidden="{{!(count!=2)}}">
-         <button  disabled="{{takePhones == 0}}" bindtap="startDeal" style="width:40vw;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
-         </button>
-       </view>
-     </label>
-     <label>
-        <switch checked="{{mode}}" bindchange="changeMode"/>批量
-     </label>
-     
-  </view>
-  <!-- <view>
-    <button id="startcheck">开始识别</button>
-  </view> -->
+        </view>
+      </label>
+      <label>
+          <switch checked="{{mode}}" bindchange="changeMode"/>批量
+      </label>
+      
+    </view>
 </view> 
 <mytoast id="mytoast"></mytoast>
 

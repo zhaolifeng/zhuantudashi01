@@ -1,7 +1,7 @@
 <!--pages/select/select.wxml-->
 <view class="VerticalBox">
   <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:100vh">
-    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" style="border-bottom:solid 1px #ccc;letter-spacing: 1px;" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
       {{item.name}}
     </view>
   </scroll-view>
@@ -12,10 +12,10 @@
                 <text class='icon-title text-green'>{{item.name}} </text></view>
             </view>
             <block wx:for="{{item.titles}}" wx:for-item="twodata" wx:key="index0">
-              <view class="cu-list menu-avatar">
+              <view class="contenList">
                 <view class="home">
                       <block wx:for="{{twodata}}" wx:for-item="threedata" wx:key="index3">
-                        <view class="iconfunction"  bindtap="check" data-gid="{{threedata.code}}-1">
+                        <view class="iconfunction"  bindtap="check" data-gid="{{threedata.code}}">
                           <view class="icon">
                             <image  src="{{threedata.image}}">
                             </image>

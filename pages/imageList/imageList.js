@@ -121,7 +121,7 @@ previewImage: function (e) {
   var that = this;
   var typeCode=that.data.typeCode;
   wx.showLoading({
-     title: '正上传第'+(count+1)+'张',
+     title: '正处理第'+(count+1)+'张',
    })
    wx.uploadFile({
     filePath:that.data.imageFilesArray[count].path,
@@ -161,7 +161,7 @@ previewImage: function (e) {
       }else{
         //递归调用，上传下一张
         that.uploadOneByOne(successUp, failUp, count, length);
-        console.log('正在上传第' + count + '张');
+        console.log('正处理第' + count + '张');
       }
     }
   })

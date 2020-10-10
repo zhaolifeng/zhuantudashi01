@@ -6,7 +6,7 @@ Page({
    */
   data: {
     maxCount:8,
-    newData:{},
+    newData:{path:[],response:[]},
     mode:false, //单选多选模式 f
     takePhones:0,  //拍照数量
     takeImageFiles:[]
@@ -94,8 +94,9 @@ Page({
       this.ctx.takePhoto({
         quality : "high",
         success: (res) => {
+          var imagePath=res.tempImagePath;
           wx.uploadFile({
-            filePath: res.tempImagePath,
+            filePath:imagePath,
             name: 'file',
             formData:{"indexType":typeCode},
             url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
@@ -108,32 +109,62 @@ Page({
                   resultData=resultData.replace(/\ufeff/g,"");
                   newData = JSON.parse(resultData);
                 }
+                console.log("*************"+newData)
               if(count==2){ // 需要正反面或者是两页扫描的情况
-                if (Object.keys(that.data.newData).length === 0) {
-                      that.data.newData=newData;
-                      // var mytoast01=that.selectComponent("#mytoast");
-                      mytoast01.showMessage("请上传另一面");   
-                }else{
-                    let temJson=that.data.newData;
-                    for(var attr in temJson){
-                      if(temJson[attr] !=''){
-                        newData[attr]=temJson[attr];
-                      }                   
-                    } 
+                  let len=that.data.newData.path.length;
+                  that.data.newData.path[len]=imagePath;
+                  for(var i=0;i<newData.length;i++){
+                    if(newData[i].value !=""){
+                      that.data.newData.response.push(newData[i])
+                    }
+                  }
+                  if(len == 0){
+                      var mytoast01=that.selectComponent("#mytoast");
+                      mytoast01.showMessage("请上传另一面");  
+                  }else{
                     wx.navigateTo({
-                      url: '/pages/kazheng/kazheng?typeCode='+typeCode,
+                      url: '/pages/multiResult/multiResult',
                       success:function(res){
-                           res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                          console.log("****send******"+JSON.stringify(that.data.newData))
+                            // 通过eventChannel向被打开页面传送数据
+                           res.eventChannel.emit('acceptDataFromOpenerPage', { data:[that.data.newData]})
                       }
                     }) 
-                }         
+                  }
+
+
+
+
+
+
+                // if (Object.keys(that.data.newData).length === 0) {
+                //       that.data.newData=newData;
+                //       // var mytoast01=that.selectComponent("#mytoast");
+                //       mytoast01.showMessage("请上传另一面");   
+                // }else{
+                //     let temJson=that.data.newData;
+                //     for(var attr in temJson){
+                //       if(temJson[attr] !=''){
+                //         newData[attr]=temJson[attr];
+                //       }                   
+                //     } 
+                //     wx.navigateTo({
+                //       url: '/pages/kazheng/kazheng?typeCode='+typeCode,
+                //       success:function(res){
+                //            res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
+                //       }
+                //     }) 
+                // }         
               }else{
-                  wx.navigateTo({
-                    url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-                    success:function(res){
-                         res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                    }
-                  })
+                that.data.newData.path=imagePath;
+                that.data.newData.response=newData 
+                wx.navigateTo({
+                  url: '/pages/multiResult/multiResult',
+                  success:function(res){
+                        // 通过eventChannel向被打开页面传送数据
+                       res.eventChannel.emit('acceptDataFromOpenerPage', { data:[that.data.newData]})
+                  }
+                })
               }
             },
             fail(res){          

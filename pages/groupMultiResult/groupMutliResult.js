@@ -8,8 +8,6 @@ Page({
     index:0,
     indexDeal:0,
     result:[]
-    // result:[[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}],[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}],[{"name":"BusInvoiceOCR2.jpg","size":276207,"time":1597116453,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.b5TawVkKFZwNbfa7246053f5acf16a879883a27bd50b.jpg","type":"image","width":800,"height":660},{"name":"CarInvoiceOCR1.jpg","size":319211,"time":1597141062,"path":"http://tmp/wx927059c0e3ba4ff6.o6zAJs0YuqgyYShiLZNo96KdPsa4.bhd6w9ymuaR4deed3f26e3338e58e0a72bf390c2b782.jpg","type":"image","width":1000,"height":1000}]]
-
   },
 
   /**
@@ -79,6 +77,7 @@ Page({
   setImageFiles:function(){
     var temdata=this.data.result;
     var that=this;
+   
     if(that.data.index < temdata.length){
       var itemData =temdata[that.data.index];
       var itemIndex=0; 
@@ -127,7 +126,7 @@ Page({
     this.data.result[x].splice(y,1)
     if(this.data.result[x].length == 0){
       this.data.result.splice(x,1)
-      this.data.index= this.data.result.length-1;
+      this.data.index= this.data.result.length;
       this.setData({
         result:this.data.result
       })
@@ -283,7 +282,21 @@ Page({
     });
   },
   toIdentify:function(){
-    this.setResponse()
+    var itemsData=this.data.result;
+    var flag=true;
+    for(var i=0;i<itemsData.length;i++){
+       let  subItem=itemsData[i]
+        if(subItem.length !=2){
+          flag=false;
+          break
+        }
+    }
+    if(flag){
+      this.setResponse()
+    }else{
+      var mytoast01=this.selectComponent("#mytoast");
+      mytoast01.showMessage("每组补全图片");   
+    }
   },
   setResponse:function(){
     var temdata=this.data.result;

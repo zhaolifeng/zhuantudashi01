@@ -12,6 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("############页面栈################"+getCurrentPages().length)
     this.data.typeCode=options.typeCode;
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
@@ -32,7 +33,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+           
   },
 
   /**
@@ -138,19 +139,16 @@ shareAll:function(e){
   share.toShare();
 },
 backto:function(){
-  
-  var value = wx.getStorageSync('typeCode')
-  console.log("-------------"+value)
-  if (value) {
-    wx.redirectTo({
-      url: '/pages/check/check?typeCode='+value
-    })
-  }else{
-    wx.redirectTo({
-      url: '/pages/index/index'
+  if (getCurrentPages().length == 4) {
+    wx.navigateBack({
+      delta: 2
     })
   }
-
+  if (getCurrentPages().length == 3) {
+    wx.navigateBack({
+      delta: 1
+    })
+  }
 }
 })
 

@@ -14,7 +14,7 @@
     </view>
   </view>
   <view class="deal"  bindtap="toIdentify">
-     <button id="buttonInfo" style="background-color:#000033;width:62%;height:80%;color:white;letter-spacing:10rpx;" >开始识别</button>
+     <button id="buttonInfo" style="background-color:#000033;width:62%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px" >开始识别</button>
   </view>
 </view>
 

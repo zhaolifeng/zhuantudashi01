@@ -1,3 +1,6 @@
 {
+  "usingComponents": {
+    "mytoast":"/pages/component/toast/mytoast"
+  },
   "navigationBarTitleText": "所选图"
 }

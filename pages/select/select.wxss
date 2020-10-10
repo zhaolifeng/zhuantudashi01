@@ -41,6 +41,7 @@
   background-color: #f1f1f1;
   color: rgb(29, 33, 36);
   font-size: 17px;
+
 }
 .VerticalBox .cu-bar{
   background-color:#e5eaf0;
@@ -60,7 +61,9 @@
 .home{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
+  width:95%;
 }
 .iconfunction {
   display: flex;
@@ -68,15 +71,16 @@
   align-items: center;
   width:auto;
   height: auto;
-  max-width:100px;
-   
+  max-width:100px; 
+
 }
 .icon{
-  margin: 20rpx;
-  height: 110rpx;
-  width: 110rpx;
-  /* border-radius: 50%;                                                                                 
-   background-color: rosybrown; */
+  margin: 10rpx;
+  height: 90rpx;
+  width: 90rpx;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .icon image{
@@ -90,4 +94,10 @@
   color: rgb(29, 33, 36);
   font-size: 16px;
   font-weight:normal;
+}
+.contenList{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
 }
