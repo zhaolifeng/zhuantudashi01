@@ -57,20 +57,20 @@
   
 }
 
-
-.home{
+.contenList{
+  width: 98%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width:95%;
-  padding-top:15px;
+  justify-content: start;
+  flex-flow: wrap;
+  align-content: flex-start;
 }
 .iconfunction {
+  margin: 5px 5px;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  justify-content: start;
   align-items: center;
-  width:auto;
+  width:29.2%;
   height: auto;
   max-width:100px; 
 
@@ -95,10 +95,4 @@
   color: rgb(29, 33, 36);
   font-size: 16px;
   font-weight:normal;
-}
-.contenList{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
 }
