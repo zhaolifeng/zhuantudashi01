@@ -31,6 +31,15 @@ Page({
       count:count
     })
   },
+    /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.data.newData.path=[];
+    this.data.newData.response=[];
+    let len=this.data.newData.response.length
+    console.log("------onShow-------"+len)
+  },
   //拍照模式
   changeMode:function (e){
     var isMulti = e.detail.value;

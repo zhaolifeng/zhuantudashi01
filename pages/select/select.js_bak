@@ -325,6 +325,90 @@ Page({
             "image":"/pages/image/select/ship.png",
             "desc":""
         }
+        // ,
+        // {
+        //     "id":"3",
+        //     "name":"通用",
+        //     "titles":[{
+        //                 "id":"4-1",
+        //                 "name":"印刷体",
+        //                 "code":"004002-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持多场景、任意版面下整图文字的识别，包括中英文、字母、数字和日语、韩语、西班牙语等十余种多语言识别"
+        //             },
+        //             {
+        //                 "id":"4-2",
+        //                 "name":"手写体",
+        //                 "code":"004005-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强"
+        //             },
+        //             {
+        //                 "id":"4-3",
+        //                 "name":"英文",
+        //                 "code":"004001-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别"
+        //             },
+        //             {
+        //                 "id":"4-4",
+        //                 "name":"二维码",
+        //                 "code":"004006-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持二维码的识别"
+        //             },
+        //            {
+        //                 "id":"4-5",
+        //                 "name":"条形码",
+        //                 "code":"004006-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持条形码"
+        //             },
+        //             {
+        //                 "id":"4-6",
+        //                 "name":"文本监测",
+        //                 "code":"004007-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"快速文本检测"
+        //             },
+        //             {
+        //                 "id":"4-7",
+        //                 "name":"条形码",
+        //                 "code":"004005-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持条形码"
+        //             }
+        //     ],
+        //     "image":"/pages/image/select/ship.png",
+        //     "desc":""
+        // },
+        // {
+        //     "id":"4",
+        //     "name":"表格",
+        //     "titles":[
+        //             {
+        //                 "id":"5-1",
+        //                 "name":"表格",
+        //                 "code":"005005-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持图片内表格文档的检测和识别，返回每个单元格的文字内容，支持将识别结果保存为 Excel 格式"
+        //             },
+        //             {
+        //                 "id":"5-2",
+        //                 "name":"算式",
+        //                 "code":"005002-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等"
+        //             },
+        //             {
+        //                 "id":"5-3",
+        //                 "name":"数学公式",
+        //                 "code":"005003-1",
+        //                 "image":"/pages/image/select/ship.png",
+        //                 "desc":"支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本"
+        //             }
+            ]
+        }
     ],
     load: true,
   },
