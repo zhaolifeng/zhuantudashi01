@@ -149,7 +149,44 @@ backto:function(){
       delta: 1
     })
   }
-}
+},
+toSendMail:function(){
+  var sendMailMode=this.selectComponent("#sendMailMode");
+    sendMailMode.sendMail();
+  },
+  sendMail:function(e){
+    var copyData=""
+    var sourceData=this.data.result;
+    for(var i=0;i<sourceData.length;i++){   
+      copyData=copyData + "----------第"+(i+1)+"页-------------<br>";    
+        let temp = sourceData[i].response;
+        if(temp != undefined){
+          for(var j=0;j<temp.length;j++){
+            copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+          }  
+        }         
+    }
+    var mailAddr=e.detail.mailAddr;
+    wx.request({
+      // url: 'http://120.92.14.251/out/imageToWord/mail/sendMail', 
+      // url: 'http://123.57.240.185/mail/sendMail', 
+      // url: 'http://www.tuzhuanwen.com/mail/sendMail', 
+      url: 'https://www.tuzhuanwen.com/mail/sendMail', 
+      method:"POST",
+      header: {
+        'content-type': 'application/json;charset=utf-8'
+      },
+      scriptCharset: 'utf-8',
+      data:{ 
+        title:"",
+        recipientMail:mailAddr,
+        content:copyData
+      },
+      success (res) {
+        console.log(res.data)
+      }
+    })
+  }
 })
 
 

@@ -127,7 +127,8 @@ previewImage: function (e) {
     filePath:that.data.imageFilesArray[count].path,
     name: 'file',
     formData:{"indexType":typeCode},
-    url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+    url: 'http://123.57.240.185/uploadFile/upload', 
+    // url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
     success(res){
       wx.hideLoading();
       successUp++;//成功+1
@@ -142,7 +143,7 @@ previewImage: function (e) {
     },
     complete(res){
       wx.hideLoading();
-      count++;//下一张
+      count++;//下一张 
       if(count == length){
         //上传完毕，作一下提示
         wx.showToast({
@@ -154,7 +155,7 @@ previewImage: function (e) {
           url: '/pages/multiResult/multiResult',
           success:function(res){
               console.log("****send******"+JSON.stringify(that.data.imageFilesArray))
-                // 通过eventChannel向被打开页面传送数据
+                // 通过eventChannel向被打开页面传送数据 
                res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.imageFilesArray})
           }
         }) 

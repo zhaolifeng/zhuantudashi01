@@ -33,9 +33,7 @@ Component({
       return false 
       },
     inputText:function(e){
-      this.setData({
-         updateText:e.detail.value
-      })
+      this.data.updateText=e.detail.value;
     },
     startEditor:function (message) {
       var infos=message.split(":!|#")
@@ -55,8 +53,6 @@ Component({
       this.setData({
         zindex:true
       })
-
- 
     },
     cancelEditor:function(){
       this.setData({

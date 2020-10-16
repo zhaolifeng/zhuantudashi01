@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-
+    "sendMailMode":"/pages/component/sendMail/sendMail"
   },
   "navigationBarTitleText": "首页"
 }

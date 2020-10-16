@@ -100,8 +100,9 @@
       </view>
    </view> 
 </view>
+<sendMailMode id="sendMailMode" bind:updateText="editorText"></sendMailMode>
 <!-- 
 <shareMode id="sdf"></shareMode>
 
-<operatorMode id="sodf"></operatorMode> 
-<button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button> -->
+<operatorMode id="sodf"></operatorMode> -->
+<button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button> 

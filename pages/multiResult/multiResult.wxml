@@ -37,11 +37,12 @@
       <view>
          全部导出
       </view>
-      <view>
+      <view bindtap="toSendMail">
          发送邮箱
       </view>  
    </view>
 </view>
 <editorMode id="editorMode" bind:updateText="editorText"></editorMode>
-   <operatorMode id="operatorMode" bind:toshare="shareMessage"></operatorMode>
-   <shareMode id="share" ></shareMode> 
+<sendMailMode id="sendMailMode" bind:mailText="sendMail"></sendMailMode>
+<operatorMode id="operatorMode" bind:toshare="shareMessage"></operatorMode>
+<shareMode id="share" ></shareMode> 

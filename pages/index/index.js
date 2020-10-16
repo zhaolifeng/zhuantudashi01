@@ -80,12 +80,12 @@ Page({
   },
 
   showtoast:function () {
-      // var mytoast01=this.selectComponent("#exportfile");
-      // mytoast01.showMessage("请上传另一面")    
-      wx.navigateTo({
-        url: '/pages/groupMultiResult/groupMutliResult'
-        // url: '/pages/multiResult/multiResult'
-      })
+    var sendMailMode=this.selectComponent("#sendMailMode");
+    sendMailMode.sendMail();
+      // wx.navigateTo({
+      //   url: '/pages/groupMultiResult/groupMutliResult'
+      //   // url: '/pages/multiResult/multiResult'
+      // })
 
   }
 })

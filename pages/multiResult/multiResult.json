@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "editorMode":"/pages/component/editor/editor",
+    "sendMailMode":"/pages/component/sendMail/sendMail",
     "operatorMode":"/pages/component/operator/operator",
     "shareMode":"/pages/component/share/share",
     "head":"/pages/component/navbar/navbar"
