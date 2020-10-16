@@ -1,0 +1,20 @@
+<!--pages/component/sendMail/sendMail.wxml-->
+<view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}" >
+  <view class="eidtorArea">
+      <view class="close" bindtap="cancleSend">
+        <image src="/pages/image/select/close.png"></image>
+      </view>
+      <view class="editorInfo">
+        <view class="mail">
+          <input bindinput="preInputText" value="{{mailPreText}}"></input>@<input bindinput="afterInputText" value="{{mailAfterText}}"></input>
+        </view>
+        <view class="warnging" hidden="{{errInfo}}" >
+           请确保邮箱正确
+        </view>
+
+      </view>
+      <view class="confirmInfo">
+        <button id="buttonInfo" style="background-color:#000033;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishSender">   确     定   </button>
+      </view>
+  </view>
+</view>
