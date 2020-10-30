@@ -14,7 +14,7 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  border-bottom: solid 1px rgb(235, 233, 233);
+  border-bottom: solid 1px #ebe9e9;
   /* background-color: #fff; */
 }
 

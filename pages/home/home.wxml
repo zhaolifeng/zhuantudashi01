@@ -1,73 +1,73 @@
 <!--pages/home/home.wxml-->
 <view class="container">
-   <view class="home">
-      <view class="iconfunction"  data-gid="002007-2" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>身份证</text>
-      </view>
+    <view class="userinfo">
+        <view class="head">
+              <image bindtap="bindViewTap" class="userinfo-avatar" src="/pages/image/home/head.png" mode="cover"></image>
+        </view>
+        <view class="login">
+            <block>登录</block>
+        </view>
+    </view>
+    <view class="menuInfo">
+      <view class="{{selected ==1?'selectMenu':'menu'}}" data-key="1" catchtap="switchTab">本地记录</view>
+      <view class="{{selected ==2?'selectMenu':'menu'}}" data-key="2" catchtap="switchTab">反馈问题</view>
+      <view class="{{selected ==3?'selectMenu':'menu'}}" data-key="3" catchtap="switchTab">关于我们</view>
+    </view>
+    <view class="content">
+    <scroll-view class="tabData1" hidden="{{!(selected ==1)}}">
+        <view class="line" wx:for="{{historyIndex}}" wx:for-index="idx" wx:for-item="recode">
+          <view class="index">{{idx+1}}</view>
+          <view class="tltles"> 
+          <text class="titletext" catchtap="shareRecord" data-key="{{idx}}">
+           {{recode.title}}
+          </text>
+          </view>
+          <view class="time" catchtap="shareRecord" data-key="{{idx}}">{{recode.dateTime}}</view>
+          <view class="operate">
+             <image catchtap="deleRecord" data-key="{{idx}}" style="height:30px;width:30px" src="/pages/image/home/delete.png"></image>
+                          <!-- |
+            <image catchtap="shareRecord" data-key="{{idx}}" style="height:30px;width:30px" src="/pages/image/home/input.png"></image> -->
+          </view>
+        </view>
+    </scroll-view>
+    <view class="tabData2" hidden="{{!(selected ==2)}}">
+         <view class="editor">
+            <textarea maxlength="600"  value="{{fankui}}" placeholder="问题描述" placeholder-style="color:#ccc" bindinput="inputText">
+            </textarea>
+         </view>
 
-       <view class="iconfunction" data-gid="003001-2" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>驾驶证</text>
-      </view>
+         <view class="images" >
+            <block wx:for="{{images}}" wx:for-index="idx" wx:for-item="image">
+              <view class="imageInfo">
+                  <image  class="del" catchtap="delImage" data-key="{{idx}}" src="/pages/image/select/del.png"></image>
 
-       <view class="iconfunction"  data-gid="003003-2" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>行驶证</text>
-      </view>
+                  <image class="addImage" src="{{image.path}}"></image>
+              </view>
 
-       <view class="iconfunction" data-gid="002011" bindtap="check">
-        <image class="icon" class="icon" src="/pages/image/home/passport.png">
-        </image><text>护照</text>
-      </view>
-   </view>
+              </block>
+              <block wx:if="{{images.length <4}}">
+               <view class="imageInfo" catchtap="chooseImages">
+                  <image  class="addImage" src="/pages/image/select/add.png"></image>
+               </view>
+            </block>
+         </view>
+         <view class="tijiao">
+          <button  style="background-color:#49518c;width:62%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px" bindtap="submitData"> 提 交 </button>
+         </view>
+    </view>
+    <view class="tabData3" hidden="{{!(selected ==3)}}">
+        <view class="logo">
+            <image class="logo" src="/pages/image/home/logo.png"></image>
+        </view>
 
-   <view class="home">
-      <view class="iconfunction"  data-gid="001016" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>火车票</text>
-      </view>
-
-       <view class="iconfunction"  data-gid="001014" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>出租车票</text>
-      </view>
-
-       <view class="iconfunction"  data-gid="001007" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>行程单</text>
-      </view>
-
-       <view class="iconfunction"  data-gid="001013" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>轮船票</text>
-      </view>
-   </view>
-
-   <view class="home">
-      <view class="iconfunction" data-gid="001001-1" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>增值发票</text>
-      </view>
-
-       <view class="iconfunction"  data-gid="001011" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>混贴票</text>
-      </view>
-
-       <view class="iconfunction"  data-gid="001005" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>金融票</text>
-      </view>
-
-       <view class="iconfunction"  data-gid="001015" bindtap="check">
-        <image class="icon" src="/pages/image/home/test.png">
-        </image><text>路桥票</text>
-      </view>
-   </view>
-   <!-- <view class="add" >
-   <button bindtap="initAddPage">更多...</button>
-   </view> -->
-   
+        <scroll-view  scroll-y="true" class="jianshao">       图转文大师是基于人工智能的基础之上，应用机器学习和神经网络技术对图像进行智能解析识别，通过大数据文字库进行精准的匹配，来完成图片和文字的转换，极大的提高用户日常的数据处理能了。
+       我们一直在致力于机器学习和图片处理的技术研究，在软硬件方面都投入了大量的研发资源，尽最大的努力满足用户的需求。
+       本公司提供技术开发、技术服务、5G软硬件一体化解决方案，欢迎垂询！！
+商务合作电话：13810674122、13581989640
+商务合作微信：13810674122
+商务合作邮箱：81260974@qq.com</scroll-view>
+    </view>
+    </view>
    
 </view>
+<mytoast id="mytoast"></mytoast>

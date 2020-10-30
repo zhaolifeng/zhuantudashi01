@@ -1,6 +1,6 @@
 <!--pages/multiResult/multiResult.wxml-->
 <view class="main" >
-   <head customBackReturn="true" title="识别结果" bind:customBackReturn="backto"></head>
+   <head customBackReturn="{{backCount}}" title="识别结果" bind:customBackReturn="backto"></head>
    <scroll-view class="infoItemScroll" scroll-y="true" style="height:{{mainHeight}}px" >
       <view class="infoItems" wx:for="{{result}}" wx:for-index="idh" wx:for-item="item">
          <view class="title">
@@ -14,7 +14,7 @@
 
          <view class="infoItem">
                <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" >
-                  <view style="font-size:18px;font-weight:510;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                  <view style="font-size:18px;font-weight:500;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
                         {{record.name}}
                   </view>
                   <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
@@ -34,15 +34,19 @@
       <view bindtap="shareAll">
          发送好友
       </view>
-      <view>
-         全部导出
-      </view>
       <view bindtap="toSendMail">
          发送邮箱
-      </view>  
+      </view> 
+      <!-- <view bindtap="showImages">
+         本地保存
+      </view>  -->
+      <view bindtap="saveResult">
+         本地保存
+      </view> 
    </view>
 </view>
 <editorMode id="editorMode" bind:updateText="editorText"></editorMode>
 <sendMailMode id="sendMailMode" bind:mailText="sendMail"></sendMailMode>
-<operatorMode id="operatorMode" bind:toshare="shareMessage"></operatorMode>
+<operatorMode id="operatorMode" bind:toOperater="toOperater"></operatorMode>
+<saveResult id="saveResult" bind:setTitle="setTitle"></saveResult>
 <shareMode id="share" ></shareMode> 

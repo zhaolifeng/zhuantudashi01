@@ -21,10 +21,22 @@ Page({
     this.data.mainHeight=(windowHeight-statusBarHeight-44)
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
-      console.log("^^^^^^^^^^^^^"+JSON.stringify(data.data))
+      let backCount=data.backCount
+    //   console.log("^^^^^^^^^^^^^"+JSON.stringify(data.data))
+    //  var hisResults= wx.getStorageSync('hisResults')
+    //  const res = wx.getStorageInfoSync()
+    //  console.log("^^^^^^keys^^^^^^^"+JSON.stringify(res.keys))
+    //  console.log("^^^^^^currentSize^^^^^^^"+JSON.stringify(res.currentSize))
+    //  console.log("^^^^^^limitSize^^^^^^^"+JSON.stringify(res.limitSize))
+     
+    //  if(hisResults.length <30){
+    //    hisResults.unshift(temp)
+    //    wx.setStorageSync('hisResults', hisResults)
+    //  }
+    //  console.log("^^^^^^hisResults^^^^^^^"+JSON.stringify(hisResults))
       that.setData({
         result:temp,
-        mainHeight:that.data.mainHeight     
+        backCount: backCount
       })
     })
   },
@@ -98,7 +110,7 @@ operator:function(e){
     var message=this.data.result[index]
     wx.createSelectorQuery().select('#submenu'+index).boundingClientRect(function(rect){
         rect.top     // 节点的上边界坐标
-        operatorMode.startOper(message,rect.top);
+        operatorMode.startOper(message,index,rect.top);
       }).exec()    
 },
 copyInfo:function(){
@@ -127,10 +139,19 @@ copyInfo:function(){
     }
   })
 },
-shareMessage:function(e){
-  console.log("-----share------") // data
-   var share=this.selectComponent("#share");
-   share.toShare();
+
+toOperater:function(e){
+  var index=e.detail.dataIndex;
+  var method=e.detail.operater
+  if(method=='share'){
+    var share=this.selectComponent("#share");
+    share.toShare();
+  }
+  if(method == 'sendMail'){
+    var sendMailMode=this.selectComponent("#sendMailMode");
+    sendMailMode.sendMail(index);
+  }
+ 
 },
 shareAll:function(e){
   console.log("#########################");
@@ -152,11 +173,14 @@ backto:function(){
 },
 toSendMail:function(){
   var sendMailMode=this.selectComponent("#sendMailMode");
-    sendMailMode.sendMail();
-  },
-  sendMail:function(e){
-    var copyData=""
-    var sourceData=this.data.result;
+    sendMailMode.sendMail(-1);
+},
+sendMail:function(e){
+  var index=e.detail.index;
+  var mailAddr=e.detail.mailAddr;
+  var copyData=""
+  var sourceData=this.data.result;
+  if(index == -1){ //全部发邮件
     for(var i=0;i<sourceData.length;i++){   
       copyData=copyData + "----------第"+(i+1)+"页-------------<br>";    
         let temp = sourceData[i].response;
@@ -166,27 +190,75 @@ toSendMail:function(){
           }  
         }         
     }
-    var mailAddr=e.detail.mailAddr;
-    wx.request({
-      // url: 'http://120.92.14.251/out/imageToWord/mail/sendMail', 
-      // url: 'http://123.57.240.185/mail/sendMail', 
-      // url: 'http://www.tuzhuanwen.com/mail/sendMail', 
-      url: 'https://www.tuzhuanwen.com/mail/sendMail', 
-      method:"POST",
-      header: {
-        'content-type': 'application/json;charset=utf-8'
-      },
-      scriptCharset: 'utf-8',
-      data:{ 
-        title:"",
-        recipientMail:mailAddr,
-        content:copyData
-      },
-      success (res) {
-        console.log(res.data)
+  }else{ 
+      let temp = sourceData[index].response;
+      if(temp != undefined){
+        for(var j=0;j<temp.length;j++){
+          copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+        }  
       }
-    })
   }
+  var url = 'http://120.92.14.251/mail/sendMail';
+      url='http://123.57.240.185/mail/sendMail'
+      // url='http://www.tuzhuanwen/mail/sendMail';
+      url='https://www.coolpov.com/mail/sendMail';
+    
+  wx.request({
+    url: url, 
+    method:"POST",
+    header: {
+      'content-type': 'application/json;charset=utf-8'
+    },
+    scriptCharset: 'utf-8',
+    data:{ 
+      title:"识别结果",
+      recipientMail:mailAddr,
+      content:copyData
+    },
+    success (res) {
+      console.log(res.data)
+    }
+  })
+},
+showImages:function(){
+   var paths=[];
+   var sourceData=this.data.result;
+   for(var i=0;i<sourceData.length;i++){   
+      let path = sourceData[i].path;
+      paths.push(path)         
+  }
+  wx.previewImage({
+    current:paths[0],  
+    urls: paths  
+  })
+},
+setTitle:function(e){
+  var util = require('../../utils/util.js');
+  var title= e.detail.title;
+  console.log("*****************************"+JSON.stringify(e))
+  var data=this.data.result;
+  var time = util.formatTime(new Date());
+  var titleObje={"title":title,"dateTime":time};
+  var historyIndex=wx.getStorageSync('historyIndex');
+  var hisResults=wx.getStorageSync('hisResults');
+      historyIndex.unshift(titleObje)
+      hisResults.unshift(data)
+      wx.setStorage({
+        key: "historyIndex",
+        data:historyIndex
+      })
+  
+      wx.setStorage({
+        key: "hisResults",
+        data:hisResults
+      })
+
+
+},
+saveResult:function(){
+  var saveResult=this.selectComponent("#saveResult");
+  saveResult.saveResult();
+}
 })
 
 

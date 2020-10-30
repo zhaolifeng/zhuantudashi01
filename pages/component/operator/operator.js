@@ -31,12 +31,13 @@ Component({
       preventTouchMove:function() {
         return false 
       },
-      startOper:function (message,touchData) {
+      startOper:function (message,index,touchData) {
         this.data.sourceData=message
         console.log("$$$$$$$$$$$$$$"+JSON.stringify(this.data.sourceData));
         this.setData({
           zindex:false,
           top:touchData,
+          index:index,
           right:1
         });
       },
@@ -61,6 +62,9 @@ Component({
         }
         if(message == "shareInfo"){
           this.shareInfo();
+        }
+        if(message == "senMail"){
+          this.senMail();
         }
       },
       endOperator:function () {
@@ -99,8 +103,12 @@ Component({
       shareInfo:function(){
         this.copyInfo();
         console.log("-------shareInfo----------") 
-        var updateInfo="";
-        this.triggerEvent("toshare",{message:updateInfo});
+        var index=this.data.index;
+        this.triggerEvent("toOperater",{dataIndex:index,operater:"share"});
+      },
+      senMail:function(){
+        var index=this.data.index;
+        this.triggerEvent("toOperater",{dataIndex:index,operater:"sendMail"});
       }
   }
 })

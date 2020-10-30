@@ -5,6 +5,7 @@
       <view class="operatesitem" data-key="viewImage" catchtap="operator">原图</view>
       <view class="operatesitem" data-key="copySignal" catchtap="operator">复制</view>
       <view class="operatesitem" data-key="shareInfo" catchtap="operator">分享</view>
+      <view class="operatesitem" data-key="senMail" catchtap="operator">发邮件</view>
   </view>
 </view> 
 

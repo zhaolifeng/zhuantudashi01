@@ -6,8 +6,8 @@ Component({
      * customBackReturn="{{true}}" bind:customBackReturn="customBackReturn"
      */
     customBackReturn: {
-      type: Boolean,
-      value: false
+      type: Number,
+      value: 1
     },
     title: {
       type: String,
@@ -19,20 +19,25 @@ Component({
   },
   methods: {
     backClick() {
-      console.log("$$$$$$$$$$$$$$")
-      if (this.data.customBackReturn) {
-        this.triggerEvent("customBackReturn")
-      } else {
-        if (getCurrentPages().length == 1) {
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
-        } else {
-          wx.navigateBack({
-            delta: 1
-          })
-        } 
-      }
+      console.log("$$$$$$$$$$$$$$"+getCurrentPages().length)
+      console.log("$$$$$$this.data.customBackReturn$$$$$$$$"+this.data.customBackReturn)
+      // if (this.data.customBackReturn) {
+      //   this.triggerEvent("customBackReturn")
+      // } else {
+      //   if (getCurrentPages().length == 1) {
+      //     wx.switchTab({
+      //       url: '/pages/index/index',
+      //     })
+      //   } else {
+      //     wx.navigateBack({
+      //       delta: this.data.customBackReturn
+      //     })
+      //   } 
+      // }
+
+      wx.navigateBack({
+        delta: this.data.customBackReturn
+      })
     }
   },
   attached() {

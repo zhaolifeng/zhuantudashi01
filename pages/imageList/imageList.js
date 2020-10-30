@@ -123,12 +123,15 @@ previewImage: function (e) {
   wx.showLoading({
      title: '正处理第'+(count+1)+'张',
    })
+   var url = 'http://120.92.14.251/uploadFile/upload';
+        url='http://123.57.240.185/uploadFile/upload'
+        // url='http://www.tuzhuanwen/uploadFile/upload';
+        url='https://www.coolpov.com/uploadFile/upload';
    wx.uploadFile({
     filePath:that.data.imageFilesArray[count].path,
     name: 'file',
     formData:{"indexType":typeCode},
-    url: 'http://123.57.240.185/uploadFile/upload', 
-    // url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+    url: url, 
     success(res){
       wx.hideLoading();
       successUp++;//成功+1
@@ -156,7 +159,8 @@ previewImage: function (e) {
           success:function(res){
               console.log("****send******"+JSON.stringify(that.data.imageFilesArray))
                 // 通过eventChannel向被打开页面传送数据 
-               res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.imageFilesArray})
+
+               res.eventChannel.emit('acceptDataFromOpenerPage', {data:that.data.imageFilesArray,backCount:2})
           }
         }) 
       }else{

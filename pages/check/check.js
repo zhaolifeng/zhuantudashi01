@@ -104,11 +104,16 @@ Page({
         quality : "high",
         success: (res) => {
           var imagePath=res.tempImagePath;
+          var url = 'http://120.92.14.251/uploadFile/upload';
+          url='http://123.57.240.185/uploadFile/upload'
+          // url='http://www.tuzhuanwen/uploadFile/upload';
+          url='https://www.coolpov.com/uploadFile/upload';
           wx.uploadFile({
             filePath:imagePath,
             name: 'file',
             formData:{"indexType":typeCode},
-            url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+            
+            url: url,
             success(res){
               wx.hideLoading();
               let resultData=res.data;

@@ -9,7 +9,7 @@
     </view>
     <view class="selectImage">
         <label>
-              <view class="picker" bindtap="chooseImages">
+              <view class="picker"  catchtap="chooseImages">
                 选 图 > >
               </view>
       </label>

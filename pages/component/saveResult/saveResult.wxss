@@ -1,4 +1,4 @@
-/* pages/component/sendMail/sendMail.wxss */
+/* pages/component/saveResult/saveResult.wxss */
 .main{
   height: 101vh;
   width: 100vw;
@@ -9,10 +9,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #000000cc;
 
 }
-.eidtorArea{
+.setArea{
   height:220px;
   width:80vw;
   display: flex;
@@ -36,7 +36,7 @@
   height:40px;
   width: 40px;
 }
-.editorInfo{
+.titleInfo{
   height:100px;
   width:100%;
  display: flex;
@@ -44,7 +44,7 @@
  justify-content: center;
  align-items: center;
 }
-.mail{
+.title{
   height:70px;
   width:100%;
  display: flex;
@@ -60,7 +60,7 @@
   color: red;
 }
 
-.confirmInfo{
+.subInfo{
   height:70px;
   width:80vw;
   display: flex;
@@ -68,20 +68,11 @@
   align-items: center;
 }
 
-
-.mailb{
-  width:58vw;
+.titleText{
   border: solid 1px #ccc;
   height: 100%;
   border-radius:5px;
   height: 50px;
+  width:60vw;
   padding-left:5px;
-}
-.maila{
-  width:29vw;
-  border: solid 1px #ccc;
-  height: 100%;
-  border-radius:5px;
-  height: 50px;
-  padding-left:5px;
-}
+} 

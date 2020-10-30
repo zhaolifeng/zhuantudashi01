@@ -318,11 +318,15 @@ Page({
     var item = itemData[itemIndex];
     var typeCode = this.data.typeCode;
     var that=this;
+    var url = 'http://120.92.14.251/uploadFile/upload';
+        url='http://123.57.240.185/uploadFile/upload'
+        // url='http://www.tuzhuanwen/uploadFile/upload';
+        url='https://www.coolpov.com/uploadFile/upload';
     wx.uploadFile({
       filePath:item.path,
       name: 'file',
       formData:{"indexType":typeCode},
-      url: 'http://120.92.14.251/out/imageToWord/uploadFile/upload',
+      url: url,
       success(res){
           if(typeof res.data != 'object'){
             item["response"] = JSON.parse(res.data.replace(/\ufeff/g,""));
@@ -383,7 +387,7 @@ Page({
       success:function(res){
           console.log("****send******"+JSON.stringify(that.data.result))
             // 通过eventChannel向被打开页面传送数据
-           res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.result})
+           res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.result,backCount:2})
       }
     })
   }

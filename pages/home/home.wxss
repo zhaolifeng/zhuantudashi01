@@ -1,29 +1,221 @@
 /* pages/home/home.wxss */
-.home{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-.iconfunction {
+.container{
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width:auto;
-  height: auto;
-  max-width:100px;
-   
-}
-.icon{
-  margin: 30rpx;
-  height: 110rpx;
-  width: 110rpx;
-  border-radius: 50%;                                                                                 
-   background-color: rosybrown;
+  justify-content: start;
+  background-color: #f1f1f1;
 }
 
-.add{
-  height: 40px;
-  width: 90%;
-  /* border: 1px solid red; */
-  margin-top: 20px;
+.userinfo {
+  height:25vh;
+  width:100vw;
+  display: flex;
+  align-items: center;
+  background: #49518c;
+  border-bottom: solid 1px #333;
+  /* box-shadow: 0px 1px 0px 0px #333; */
 }
+.head{
+  height: 80px;
+  width: 40vw;
+  /* border:solid 1px red; */
+  padding-left: 20px;
+}
+.login{
+  height: 80px;
+  width: 40vw;
+  /* border:solid 1px red; */
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  color: white;
+  font-size:18px;
+}
+.head image{
+  height: 80px;
+  width: 80px;
+}
+.menuInfo{
+  width: 100vw;
+  height: 8vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.menu{
+  height: 8vh;
+  width: 33.3vw;
+  background-color: #b9d1fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing:2px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+.selectMenu{
+  height: 8vh;
+  width: 33.3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing:2px;
+  font-size: 20px;
+  font-weight: 550;
+  color: #333;
+  background-color: #9ebef5;
+}
+.menu:nth-of-type(1){
+  border-right: solid 1px #ccc;
+}
+.menu:nth-of-type(2){
+  border-right: solid 1px #ccc;
+}
+.content{
+height: 72vh;
+}
+.tabData1{
+  height: 70vh;
+}
+.tabData2{
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.line{
+  width:100vw;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #ccc;
+  font-size: 18px;
+  color: #333;
+}
+.time{
+  width:28vw;
+  height:50px;
+  display: flex;
+  align-items: center;
+}
+.titletext{
+  width:100%;
+  display: block;
+	line-height: 40rpx;
+	height: 120rpx;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.index{
+  width:7vw;
+  height:50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.operate{
+  width:20vw;
+  height:50px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.tltles{
+  width:45vw;
+  height:50px;
+  display: flex;
+  align-items: center;
+}
+.editor{
+  height: 32vh;
+  display: flex;
+  align-items: center;
+}
+.editor textarea{
+  width: 90vw;
+  height: 30vh;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  color: #333;
+  line-height:25px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-right:2px;
+  text-align: left;
+  overflow: auto;
+}
+.addImage{
+  width:  22vw;
+  height: 22vw;
+}
+.images{
+  display: flex;
+  width:100vw;
+  height: 20vh;
+  align-items: center;
+}
+.tijiao{
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: flex-end;
+}
+.del{
+  height:20px;
+  width:20px;
+  border: solid 1px #ccc;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f13232;
+  right:-5px;
+  top: -10px;
+  z-index: 99;
+}
+.del image{
+  height:25px;
+  width:25px;
+}
+.imageInfo{
+  position: relative;
+  margin-left: 2vw;
+  width:  22vw;
+  height: 22vw;
+  border:solid 1px #ccc;
+}
+.tabData3{
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.logo{
+  width:80px;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+}
+.logo image{
+  width:80px;
+  height: 80px;
+}
+.jianshao{
+  width: 90vw;
+  height: 50vh;
+  white-space:pre-wrap;
+  line-height:28px;
+  font-size:18px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+

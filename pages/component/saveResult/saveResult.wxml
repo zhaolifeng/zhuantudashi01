@@ -1,19 +1,19 @@
-<!--pages/component/sendMail/sendMail.wxml-->
+<!--pages/component/saveResult/saveResult.wxml-->
 <view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}" >
-  <view class="eidtorArea">
+  <view class="setArea">
       <view class="close" bindtap="cancleSend">
         <image src="/pages/image/select/close.png"></image>
       </view>
-      <view class="editorInfo">
-        <view class="mail">
-          <input class="mailb" bindinput="preInputText" value="{{mailPreText}}"></input>@<input class="maila" bindinput="afterInputText" value="{{mailAfterText}}"></input>
+      <view class="titleInfo">
+        <view class="title">
+          标题：<input class="titleText" bindinput="titleText" value="{{title}}" placeholder="标题便于查找"></input>
         </view>
         <view class="warnging" hidden="{{errInfo}}" >
-           请确保邮箱正确
+           加个标题吧
         </view>
 
       </view>
-      <view class="confirmInfo">
+      <view class="subInfo">
         <button id="buttonInfo" style="background-color:#49518c;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishSender">   确     定   </button>
       </view>
   </view>

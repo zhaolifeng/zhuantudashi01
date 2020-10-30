@@ -10,7 +10,7 @@
           </view>
       </view>
       <view class="confirmInfo">
-        <button  open-type='share' plain="true" style="background-color:#000033;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishShare">   确     定   </button>
+        <button  open-type='share' plain="true" style="background-color:#49518c;width:92%;height:50px;color:white;line-height:2;letter-spacing:25rpx;" bindtap="finishShare">   确     定   </button>
       </view>
   </view>
 </view>

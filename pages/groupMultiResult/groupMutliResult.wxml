@@ -22,7 +22,7 @@
       </view>
    </scroll-view>
    <view class="deal" bindtap="toIdentify">
-      <button disabled="{{ !result.length}}" style="background-color:#000033;width:62%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px"  >开始识别</button>
+      <button disabled="{{ !result.length}}" style="background-color:#49518c;width:62%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px"  >开始识别</button>
    </view>
 </view>
  <mytoast id="mytoast"></mytoast>
