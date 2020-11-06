@@ -46,7 +46,7 @@
 }
 .mail{
   height:70px;
-  width:100%;
+  width:85%;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -70,18 +70,18 @@
 
 
 .mailb{
-  width:58vw;
+  width:50vw;
   border: solid 1px #ccc;
   height: 100%;
   border-radius:5px;
-  height: 50px;
+  height: 40px;
   padding-left:5px;
 }
 .maila{
-  width:29vw;
+  width:35vw;
   border: solid 1px #ccc;
   height: 100%;
   border-radius:5px;
-  height: 50px;
+  height: 40px;
   padding-left:5px;
 }

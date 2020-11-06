@@ -40,7 +40,7 @@ Component({
       var title=this.data.title;
       console.log("$$$$$$$$$$$"+title)
       var index=this.data.dataIndex;
-      this.triggerEvent("setTitle",{"title":title});
+      this.triggerEvent("setTitle",{"title":title,"index":index});
       this.setData({
         zindex:true,
       })

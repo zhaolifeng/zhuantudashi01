@@ -9,7 +9,7 @@
 
 }
 .images{
-  height:93vh;
+  height:87vh;
   width:97vw;
   display: flex;
   flex-direction: row;
@@ -57,6 +57,9 @@
   width:28vw;
 }
 .deal{
-  height:10vh;
+  height:13vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

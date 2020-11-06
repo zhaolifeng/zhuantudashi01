@@ -8,8 +8,9 @@
     "pages/piaoju/piaoju",
     "pages/kazheng/kazheng",
     "pages/imageList/imageList",
+    "pages/groupMultiResult/groupMutliResult",
     "pages/multiResult/multiResult",
-    "pages/groupMultiResult/groupMutliResult"
+    "pages/viewResult/viewResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

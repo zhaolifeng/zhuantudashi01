@@ -1,12 +1,27 @@
 <!--pages/home/home.wxml-->
 <view class="container">
     <view class="userinfo">
-        <view class="head">
-              <image bindtap="bindViewTap" class="userinfo-avatar" src="/pages/image/home/head.png" mode="cover"></image>
-        </view>
-        <view class="login">
-            <block>登录</block>
-        </view>
+        <block wx:if="{{hasUserInfo && canIUse}}">
+            <view class="head">
+                <image class="userinfo-avatar" src="{{userInfo.avatarUrl }}"></image>
+            </view>
+            <view class="nickName">
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            </view>
+            <view class="login">
+            </view>
+        </block>
+        <block wx:else>
+            <view class="head">
+                <image class="userinfo-avatar" src="/pages/image/home/head.png"></image>
+            </view>
+            <view class="nickName">
+            </view>
+            <view class="login">
+                <button style="background-color:#49518c;width:100%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+            </view>
+        </block>
+
     </view>
     <view class="menuInfo">
       <view class="{{selected ==1?'selectMenu':'menu'}}" data-key="1" catchtap="switchTab">本地记录</view>
@@ -14,9 +29,9 @@
       <view class="{{selected ==3?'selectMenu':'menu'}}" data-key="3" catchtap="switchTab">关于我们</view>
     </view>
     <view class="content">
-    <scroll-view class="tabData1" hidden="{{!(selected ==1)}}">
+    <scroll-view class="tabData1" hidden="{{!(selected ==1)}}" scroll-y="true">
         <view class="line" wx:for="{{historyIndex}}" wx:for-index="idx" wx:for-item="recode">
-          <view class="index">{{idx+1}}</view>
+          <view class="index">{{idx+1}}.</view>
           <view class="tltles"> 
           <text class="titletext" catchtap="shareRecord" data-key="{{idx}}">
            {{recode.title}}
@@ -56,11 +71,14 @@
          </view>
     </view>
     <view class="tabData3" hidden="{{!(selected ==3)}}">
-        <view class="logo">
+        <!-- <view class="logo">
             <image class="logo" src="/pages/image/home/logo.png"></image>
-        </view>
+        </view> -->
 
-        <scroll-view  scroll-y="true" class="jianshao">       图转文大师是基于人工智能的基础之上，应用机器学习和神经网络技术对图像进行智能解析识别，通过大数据文字库进行精准的匹配，来完成图片和文字的转换，极大的提高用户日常的数据处理能了。
+        <scroll-view  scroll-y="true" class="jianshao">
+                <view class="logo">
+            <image class="logo" src="/pages/image/home/logo.png"></image>
+        </view>       图转文大师是基于人工智能的基础之上，应用机器学习和神经网络技术对图像进行智能解析识别，通过大数据文字库进行精准的匹配，来完成图片和文字的转换，极大的提高用户日常的数据处理能了。
        我们一直在致力于机器学习和图片处理的技术研究，在软硬件方面都投入了大量的研发资源，尽最大的努力满足用户的需求。
        本公司提供技术开发、技术服务、5G软硬件一体化解决方案，欢迎垂询！！
 商务合作电话：13810674122、13581989640

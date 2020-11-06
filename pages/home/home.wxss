@@ -6,10 +6,11 @@
   flex-direction: column;
   justify-content: start;
   background-color: #f1f1f1;
+  font-size:18px;
 }
 
 .userinfo {
-  height:25vh;
+  height:20vh;
   width:100vw;
   display: flex;
   align-items: center;
@@ -18,10 +19,16 @@
   /* box-shadow: 0px 1px 0px 0px #333; */
 }
 .head{
-  height: 80px;
-  width: 40vw;
-  /* border:solid 1px red; */
-  padding-left: 20px;
+  height: 70px;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+
+}
+.nickName{
+  width: 30vw;
 }
 .login{
   height: 80px;
@@ -30,22 +37,21 @@
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  color: white;
-  font-size:18px;
 }
 .head image{
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
+  border-radius:50%;
 }
 .menuInfo{
   width: 100vw;
-  height: 8vh;
+  height: 9vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 .menu{
-  height: 8vh;
+  height: 100%;
   width: 33.3vw;
   background-color: #b9d1fa;
   display: flex;
@@ -57,7 +63,7 @@
   color: #333;
 }
 .selectMenu{
-  height: 8vh;
+  height: 100%;
   width: 33.3vw;
   display: flex;
   align-items: center;
@@ -75,7 +81,7 @@
   border-right: solid 1px #ccc;
 }
 .content{
-height: 72vh;
+height: 70vh;
 }
 .tabData1{
   height: 70vh;
@@ -89,6 +95,7 @@ height: 72vh;
 }
 .line{
   width:100vw;
+  height: 9vh;
   display: flex;
   align-items: center;
   border-bottom: solid 1px #ccc;
@@ -96,10 +103,12 @@ height: 72vh;
   color: #333;
 }
 .time{
-  width:28vw;
-  height:50px;
+  width:25vw;
+  height:100%;
   display: flex;
   align-items: center;
+  line-height: 1.1em;
+  justify-content: center;
 }
 .titletext{
   width:100%;
@@ -119,15 +128,15 @@ height: 72vh;
   
 }
 .operate{
-  width:20vw;
-  height:50px;
+  width:16vw;
+  height:100%;
   display: flex;
   align-items: center;
   justify-content:center;
 }
 .tltles{
-  width:45vw;
-  height:50px;
+  width:55vw;
+  height:100%;
   display: flex;
   align-items: center;
 }
@@ -198,21 +207,22 @@ height: 72vh;
   align-items: center;
 }
 .logo{
-  width:80px;
-  height: 20vh;
+  width:100%;
+  height: 15vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .logo image{
-  width:80px;
-  height: 80px;
+  width:65px;
+  height: 65px;
 }
 .jianshao{
-  width: 90vw;
-  height: 50vh;
+  width: 97vw;
+  height: 70vh;
   white-space:pre-wrap;
   line-height:28px;
-  font-size:18px;
+  /* font-size:18px; */
   color: #333;
   display: flex;
   flex-direction: column;

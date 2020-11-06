@@ -9,6 +9,10 @@ Component({
       type: Number,
       value: 1
     },
+    navToPath:{
+      type:String,
+      value:""
+    },
     title: {
       type: String,
       value: "识别结果"
@@ -34,10 +38,16 @@ Component({
       //     })
       //   } 
       // }
+      if(this.data.navToPath !=''){
+        this.triggerEvent("navTo",{navToPath:this.data.navToPath})
+        console.log("---------nav 1------"+this.data.navToPath)
+      }else{
+        console.log("---------nav 2------")
+        wx.navigateBack({
+          delta: this.data.customBackReturn
+        })
+      }
 
-      wx.navigateBack({
-        delta: this.data.customBackReturn
-      })
     }
   },
   attached() {

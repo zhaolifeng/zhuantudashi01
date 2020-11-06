@@ -385,7 +385,6 @@ Page({
      wx.navigateTo({
       url: '/pages/multiResult/multiResult',
       success:function(res){
-          console.log("****send******"+JSON.stringify(that.data.result))
             // 通过eventChannel向被打开页面传送数据
            res.eventChannel.emit('acceptDataFromOpenerPage', { data:that.data.result,backCount:2})
       }

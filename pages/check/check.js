@@ -11,7 +11,6 @@ Page({
     takePhones:0,  //拍照数量
     takeImageFiles:[]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -37,8 +36,12 @@ Page({
   onShow: function () {
     this.data.newData.path=[];
     this.data.newData.response=[];
+    this.data.takeImageFiles=[]
     let len=this.data.newData.response.length
-    console.log("------onShow-------"+len)
+    this.setData({
+      takePhones:0
+    })
+    console.log("------onShow-------"+this.data.takePhones)
   },
   //拍照模式
   changeMode:function (e){

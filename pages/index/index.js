@@ -13,6 +13,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var util = require('../../utils/util.js');
+    var time = util.formatTime(new Date());
+    console.log("***************time**************"+typeof(time))
+
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

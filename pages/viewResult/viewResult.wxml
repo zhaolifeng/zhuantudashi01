@@ -37,17 +37,9 @@
       <view bindtap="toSendMail">
          发送邮箱
       </view> 
-      <!-- <view bindtap="showImages">
-         本地保存
-      </view>  -->
-      <view bindtap="saveResult">
-         本地保存
-      </view> 
    </view>
 </view>
 <editorMode id="editorMode" bind:updateText="editorText"></editorMode>
 <sendMailMode id="sendMailMode" bind:mailText="sendMail"></sendMailMode>
-<operatorMode id="operatorMode" bind:toOperater="toOperater"></operatorMode>
-<saveResult id="saveResult" bind:setTitle="setTitle"></saveResult>
+<operatorMode id="operatorMode" showKeys="{{showKeys}}" bind:toOperater="toOperater"></operatorMode>
 <shareMode id="share" ></shareMode> 
-<mytoast id="mytoast"></mytoast>

@@ -58,13 +58,9 @@
   position: fixed;
   right: 0;
   bottom: 50px;
-  /* background-color: red; */
   border-top-left-radius: 17px;
   border-bottom-left-radius:17px;
   display: flex;
   align-items: center;
   padding-left: 10px;
-  letter-spacing: 2px;
-  color: white;
- font-size: 15px;
 }

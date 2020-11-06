@@ -1,4 +1,3 @@
-// pages/multiResult/multiResult.js
 Page({
 
   /**
@@ -22,22 +21,11 @@ Page({
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
       let backCount=data.backCount
-    //   console.log("^^^^^^^^^^^^^"+JSON.stringify(data.data))
-    //  var hisResults= wx.getStorageSync('hisResults')
-    //  const res = wx.getStorageInfoSync()
-    //  console.log("^^^^^^keys^^^^^^^"+JSON.stringify(res.keys))
-    //  console.log("^^^^^^currentSize^^^^^^^"+JSON.stringify(res.currentSize))
-    //  console.log("^^^^^^limitSize^^^^^^^"+JSON.stringify(res.limitSize))
-     
-    //  if(hisResults.length <30){
-    //    hisResults.unshift(temp)
-    //    wx.setStorageSync('hisResults', hisResults)
-    //  }
-    //  console.log("^^^^^^hisResults^^^^^^^"+JSON.stringify(hisResults))
       that.setData({
         result:temp,
         backCount: backCount,
-        mainHeight:that.data.mainHeight
+        mainHeight:that.data.mainHeight,
+        showKeys:["copy","share","mail"]
       })
     })
   },
@@ -152,10 +140,6 @@ toOperater:function(e){
     var sendMailMode=this.selectComponent("#sendMailMode");
     sendMailMode.sendMail(index);
   }
-  if(method == 'saveResult'){
-    var saveResult=this.selectComponent("#saveResult");
-    saveResult.saveResult(index);
-  }
  
 },
 shareAll:function(e){
@@ -242,43 +226,6 @@ showImages:function(){
     current:paths[0],  
     urls: paths  
   })
-},
-setTitle:function(e){
-  var util = require('../../utils/util.js');
-  var title= e.detail.title;
-  var index=e.detail.index;
-  console.log("************this.data.result*****************"+JSON.stringify(this.data.result))
-  var data=[];
-  if(index == -1){
-    data=this.data.result
-  }else{
-    data[0]=this.data.result[index]
-  }
-  var time = util.formatTime(new Date());
-  var titleObje={"title":title,"dateTime":time};
-  var historyIndex=wx.getStorageSync('historyIndex');
-  var hisResults=wx.getStorageSync('hisResults');
-      historyIndex.unshift(titleObje)
-      hisResults.unshift(data)
-      wx.setStorage({
-        key: "historyIndex",
-        data:historyIndex
-      })
-  
-      wx.setStorage({
-        key: "hisResults",
-        data:hisResults
-      })
-      wx.showToast({
-        title: '保存成功',
-        icon: 'success',
-        duration: 2000
-      })
-
-},
-saveResult:function(){
-  var saveResult=this.selectComponent("#saveResult");
-  saveResult.saveResult(-1);
 }
 })
 

@@ -12,16 +12,14 @@
               <view class="picker"  catchtap="chooseImages">
                 选 图 > >
               </view>
-      </label>
+        </label>
         <label style="z-index:{{mode?999:-1}};">
-        <view hidden="{{!(count==2)}}">
-            <button  disabled="{{takePhones == 0 || takePhones%2 != count%2}}" bindtap="startDeal" style="width:30vw;height:50px;padding-top:13px;backgroup-color:#ccc; box-shadow: 0 2px 5px #ccc;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
-            </button>
-        </view>
-        <view hidden="{{!(count!=2)}}">
-          <button  disabled="{{takePhones == 0}}" bindtap="startDeal" style="width:30vw;height:50px;padding-top:13px;backgroup-color:#ccc; box-shadow: 0 2px 5px #ccc;">完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
-          </button>
-        </view>
+          <view hidden="{{!(count==2)}}" class="{{(takePhones != 0 && takePhones%2 == count%2) ?'finish_ok':'finish'}}" bindtap="{{(takePhones != 0 && takePhones%2 == count%2) ?'startDeal':'#'}}">
+              完成 <block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
+          </view>
+          <view hidden="{{!(count!=2)}}" class="{{takePhones>0?'finish_ok':'finish'}}" bindtap="{{takePhones>0?'startDeal':'#'}}">
+            完成<block  wx:if="{{takePhones>0}}">({{takePhones}})</block>
+          </view>
       </label>
       <label>
           <switch checked="{{mode}}" bindchange="changeMode"/>批量

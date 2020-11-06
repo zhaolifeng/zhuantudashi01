@@ -2,10 +2,23 @@
 <view class="main" catchtouchmove="preventTouchMove" hidden="{{zindex}}" catchtouchend="endOperator">
 <!-- <view class="main"  hidden="{{zindex}}"> -->
   <view class="operates" style="  top:{{top+50}}px;right:{{right}}vw;">
-      <view class="operatesitem" data-key="viewImage" catchtap="operator">原图</view>
-      <view class="operatesitem" data-key="copySignal" catchtap="operator">复制</view>
-      <view class="operatesitem" data-key="shareInfo" catchtap="operator">分享</view>
-      <view class="operatesitem" data-key="senMail" catchtap="operator">发邮件</view>
+     <block  wx:for="{{showKeys}}" wx:key='index'>
+        <block wx:if="{{item=='view'}}">
+            <view class="operatesitem" data-key="viewImage" catchtap="operator">原图</view>
+        </block>
+        <block wx:if="{{item=='save'}}">
+            <view class="operatesitem" data-key="saveResult" catchtap="operator">保存</view>
+        </block>
+        <block wx:if="{{item=='copy'}}">
+          <view class="operatesitem" data-key="copySignal" catchtap="operator">复制</view>
+          </block>
+          <block wx:if="{{item=='share'}}">
+            <view class="operatesitem" data-key="shareInfo" catchtap="operator">分享</view>
+          </block>
+          <block wx:if="{{item=='mail'}}">
+            <view class="operatesitem" data-key="senMail" catchtap="operator">发邮件</view>
+          </block>
+      </block>
   </view>
 </view> 
 

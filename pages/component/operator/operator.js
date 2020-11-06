@@ -23,6 +23,12 @@ Component({
   data: {
     zindex:true
   },
+  properties:{
+    showKeys:{
+      type:Array,
+      value:["view","save","copy","share","mail"]
+    }
+  },
 
   /**
    * 组件的方法列表
@@ -33,12 +39,13 @@ Component({
       },
       startOper:function (message,index,touchData) {
         this.data.sourceData=message
-        console.log("$$$$$$$$$$$$$$"+JSON.stringify(this.data.sourceData));
+        console.log("$$$$$$$showKeys$$$$$$$"+JSON.stringify(this.data.showKeys));
         this.setData({
           zindex:false,
           top:touchData,
           index:index,
-          right:1
+          right:1,
+          showKeys:this.data.showKeys
         });
       },
       operator:function (e) {       
@@ -65,6 +72,9 @@ Component({
         }
         if(message == "senMail"){
           this.senMail();
+        }
+        if(message == "saveResult"){
+          this.saveResult();
         }
       },
       endOperator:function () {
@@ -109,6 +119,10 @@ Component({
       senMail:function(){
         var index=this.data.index;
         this.triggerEvent("toOperater",{dataIndex:index,operater:"sendMail"});
+      },
+      saveResult:function(){
+        var index=this.data.index;
+        this.triggerEvent("toOperater",{dataIndex:index,operater:"saveResult"}); 
       }
   }
 })
