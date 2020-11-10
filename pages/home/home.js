@@ -102,30 +102,24 @@ Page({
     this.data.fankui=e.detail.value;
   },
   submitData:function(){
-    console.log("*****text***"+this.data.fankui);
-    console.log("############"+JSON.stringify(this.data.images))
-    console.log("##########"+this.data.images.length)
-    console.log("##########"+this.data.fankui.length)
-
-    if(this.data.images.length > 0){
-      var successUp = 0; //成功
-      var failUp = 0; //失败
-      var count = this.data.images.length; //总数
-      var index = 1; //第几张
-      var fankui=this.data.fankui;
-      var userId=wx.getStorageSync('openid')
-      this.uploadOneByOne( userId,fankui,"",successUp, failUp, count, index)
-    }
-    if(this.data.fankui.length >0 && this.data.images.length==0){
-      this.sendMail();
-    }
-
+        if(this.data.images.length > 0){
+          var successUp = 0; //成功
+          var failUp = 0; //失败
+          var count = this.data.images.length; //总数
+          var index = 1; //第几张
+          var fankui=this.data.fankui;
+          var openUserId=wx.getStorageSync('openid')
+          this.uploadOneByOne( openUserId,fankui,"",successUp, failUp, count, index)
+        }
+        if(this.data.fankui.length >0 && this.data.images.length==0){
+          this.sendMail();
+        }
     },
 
      /**
   * 采用递归的方式上传多张
   */
- uploadOneByOne( userId,fankui,path,successUp, failUp, count, index){
+ uploadOneByOne( openUserId,fankui,path,successUp, failUp, count, index){
   var that = this;
   wx.showLoading({
      title: '正处理第'+(index)+'张',
@@ -142,7 +136,7 @@ Page({
             "count":count,
             "index":index,
             "fankui":fankui,
-            "userId":userId
+            "openUserId":openUserId
           },
           url: url, 
           success(res){
@@ -155,14 +149,12 @@ Page({
             wx.hideLoading();
             var resData=res.data;
             if(resData!= 'object'){
-              resData=resData.replace(/\ufeff/g,"");
               resData= JSON.parse(resData);
             }
             var path=resData.data
-            console.log("&&&&&&&&path&&&&&&"+path)
             if(index <count){
               index++;//下一张 
-              that.uploadOneByOne( "111",fankui,path,successUp, failUp, count, index)    
+              that.uploadOneByOne( openUserId,fankui,path,successUp, failUp, count, index)    
             }else{
               that.setData({
                 images:[],
@@ -177,7 +169,7 @@ Page({
 sendMail:function(){
   var that=this;
   var fankui=this.data.fankui
-  var userId="111"
+  var openUserId=wx.getStorageSync('openid')
   var  url='https://www.coolpov.com/bakInfo/sendMail';
   wx.request({
     url: url, 
@@ -188,7 +180,7 @@ sendMail:function(){
     scriptCharset: 'utf-8',
     data:{ 
       "fankui":fankui,
-      "userId":userId
+      "openUserId":openUserId
     },
     success (res) {
       that.setData({

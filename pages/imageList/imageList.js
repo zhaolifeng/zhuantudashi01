@@ -123,6 +123,11 @@ previewImage: function (e) {
   wx.showLoading({
      title: '正处理第'+(count+1)+'张',
    })
+   var openUserId= wx.getStorageSync('openid')
+   console.log("---------openUserId----------"+openUserId)
+   // if(openid == "" || openid == null || openid == undefined){
+   //   wx.setStorageSync('openid', openid)
+   // }
    var url = 'http://120.92.14.251/uploadFile/upload';
         url='http://123.57.240.185/uploadFile/upload'
         // url='http://www.tuzhuanwen/uploadFile/upload';
@@ -130,15 +135,20 @@ previewImage: function (e) {
    wx.uploadFile({
     filePath:that.data.imageFilesArray[count].path,
     name: 'file',
-    formData:{"indexType":typeCode},
+    formData:{"indexType":typeCode,"openUserId":openUserId},
     url: url, 
     success(res){
       wx.hideLoading();
       successUp++;//成功+1
-      if(typeof res.data != 'object'){
-        that.data.imageFilesArray[count].response = JSON.parse(res.data.replace(/\ufeff/g,""));
+      if(typeof(res.data) != 'object'){
+        let srcData=JSON.parse(res.data);
+        if(srcData.status == 200){
+          that.data.imageFilesArray[count].response = srcData.data;
+        }else{
+          item["response"] = [];
+        }
       }else{
-        that.data.imageFilesArray[count].response=res.data;
+        that.data.imageFilesArray[count].response=res.data.data;
       }
     },
     fail(res){
@@ -154,6 +164,7 @@ previewImage: function (e) {
           icon: 'success',
           duration: 2000
         })
+        console.log("%%%%%WWWWWWWWW%%%%%%%%"+JSON.stringify(that.data.imageFilesArray));
         wx.navigateTo({
           url: '/pages/multiResult/multiResult',
           success:function(res){
@@ -251,7 +262,6 @@ setImageFiles:function(start,images){
         that.setData({
           imageFilesArray:that.data.imageFilesArray      
         })
-        console.log("***********"+JSON.stringify(that.data))
       }
       that.data.index++;;
       that.setImageFiles(start++,images);

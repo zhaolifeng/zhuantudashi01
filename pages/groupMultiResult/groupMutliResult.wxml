@@ -3,9 +3,9 @@
 <view class="main" style="height:mainHeight"> 
    <!-- <head ></head> -->
    <scroll-view class="container"  scroll-y="true">
-      <view class="group" wx:for="{{result}}" wx:for-index="idh" wx:for-item="tempItem">
+      <view class="group" wx:for="{{result}}" wx:key="a" wx:for-index="idh" wx:for-item="tempItem">
         <view class="index"> 第{{idh+1}}组</view>
-        <view class="item" wx:for="{{tempItem}}" wx:for-index="idj" wx:for-item="item">
+        <view class="item" wx:for="{{tempItem}}" wx:key="a" wx:for-index="idj" wx:for-item="item">
            <view class="del" > 
               <image  src="/pages/image/select/del.png" data-key="{{idh}}:!|#{{idj}}"  bindtap="delImage"></image>
            </view>

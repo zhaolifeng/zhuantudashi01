@@ -38,7 +38,6 @@ Component({
   finishSender:function(){
     if(this.data.title != "" || this.data.title == undefined){
       var title=this.data.title;
-      console.log("$$$$$$$$$$$"+title)
       var index=this.data.dataIndex;
       this.triggerEvent("setTitle",{"title":title,"index":index});
       this.setData({

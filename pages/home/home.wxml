@@ -30,7 +30,7 @@
     </view>
     <view class="content">
     <scroll-view class="tabData1" hidden="{{!(selected ==1)}}" scroll-y="true">
-        <view class="line" wx:for="{{historyIndex}}" wx:for-index="idx" wx:for-item="recode">
+        <view class="line" wx:for="{{historyIndex}}" wx:key="a" wx:for-index="idx" wx:for-item="recode">
           <view class="index">{{idx+1}}.</view>
           <view class="tltles"> 
           <text class="titletext" catchtap="shareRecord" data-key="{{idx}}">
@@ -52,7 +52,7 @@
          </view>
 
          <view class="images" >
-            <block wx:for="{{images}}" wx:for-index="idx" wx:for-item="image">
+            <block wx:for="{{images}}" wx:for-index="idx" wx:key="a" wx:for-item="image">
               <view class="imageInfo">
                   <image  class="del" catchtap="delImage" data-key="{{idx}}" src="/pages/image/select/del.png"></image>
 

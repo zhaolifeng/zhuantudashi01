@@ -318,6 +318,10 @@ Page({
     var item = itemData[itemIndex];
     var typeCode = this.data.typeCode;
     var that=this;
+    var openUserId= wx.getStorageSync('openid')
+    // if(openid == "" || openid == null || openid == undefined){
+    //   wx.setStorageSync('openid', openid)
+    // }
     var url = 'http://120.92.14.251/uploadFile/upload';
         url='http://123.57.240.185/uploadFile/upload'
         // url='http://www.tuzhuanwen/uploadFile/upload';
@@ -325,13 +329,18 @@ Page({
     wx.uploadFile({
       filePath:item.path,
       name: 'file',
-      formData:{"indexType":typeCode},
+      formData:{"indexType":typeCode,"openUserId":openUserId},
       url: url,
       success(res){
           if(typeof res.data != 'object'){
-            item["response"] = JSON.parse(res.data.replace(/\ufeff/g,""));
+              let srcData=JSON.parse(res.data);
+              if(srcData.status == 200){
+                item["response"] = srcData.data;
+              }else{
+                item["response"] = [];
+              }
           }else{
-            item["response"] = res.data;
+            item["response"] = res.data.data;
           }  
           itemIndex++
           if(itemIndex < itemData.length){

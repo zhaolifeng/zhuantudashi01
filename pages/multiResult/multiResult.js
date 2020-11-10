@@ -201,7 +201,10 @@ sendMail:function(e){
       url='http://123.57.240.185/mail/sendMail'
       // url='http://www.tuzhuanwen/mail/sendMail';
       url='https://www.coolpov.com/mail/sendMail';
-    
+      var openUserId= wx.getStorageSync('openid')
+      // if(openid == "" || openid == null || openid == undefined){
+      //   wx.setStorageSync('openid', openid)
+      // }
   wx.request({
     url: url, 
     method:"POST",
@@ -212,7 +215,8 @@ sendMail:function(e){
     data:{ 
       title:"识别结果",
       recipientMail:mailAddr,
-      content:copyData
+      content:copyData,
+      openUserId:openUserId
     },
     success (res) {
       wx.showToast({

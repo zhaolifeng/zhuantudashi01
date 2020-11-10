@@ -39,7 +39,6 @@ Component({
       },
       startOper:function (message,index,touchData) {
         this.data.sourceData=message
-        console.log("$$$$$$$showKeys$$$$$$$"+JSON.stringify(this.data.showKeys));
         this.setData({
           zindex:false,
           top:touchData,
@@ -78,7 +77,6 @@ Component({
         }
       },
       endOperator:function () {
-        console.log("%%%%%%endOperator%%%%%%%")
         this.setData({
           zindex:true
         });
@@ -94,7 +92,6 @@ Component({
           success (res) {
             wx.getClipboardData({
               success (res) {
-                console.log("-----copyOk----------"+res.data) // data
               }
             })
           }
@@ -106,13 +103,11 @@ Component({
           tempFilePath: paht,
           success (res) {
             const savedFilePath = res.savedFilePath
-            console.log("-------savedFilePath----------"+JSON.stringify(res)) 
           }
         })
       },
       shareInfo:function(){
         this.copyInfo();
-        console.log("-------shareInfo----------") 
         var index=this.data.index;
         this.triggerEvent("toOperater",{dataIndex:index,operater:"share"});
       },

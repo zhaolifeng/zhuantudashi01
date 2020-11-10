@@ -31,7 +31,6 @@ Component({
       return false 
       },
       toShare:function(){
-        console.log("-----toShare------") 
         this.setData({
           zindex:false 
         })

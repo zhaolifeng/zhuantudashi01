@@ -1,7 +1,7 @@
 <!--pages/imageList/imageList.wxml-->
 <view class="main">
   <view class="images">
-    <view class="imageblock" wx:for="{{imageFilesArray}}" wx:for-index="idx" wx:for-item="image">
+    <view class="imageblock" wx:for="{{imageFilesArray}}" wx:key="a" wx:for-index="idx" wx:for-item="image">
           <view class="del"   bindtap="delImage"> 
               <image src="/pages/image/select/del.png" data-key="{{idx}}" ></image>
           </view>

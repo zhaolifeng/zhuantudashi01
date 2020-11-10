@@ -42,7 +42,6 @@ Component({
    
     if(this.data.mailPreText != "" && this.data.mailAfterText !="" && this.data.mailAfterText.indexOf(".")>0 && this.data.mailAfterText.indexOf(".")< this.data.mailAfterText.length){
       var mailAddr=this.data.mailPreText+"@"+this.data.mailAfterText;
-      console.log("$$$$$$$$$$$"+mailAddr)
       var index=this.data.dataIndex;
       this.triggerEvent("mailText",{mailAddr:mailAddr,index:index,});
       this.setData({

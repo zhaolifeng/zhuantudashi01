@@ -1,14 +1,14 @@
 <!--pages/home/home.wxml-->
 <view class="container">
    <view class="home">
-      <view class="iconfunction"  data-gid="002007-2" bindtap="check">
+      <view class="iconfunction"  data-gid="002007-2-身份证" bindtap="check">
         <view  class="icon">
           <image  src="/pages/image/select/codeId.png"></image>
         </view>
         <text>身份证</text>
       </view>
 
-       <view class="iconfunction" data-gid="003001-2" bindtap="check">
+       <view class="iconfunction" data-gid="003001-2-驾驶证" bindtap="check">
         <view  class="icon">
           <image src="/pages/image/select/driverId.png" >
           </image>
@@ -16,7 +16,7 @@
         <text>驾驶证</text>
       </view>
 
-       <view class="iconfunction"  data-gid="003003-2" bindtap="check">
+       <view class="iconfunction"  data-gid="003003-2-行驶证" bindtap="check">
         <view class="icon">
           <image src="/pages/image/select/carId.png" >
           </image>
@@ -24,7 +24,7 @@
         <text>行驶证</text>
       </view>
 
-       <view class="iconfunction" data-gid="002011" bindtap="check">
+       <view class="iconfunction" data-gid="002011-1-护照" bindtap="check">
         <view class="icon">
           <image  src="/pages/image/select/passport.png">
           </image>
@@ -34,7 +34,7 @@
    </view>
 
    <view class="home">
-      <view class="iconfunction"  data-gid="001016" bindtap="check">
+      <view class="iconfunction"  data-gid="001016-1-火车票" bindtap="check">
         <view  class="icon">
           <image src="/pages/image/select/train.png">
           </image>
@@ -42,7 +42,7 @@
         <text>火车票</text>
       </view>
 
-       <view class="iconfunction"  data-gid="001014" bindtap="check">
+       <view class="iconfunction"  data-gid="001014-1-出租车票" bindtap="check">
         <view  class="icon">
           <image src="/pages/image/select/taxi.png">
           </image>
@@ -50,7 +50,7 @@
         <text>出租车票</text>
       </view>
 
-       <view class="iconfunction"  data-gid="001007" bindtap="check">
+       <view class="iconfunction"  data-gid="001007-1-行程单" bindtap="check">
         <view  class="icon">
           <image src="/pages/image/select/flight.png">
           </image>
@@ -58,7 +58,7 @@
         <text>行程单</text>
       </view>
 
-       <view class="iconfunction"  data-gid="001013" bindtap="check">
+       <view class="iconfunction"  data-gid="001013-1-轮船票" bindtap="check">
         <view  class="icon">
           <image src="/pages/image/select/ship.png">
           </image>
@@ -68,7 +68,7 @@
    </view>
 
    <view class="home">
-      <view class="iconfunction" data-gid="001001-1" bindtap="check">
+      <view class="iconfunction" data-gid="001001-1-增值发票" bindtap="check">
         <view  class="icon">
           <image src="/pages/image/select/vatInvoice.png" >
           </image>
@@ -76,7 +76,7 @@
         <text>增值发票</text>
       </view>
 
-       <view class="iconfunction"  data-gid="001011" bindtap="check">
+       <view class="iconfunction"  data-gid="001011-1-混贴票" bindtap="check">
        <view  class="icon">
           <image src="/pages/image/select/huntiepiao.png"> 
           </image>
@@ -84,7 +84,7 @@
        <text>混贴票</text>
       </view>
 
-       <view class="iconfunction"  data-gid="001005" bindtap="check">
+       <view class="iconfunction"  data-gid="001005-1-金融票" bindtap="check">
        <view  class="icon">
         <image src="/pages/image/select/jingrong.png">
         </image>
@@ -92,7 +92,7 @@
        <text>金融票</text>
       </view>
 
-       <view class="iconfunction"  data-gid="001015" bindtap="check">
+       <view class="iconfunction"  data-gid="001015-1-路桥票" bindtap="check">
         <view  class="icon">
           <image  src="/pages/image/select/guolupiao.png"></image>
         </view>

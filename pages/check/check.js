@@ -17,13 +17,18 @@ Page({
   onLoad: function (options) {
     let count=1;
     let typeCode=options.typeCode;
+    let title=""
     //一直向后传递的参数
     wx.setStorageSync('typeCode', options.typeCode)
     if(typeCode.indexOf("-") >0){
       let temp =typeCode.split("-");
       typeCode=temp[0];
       count=temp[1];
+      title=temp[2] ;
     }
+    wx.setNavigationBarTitle({
+      title: title,
+    })
     let that=this;
     that.setData({
       typeCode:typeCode,
@@ -103,6 +108,11 @@ Page({
       wx.showLoading({
         title: '处理中...'
       })
+
+      var openUserId= wx.getStorageSync('openid')
+      // if(openid == "" || openid == null || openid == undefined){
+      //   wx.setStorageSync('openid', openid)
+      // }
       this.ctx.takePhoto({
         quality : "high",
         success: (res) => {
@@ -114,19 +124,31 @@ Page({
           wx.uploadFile({
             filePath:imagePath,
             name: 'file',
-            formData:{"indexType":typeCode},
+            formData:{"indexType":typeCode,"openUserId":openUserId},
             
             url: url,
             success(res){
               wx.hideLoading();
               let resultData=res.data;
-              resultData=resultData.replace(" ","");
               let newData;
-              if(typeof resultData != 'object'){
-                  resultData=resultData.replace(/\ufeff/g,"");
-                  newData = JSON.parse(resultData);
+              console.log("*************************"+JSON.stringify(resultData))
+              if(res.statusCode == 200){              
+                if(typeof(resultData) != 'object'){
+                  newData= JSON.parse(resultData);               
+                  if(newData.status == 200){
+                    newData= newData.data;
+                  }else{
+                    var mytoast01=that.selectComponent("#mytoast");
+                    mytoast01.showMessage("异常请重试");  
+                    return ;
+                  }
                 }
-                console.log("*************"+newData)
+              }else{
+                var mytoast01=that.selectComponent("#mytoast");
+                mytoast01.showMessage("异常请重试");  
+                return ;
+              }
+
               if(count==2){ // 需要正反面或者是两页扫描的情况
                   let len=that.data.newData.path.length;
                   that.data.newData.path[len]=imagePath;
@@ -142,36 +164,11 @@ Page({
                     wx.navigateTo({
                       url: '/pages/multiResult/multiResult',
                       success:function(res){
-                          console.log("****send******"+JSON.stringify(that.data.newData))
                             // 通过eventChannel向被打开页面传送数据
                            res.eventChannel.emit('acceptDataFromOpenerPage', { data:[that.data.newData]})
                       }
                     }) 
-                  }
-
-
-
-
-
-
-                // if (Object.keys(that.data.newData).length === 0) {
-                //       that.data.newData=newData;
-                //       // var mytoast01=that.selectComponent("#mytoast");
-                //       mytoast01.showMessage("请上传另一面");   
-                // }else{
-                //     let temJson=that.data.newData;
-                //     for(var attr in temJson){
-                //       if(temJson[attr] !=''){
-                //         newData[attr]=temJson[attr];
-                //       }                   
-                //     } 
-                //     wx.navigateTo({
-                //       url: '/pages/kazheng/kazheng?typeCode='+typeCode,
-                //       success:function(res){
-                //            res.eventChannel.emit('acceptDataFromOpenerPage', { data:newData})
-                //       }
-                //     }) 
-                // }         
+                  }     
               }else{
                 that.data.newData.path=imagePath;
                 that.data.newData.response=newData 
