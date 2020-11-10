@@ -11,7 +11,7 @@
             <view class='action'>
                 <text class='icon-title text-green'>{{item.name}} </text></view>
             </view>
-            
+  
             <view class="contenList">
               <block wx:for="{{item.titles}}" wx:for-item="twodata" wx:key="index0">
                 <view class="iconfunction"  bindtap="check" data-gid="{{twodata.code}}">
