@@ -1,4 +1,5 @@
 // pages/groupMultiResult/groupMutliResult.js
+var util = require('../../utils/login.js');
 Page({
 
   /**
@@ -318,14 +319,8 @@ Page({
     var item = itemData[itemIndex];
     var typeCode = this.data.typeCode;
     var that=this;
-    var openUserId= wx.getStorageSync('openid')
-    // if(openid == "" || openid == null || openid == undefined){
-    //   wx.setStorageSync('openid', openid)
-    // }
-    var url = 'http://120.92.14.251/uploadFile/upload';
-        url='http://123.57.240.185/uploadFile/upload'
-        // url='http://www.tuzhuanwen/uploadFile/upload';
-        url='https://www.coolpov.com/uploadFile/upload';
+    var openUserId= util.getOpenId();
+    var url='https://www.coolpov.com/uploadFile/upload';
     wx.uploadFile({
       filePath:item.path,
       name: 'file',

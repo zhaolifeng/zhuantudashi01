@@ -1,14 +1,13 @@
 //app.js
 App({
   onLaunch: function () {
-    console.log("*****onLaunch*******")
     var url='https://www.coolpov.com/author/login';
     // 登录
     wx.login({
       success (res) {
 
         if (res.code) {
-
+         
           var js_code=res.code;
           //发起网络请求
           wx.request({
@@ -21,44 +20,40 @@ App({
             data: {
               code: js_code
             },
-            success (res) { 
-              console.log("*****login*******"+JSON.stringify(res))
+            success (res) {             
               var resData=res.data.data;
-              if(resData!= 'object'){
-                resData=resData.replace(/\ufeff/g,"");
-                resData= JSON.parse(resData);
+              if(res.statusCode == 200){   
+                
+              }else{
+                return ;
               }
-              var openid=resData.openid
-              console.log("*****openid*******"+openid)
+              // console.log("*****login*******"+JSON.stringify(resData.openid)) 
+              var openidSrc=resData.openid
               var openid= wx.getStorageSync('openid')
-              if(openid == "" || openid == null || openid == undefined){
-                wx.setStorageSync('openid', openid)
+              if(openid == "" || openid == null || openid == undefined ||openidSrc !=openid){
+                wx.setStorageSync('openid', openidSrc)
               }
+              // console.log("*****openid*******"+wx.getStorageSync('openid')) 
               var historyIndex= wx.getStorageSync('historyIndex')
-              console.log("------historyIndex--------"+typeof(historyIndex))
+              // console.log("------historyIndex--------"+typeof(historyIndex))
               if(historyIndex == "" || historyIndex == null || historyIndex == undefined){
                 var historyIndex=[];
                 wx.setStorage({
                   key: "historyIndex",
                   data:historyIndex
                 })
-                console.log("------historyIndex--------"+typeof(historyIndex))
+                // console.log("------historyIndex--------"+typeof(historyIndex))
               }
               var hisResults= wx.getStorageSync('hisResults')
-              console.log("------hisResults--------"+typeof(hisResults))
+              // console.log("------hisResults--------"+typeof(hisResults))
               if(hisResults == "" || hisResults == null || hisResults == undefined){ 
                 var hisResults=[];
                 wx.setStorage({
                   key: "hisResults",
                   data:hisResults
                 })
-                console.log("------hisResults--------"+typeof(hisResults))
+                // console.log("------hisResults--------"+typeof(hisResults))
               }
-            },
-            fail(res){
-              console.log("------fail--------"+JSON.stringify(res))
-            },complete(res){
-              console.log("------complete--------"+JSON.stringify(res))
             }
           })
         } else {

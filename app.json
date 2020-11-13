@@ -2,11 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/home/home",
-    "pages/logs/logs",
     "pages/select/select",
     "pages/check/check",
-    "pages/piaoju/piaoju",
-    "pages/kazheng/kazheng",
     "pages/imageList/imageList",
     "pages/groupMultiResult/groupMutliResult",
     "pages/multiResult/multiResult",

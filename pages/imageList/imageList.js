@@ -1,4 +1,5 @@
 // pages/imageList/imageList.js
+var util = require('../../utils/login.js');
 Page({
 
   /**
@@ -51,8 +52,6 @@ setImageFileInfo:function(){
 previewImage: function (e) {
   var current = e.target.dataset.src;
   var that=this;
-  console.log("$$$$$$$$$$$$"+current);
-  console.log("$$$$$$$$$$$$"+JSON.stringify(e.target.dataset));
   wx.previewImage({
     current: current, // 当前显示图片的http链接  
     urls: that.data.imagePaths // 需要预览的图片http链接列表  
@@ -123,15 +122,8 @@ previewImage: function (e) {
   wx.showLoading({
      title: '正处理第'+(count+1)+'张',
    })
-   var openUserId= wx.getStorageSync('openid')
-   console.log("---------openUserId----------"+openUserId)
-   // if(openid == "" || openid == null || openid == undefined){
-   //   wx.setStorageSync('openid', openid)
-   // }
-   var url = 'http://120.92.14.251/uploadFile/upload';
-        url='http://123.57.240.185/uploadFile/upload'
-        // url='http://www.tuzhuanwen/uploadFile/upload';
-        url='https://www.coolpov.com/uploadFile/upload';
+   var openUserId= util.getOpenId();
+   var url='https://www.coolpov.com/uploadFile/upload';
    wx.uploadFile({
     filePath:that.data.imageFilesArray[count].path,
     name: 'file',
@@ -164,7 +156,6 @@ previewImage: function (e) {
           icon: 'success',
           duration: 2000
         })
-        console.log("%%%%%WWWWWWWWW%%%%%%%%"+JSON.stringify(that.data.imageFilesArray));
         wx.navigateTo({
           url: '/pages/multiResult/multiResult',
           success:function(res){

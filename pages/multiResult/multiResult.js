@@ -1,4 +1,5 @@
 // pages/multiResult/multiResult.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -22,18 +23,6 @@ Page({
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
       let backCount=data.backCount
-    //   console.log("^^^^^^^^^^^^^"+JSON.stringify(data.data))
-    //  var hisResults= wx.getStorageSync('hisResults')
-    //  const res = wx.getStorageInfoSync()
-    //  console.log("^^^^^^keys^^^^^^^"+JSON.stringify(res.keys))
-    //  console.log("^^^^^^currentSize^^^^^^^"+JSON.stringify(res.currentSize))
-    //  console.log("^^^^^^limitSize^^^^^^^"+JSON.stringify(res.limitSize))
-     
-    //  if(hisResults.length <30){
-    //    hisResults.unshift(temp)
-    //    wx.setStorageSync('hisResults', hisResults)
-    //  }
-    //  console.log("^^^^^^hisResults^^^^^^^"+JSON.stringify(hisResults))
       that.setData({
         result:temp,
         backCount: backCount,
@@ -159,7 +148,6 @@ toOperater:function(e){
  
 },
 shareAll:function(e){
-  console.log("#########################");
   this.copyInfo();
   var share=this.selectComponent("#share");
   share.toShare();
@@ -197,14 +185,8 @@ sendMail:function(e){
         }  
       }
   }
-  var url = 'http://120.92.14.251/mail/sendMail';
-      url='http://123.57.240.185/mail/sendMail'
-      // url='http://www.tuzhuanwen/mail/sendMail';
-      url='https://www.coolpov.com/mail/sendMail';
-      var openUserId= wx.getStorageSync('openid')
-      // if(openid == "" || openid == null || openid == undefined){
-      //   wx.setStorageSync('openid', openid)
-      // }
+  var url='https://www.coolpov.com/mail/sendMail';
+  var openUserId= util.getOpenId();
   wx.request({
     url: url, 
     method:"POST",
@@ -248,10 +230,9 @@ showImages:function(){
   })
 },
 setTitle:function(e){
-  var util = require('../../utils/util.js');
+
   var title= e.detail.title;
   var index=e.detail.index;
-  console.log("************this.data.result*****************"+JSON.stringify(this.data.result))
   var data=[];
   if(index == -1){
     data=this.data.result

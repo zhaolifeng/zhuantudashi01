@@ -1,3 +1,4 @@
+var util = require('../../utils/login.js');
 Page({
 
   /**
@@ -143,7 +144,6 @@ toOperater:function(e){
  
 },
 shareAll:function(e){
-  console.log("#########################");
   this.copyInfo();
   var share=this.selectComponent("#share");
   share.toShare();
@@ -181,14 +181,8 @@ sendMail:function(e){
         }  
       }
   }
-  var url = 'http://120.92.14.251/mail/sendMail';
-      url='http://123.57.240.185/mail/sendMail'
-      // url='http://www.tuzhuanwen/mail/sendMail';
-      url='https://www.coolpov.com/mail/sendMail';
-      var openUserId= wx.getStorageSync('openid')
-      // if(openid == "" || openid == null || openid == undefined){
-      //   wx.setStorageSync('openid', openid)
-      // }
+  var  url='https://www.coolpov.com/mail/sendMail';
+      var openUserId= util.getOpenId();
   wx.request({
     url: url, 
     method:"POST",

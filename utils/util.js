@@ -7,7 +7,6 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
   year=year.substring(2,4)
-  console.log("***************year1**************"+year)
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 

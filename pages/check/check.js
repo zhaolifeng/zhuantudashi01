@@ -1,4 +1,5 @@
 // pages/check/check.js
+var util = require('../../utils/login.js');
 Page({
 
   /**
@@ -109,18 +110,12 @@ Page({
         title: '处理中...'
       })
 
-      var openUserId= wx.getStorageSync('openid')
-      // if(openid == "" || openid == null || openid == undefined){
-      //   wx.setStorageSync('openid', openid)
-      // }
+      var openUserId= util.getOpenId();
       this.ctx.takePhoto({
         quality : "high",
         success: (res) => {
           var imagePath=res.tempImagePath;
-          var url = 'http://120.92.14.251/uploadFile/upload';
-          url='http://123.57.240.185/uploadFile/upload'
-          // url='http://www.tuzhuanwen/uploadFile/upload';
-          url='https://www.coolpov.com/uploadFile/upload';
+          var url='https://www.coolpov.com/uploadFile/upload';
           wx.uploadFile({
             filePath:imagePath,
             name: 'file',
@@ -131,7 +126,6 @@ Page({
               wx.hideLoading();
               let resultData=res.data;
               let newData;
-              console.log("*************************"+JSON.stringify(resultData))
               if(res.statusCode == 200){              
                 if(typeof(resultData) != 'object'){
                   newData= JSON.parse(resultData);               

@@ -1,4 +1,5 @@
 //index.js
+var util = require('../../utils/login.js');
 //获取应用实例
 const app = getApp()
 
@@ -108,7 +109,7 @@ Page({
           var count = this.data.images.length; //总数
           var index = 1; //第几张
           var fankui=this.data.fankui;
-          var openUserId=wx.getStorageSync('openid')
+          var openUserId= util.getOpenId();
           this.uploadOneByOne( openUserId,fankui,"",successUp, failUp, count, index)
         }
         if(this.data.fankui.length >0 && this.data.images.length==0){
@@ -124,10 +125,7 @@ Page({
   wx.showLoading({
      title: '正处理第'+(index)+'张',
    })
-   var url = 'http://120.92.14.251/uploadFile/upload';
-        url='http://123.57.240.185/uploadFile/upload'
-        // url='http://www.tuzhuanwen/bakInfo/upload';
-        url='https://www.coolpov.com/bakInfo/upload';
+   var url='https://www.coolpov.com/bakInfo/upload';
         wx.uploadFile({
           filePath:that.data.images[index-1].path,
           name: 'file',
@@ -169,7 +167,7 @@ Page({
 sendMail:function(){
   var that=this;
   var fankui=this.data.fankui
-  var openUserId=wx.getStorageSync('openid')
+  var openUserId= util.getOpenId();
   var  url='https://www.coolpov.com/bakInfo/sendMail';
   wx.request({
     url: url, 
