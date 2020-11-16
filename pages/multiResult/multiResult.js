@@ -1,5 +1,6 @@
 // pages/multiResult/multiResult.js
 var util = require('../../utils/util.js');
+var login = require('../../utils/login.js');
 Page({
 
   /**
@@ -186,7 +187,7 @@ sendMail:function(e){
       }
   }
   var url='https://www.coolpov.com/mail/sendMail';
-  var openUserId= util.getOpenId();
+  var openUserId= login.getOpenId();
   wx.request({
     url: url, 
     method:"POST",

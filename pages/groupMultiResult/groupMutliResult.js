@@ -327,7 +327,7 @@ Page({
       formData:{"indexType":typeCode,"openUserId":openUserId},
       url: url,
       success(res){
-          if(typeof res.data != 'object'){
+          if(typeof res.data != Object){
               let srcData=JSON.parse(res.data);
               if(srcData.status == 200){
                 item["response"] = srcData.data;

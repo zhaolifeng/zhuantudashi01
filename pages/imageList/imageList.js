@@ -132,7 +132,7 @@ previewImage: function (e) {
     success(res){
       wx.hideLoading();
       successUp++;//成功+1
-      if(typeof(res.data) != 'object'){
+      if(typeof(res.data) != Object){
         let srcData=JSON.parse(res.data);
         if(srcData.status == 200){
           that.data.imageFilesArray[count].response = srcData.data;

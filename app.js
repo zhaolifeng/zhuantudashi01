@@ -42,7 +42,7 @@ App({
                   key: "historyIndex",
                   data:historyIndex
                 })
-                // console.log("------historyIndex--------"+typeof(historyIndex))
+                console.log("------historyIndex--------"+typeof(historyIndex))
               }
               var hisResults= wx.getStorageSync('hisResults')
               // console.log("------hisResults--------"+typeof(hisResults))
@@ -52,7 +52,7 @@ App({
                   key: "hisResults",
                   data:hisResults
                 })
-                // console.log("------hisResults--------"+typeof(hisResults))
+                console.log("------hisResults--------"+typeof(hisResults))
               }
             }
           })
