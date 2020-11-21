@@ -18,7 +18,13 @@ Page({
     let that=this;
     var statusBarHeight= wx.getSystemInfoSync().statusBarHeight
     var windowHeight=wx.getSystemInfoSync().windowHeight;
-    this.data.mainHeight=(windowHeight-statusBarHeight-44)
+    this.data.mainHeight=(windowHeight-statusBarHeight-44);
+    let explain =wx.getStorageSync("explain")
+    let isShow=true
+    if(explain == "" || explain == null || explain== undefined){
+
+      isShow=false
+    }
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
       let backCount=data.backCount
@@ -26,7 +32,8 @@ Page({
         result:temp,
         backCount: backCount,
         mainHeight:that.data.mainHeight,
-        showKeys:["copy","share","mail"]
+        showKeys:["copy","share","mail"],
+        isShow:isShow
       })
     })
   },

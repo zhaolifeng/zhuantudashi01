@@ -13,17 +13,19 @@
          </view>
 
          <view class="infoItem">
-               <view class="item" wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record" >
-                  <view style="font-size:18px;font-weight:500;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-                        {{record.name}}
-                  </view>
-                  <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-                  ：
-                  </view>
-                  <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-                        {{record.value}}
-                  </view>
+            <block  wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record">
+               <view  class="item" wx:if="{{record.value !=''}}">
+                     <view style="font-size:18px;font-weight:500;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                           {{record.name}}
+                     </view>
+                     <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                     ：
+                     </view>
+                     <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                           {{record.value}}
+                     </view>                
                </view>
+            </block>
          </view>
       </view>
    </scroll-view>
@@ -45,9 +47,10 @@
       </view> 
    </view>
 </view>
+<explain id="explain"  isShow="{{isShow}}"></explain>
 <editorMode id="editorMode" bind:updateText="editorText"></editorMode>
 <sendMailMode id="sendMailMode" bind:mailText="sendMail"></sendMailMode>
 <operatorMode id="operatorMode" bind:toOperater="toOperater"></operatorMode>
 <saveResult id="saveResult" bind:setTitle="setTitle"></saveResult>
-<shareMode id="share" ></shareMode> 
-<mytoast id="mytoast"></mytoast>
+<shareMode id="share" ></shareMode>
+

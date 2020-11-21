@@ -4,7 +4,8 @@
     "sendMailMode":"/pages/component/sendMail/sendMail",
     "operatorMode":"/pages/component/operator/operator",
     "shareMode":"/pages/component/share/share",
-    "head":"/pages/component/navbar/navbar"
+    "head":"/pages/component/navbar/navbar",
+    "explain":"/pages/component/explain/explain"
   },
   "navigationStyle": "custom"
 }

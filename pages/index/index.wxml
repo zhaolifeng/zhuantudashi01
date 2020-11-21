@@ -104,7 +104,8 @@
   <button  open-type='share' type="warn" style="  border-top-left-radius: 15px;border-bottom-left-radius:15px;border-top-right-radius:0;border-bottom-right-radius:0;background-color: red;color:white;border:solid red 1px;height:40px;width:100px;padding:0 0 0;font-size: 18px;letter-spacing:2px;padding-left:3px;padding-top:7px"  bindtap="finishShare"> 推荐好友 </button>
 </view>
 <!-- <sendMailMode id="sendMailMode" bind:updateText="editorText"></sendMailMode> -->
-<saveResult id="saveResult" bind:updateText="editorText"></saveResult>
+<!-- <saveResult id="saveResult" bind:updateText="editorText"></saveResult> -->
+<!-- <explain id="explain"></explain> -->
 <!-- 
 <shareMode id="sdf"></shareMode>
 

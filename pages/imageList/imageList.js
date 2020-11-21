@@ -137,7 +137,7 @@ previewImage: function (e) {
         if(srcData.status == 200){
           that.data.imageFilesArray[count].response = srcData.data;
         }else{
-          item["response"] = [];
+          that.data.imageFilesArray[count].response= [];
         }
       }else{
         that.data.imageFilesArray[count].response=res.data.data;

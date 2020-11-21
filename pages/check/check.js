@@ -35,6 +35,24 @@ Page({
       typeCode:typeCode,
       count:count
     })
+    //需要双面识别情况下判断是否需要双面识别
+    if(count ==2 ){
+      wx.showModal({
+        title: '识别模式提示',
+        content: '需要双面或双页识别吗？',
+        success (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击确定')
+            that.setData({
+              typeCode:typeCode,
+              count:1
+            })
+          }
+        }
+      })
+    }
   },
     /**
    * 生命周期函数--监听页面显示

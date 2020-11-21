@@ -2,7 +2,7 @@
 <view class="main" >
    <head customBackReturn="{{backCount}}" title="识别结果" bind:navTo="navTo"></head>
    <scroll-view class="infoItemScroll" scroll-y="true" style="height:{{mainHeight}}px" >
-      <view class="infoItems" wx:for="{{result}}" wx:for-index="idh" wx:for-item="item">
+      <view class="infoItems" wx:for="{{result}}" wx:key="s" wx:for-index="idh" wx:for-item="item">
          <view class="title">
             <view class="page" style="font-size:18px;font-weight:600">
                第{{idh+1}}页
@@ -13,7 +13,7 @@
          </view>
 
          <view class="infoItem">
-               <view class="item" wx:for="{{item.response}}" wx:for-index="idx" wx:for-item="record" >
+               <view class="item" wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record" >
                   <view style="font-size:18px;font-weight:500;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
                         {{record.name}}
                   </view>
@@ -39,7 +39,9 @@
       </view> 
    </view>
 </view>
+<explain id="explain"  isShow="{{isShow}}"></explain>
 <editorMode id="editorMode" bind:updateText="editorText"></editorMode>
 <sendMailMode id="sendMailMode" bind:mailText="sendMail"></sendMailMode>
 <operatorMode id="operatorMode" showKeys="{{showKeys}}" bind:toOperater="toOperater"></operatorMode>
 <shareMode id="share" ></shareMode> 
+

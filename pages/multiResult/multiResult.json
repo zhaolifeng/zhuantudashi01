@@ -6,7 +6,7 @@
     "shareMode":"/pages/component/share/share",
     "head":"/pages/component/navbar/navbar",
     "saveResult":"/pages/component/saveResult/saveResult",
-    "mytoast":"/pages/component/toast/mytoast"
+    "explain":"/pages/component/explain/explain"
   },
   "navigationStyle": "custom"
 }

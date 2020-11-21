@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "saveResult":"/pages/component/saveResult/saveResult"
   },
   "navigationBarTitleText": "首页"
 }

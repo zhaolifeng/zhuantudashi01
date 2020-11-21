@@ -1,5 +1,6 @@
 const app = getApp()
 // pages/home/home.js
+var login = require('../../utils/login.js');
 Page({
 
   /**
@@ -16,15 +17,14 @@ Page({
 
     var util = require('../../utils/util.js');
     var time = util.formatTime(new Date());
-    console.log("***************time**************"+typeof(time))
-
-
+    
+    var openUserId= login.getOpenId();
+    console.log("***************openUserId**************"+openUserId)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-      console.log("@@@@@@@@@@@")
     } else{
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -34,7 +34,6 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
-        console.log("###########")
       }
     }
   },
