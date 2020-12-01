@@ -7,6 +7,7 @@ Page({
    */
   data: {
     index:0,
+    prePath:"https://www.coolpov.com/uploadFile/upload",
     imageFilesArray:[],
     imagePaths:[]
   },
@@ -17,11 +18,19 @@ Page({
   onLoad: function (options) {
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
-   this.data.typeCode= options.typeCode;
+    this.data.typeCode= options.typeCode;
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
+      console.table(data)
       that.data.imageFilesArray=data.imageFiles;
+      that.data.type=data.type
       that.setImageFileInfo();
-      console.log("############"+JSON.stringify(that.data.imageFiles));
+      console.table(data)
+      if(that.data.type == "fanyi"){
+        that.data.from=data.from
+        that.data.to=data.to
+        that.data.prePath="https://www.coolpov.com/uploadFile/uploadFanyi"
+      }
+     
     })
 },
 
@@ -123,11 +132,12 @@ previewImage: function (e) {
      title: '正处理第'+(count+1)+'张',
    })
    var openUserId= util.getOpenId();
-   var url='https://www.coolpov.com/uploadFile/upload';
+  //  var url='https://www.coolpov.com/uploadFile/upload';
+   var url=that.data.prePath;
    wx.uploadFile({
     filePath:that.data.imageFilesArray[count].path,
     name: 'file',
-    formData:{"indexType":typeCode,"openUserId":openUserId},
+    formData:{"indexType":typeCode,"openUserId":openUserId,"from":that.data.from,"to":that.data.to},
     url: url, 
     success(res){
       wx.hideLoading();
@@ -156,8 +166,12 @@ previewImage: function (e) {
           icon: 'success',
           duration: 2000
         })
+        let path= '/pages/multiResult/multiResult'
+        if(that.data.type=='wenben' ||that.data.type=='fanyi'){
+          path= '/pages/generalResult/generalResult'
+        }
         wx.navigateTo({
-          url: '/pages/multiResult/multiResult',
+          url: path,
           success:function(res){
                 // 通过eventChannel向被打开页面传送数据 
                res.eventChannel.emit('acceptDataFromOpenerPage', {data:that.data.imageFilesArray,backCount:2})

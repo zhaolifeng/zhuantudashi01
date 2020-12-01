@@ -213,12 +213,13 @@ deleRecord:function(e){
 },
 shareRecord:function(e){
   var index = e.target.dataset.key;
+  var type = e.target.dataset.type;
   var hisResults=wx.getStorageSync('hisResults');
   wx.navigateTo({
     url: '/pages/viewResult/viewResult',
     success:function(res){
           // 通过eventChannel向被打开页面传送数据 
-         res.eventChannel.emit('acceptDataFromOpenerPage', { data:hisResults[index],backCount:1})
+         res.eventChannel.emit('acceptDataFromOpenerPage', { data:hisResults[index],backCount:1,type:type})
     }
   })
 }

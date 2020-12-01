@@ -1,4 +1,3 @@
-// pages/multiResult/multiResult.js
 var util = require('../../utils/util.js');
 var login = require('../../utils/login.js');
 Page({
@@ -14,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("############页面栈################"+getCurrentPages().length)
+    console.log("############General页面栈################"+getCurrentPages().length)
     this.data.typeCode=options.typeCode;
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
@@ -24,12 +23,12 @@ Page({
     let explain =wx.getStorageSync("explain")
     let isShow=true
     if(explain == "" || explain == null || explain== undefined){
+
       isShow=false
     }
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
       let backCount=data.backCount
-      console.log("$$$$@@@@@@@@@$$$backCount$$$$$$$$$"+backCount)
       that.setData({
         result:temp,
         backCount: backCount,
@@ -124,7 +123,7 @@ copyInfo:function(){
       let temp = sourceData[i].response;
       if(temp != undefined){
         for(var j=0;j<temp.length;j++){
-          copyData=copyData + temp[j].name+":"+temp[j].value+"\n";
+          copyData=copyData +temp[j].value+"\n";
         }  
       }         
   }
@@ -186,7 +185,7 @@ sendMail:function(e){
         let temp = sourceData[i].response;
         if(temp != undefined){
           for(var j=0;j<temp.length;j++){
-            copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+            copyData=copyData +temp[j].value+"<br>";
           }  
         }         
     }
@@ -194,7 +193,7 @@ sendMail:function(e){
       let temp = sourceData[index].response;
       if(temp != undefined){
         for(var j=0;j<temp.length;j++){
-          copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+          copyData=copyData +temp[j].value+"<br>";
         }  
       }
   }
@@ -253,7 +252,7 @@ setTitle:function(e){
     data[0]=this.data.result[index]
   }
   var time = util.formatTime(new Date());
-  var titleObje={"title":title,"dateTime":time,type:"piaoju"};
+  var titleObje={"title":title,"dateTime":time,type:"wendang"};
   var historyIndex=wx.getStorageSync('historyIndex');
   var hisResults=wx.getStorageSync('hisResults');
       historyIndex.unshift(titleObje)

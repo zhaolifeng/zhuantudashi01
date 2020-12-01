@@ -1,6 +1,40 @@
 <!--pages/home/home.wxml-->
 <view class="container">
    <view class="home">
+      <view class="iconfunction" data-gid="006001-1-翻译" bindtap="check">
+        <view  class="icon">
+          <image src="/pages/image/select/fanyi.png" >
+          </image>
+        </view>
+        <text>翻译</text>
+      </view>
+
+      <view class="iconfunction" data-gid="005002-1-算式校对" bindtap="check">
+        <view  class="icon">
+          <image src="/pages/image/select/suanshi.png" >
+          </image>
+        </view>
+        <text>算式校对</text>
+      </view>
+
+      <view class="iconfunction" data-gid="004003-1-印刷体" bindtap="check">
+        <view  class="icon">
+          <image src="/pages/image/select/yingshuati.png" >
+          </image>
+        </view>
+        <text>印刷体</text>
+      </view>
+      
+      <view class="iconfunction" data-gid="004005-1-手写体" bindtap="check">
+        <view  class="icon">
+          <image src="/pages/image/select/shouxieti.png" >
+          </image>
+        </view>
+        <text>手写体</text>
+      </view>
+   </view>
+
+   <view class="home">
       <view class="iconfunction"  data-gid="002007-2-身份证" bindtap="check">
         <view  class="icon">
           <image  src="/pages/image/select/codeId.png"></image>
@@ -98,7 +132,9 @@
         </view>
         <text>路桥票</text>
       </view>
-   </view> 
+   </view>
+   
+
 </view>
 <view class="tuijian" open-type='share'>
   <button  open-type='share' type="warn" style="  border-top-left-radius: 15px;border-bottom-left-radius:15px;border-top-right-radius:0;border-bottom-right-radius:0;background-color: red;color:white;border:solid red 1px;height:40px;width:100px;padding:0 0 0;font-size: 18px;letter-spacing:2px;padding-left:3px;padding-top:7px"  bindtap="finishShare"> 推荐好友 </button>
@@ -110,4 +146,4 @@
 <shareMode id="sdf"></shareMode>
 
 <operatorMode id="sodf"></operatorMode> -->
-<!-- <button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button>  -->
+<button  bindtap="showtoast" style=" padding-bottom:0px;">testToast</button> 

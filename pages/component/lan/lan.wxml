@@ -1,0 +1,11 @@
+<!--pages/component/lan/lan.wxml-->
+<view class="lang" catchtap="endOperator">
+         <view class="lanInfo">
+          <view catchtap="from" data-lan="{{from}}">{{fromKey}}</view><view>=》</view><view data-lan="{{to}}" catchtap="to">{{toKey}}</view>
+         </view>
+         <scroll-view class="langs" scroll-y="true" hidden="{{isHidden}}">
+             <block  wx:for="{{langs}}"  wx:key='index' wx:item="item">
+              <view catchtap="selectLan" class="lanItem" data-lan="{{item.key}}" data-lankey="{{item.name}}">{{item.name}}</view>
+             </block>
+         </scroll-view>
+    </view>

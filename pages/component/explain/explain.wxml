@@ -1,0 +1,16 @@
+<!--pages/component/explain/explain.wxml-->
+<view class="explainMain" style="top:{{top}}px" hidden="{{isShow}}" catchtouchmove=""  catchtouchend="">
+
+   <view class="eidtorExplain">
+      长按每行可以进行编辑     
+   </view>
+   <view class="operatorExplain">
+     <view style="line-height:50px;letter-spacing:10rpx;">
+      <image src="/pages/image/select/operatorExplain.png" style="height:40px;width:40px;display: inline-block;vertical-align: middle;"></image>有复制，分享，发邮件等更多操作
+     </view>
+
+   </view>
+   <view class="explained">
+     <button style="background-color:#49518c;width:62%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px;font-size:18px" catchtap="closeExplain">知道了</button>
+   </view>
+</view>

@@ -26,6 +26,7 @@ Page({
       isShow=false
     }
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
+      console.table(data)
       let temp=data.data;
       let backCount=data.backCount
       that.setData({
@@ -33,7 +34,8 @@ Page({
         backCount: backCount,
         mainHeight:that.data.mainHeight,
         showKeys:["copy","share","mail"],
-        isShow:isShow
+        isShow:isShow,
+        type:data.type
       })
     })
   },

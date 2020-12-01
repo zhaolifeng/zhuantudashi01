@@ -6,6 +6,7 @@
   justify-content: start;
   background-color: #f1f1f1;
   border-top: solid 1px #e5eaf0;
+  /* background: #9e00dd; */
 }
 .home{
   display: flex;

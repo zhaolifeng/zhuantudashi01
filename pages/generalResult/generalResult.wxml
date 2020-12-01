@@ -1,0 +1,48 @@
+<!--pages/multiResult/multiResult.wxml-->
+<view class="main" >
+   <head customBackReturn="{{backCount}}" title="识别结果" bind:navTo="navTo"></head>
+   <scroll-view class="infoItemScroll" scroll-y="true" style="height:{{mainHeight}}px" >
+      <view class="infoItems" wx:for="{{result}}" wx:key="a" wx:for-index="idh" wx:for-item="item">
+         <view class="title">
+            <view class="page" style="font-size:18px;font-weight:600">
+               第{{idh+1}}页
+            </view>
+            <view id="submenu{{idh}}" class="submenu" data-key="{{idh}}" catchtap="operator">
+               ...
+            </view>
+         </view>
+
+         <scroll-view class="infoItem" scroll-y="true">
+            <block  wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record">
+                <view class="item" wx:if="{{record.value !=''}}" style="" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                      {{record.value}} 
+                </view>                
+            </block>
+         </scroll-view>
+      </view>
+   </scroll-view>
+   <view class="menu">
+      <view  bindtap="copyInfo"> 
+         全部复制
+      </view>
+      <view bindtap="shareAll">
+         发送好友
+      </view>
+      <view bindtap="toSendMail">
+         发送邮箱
+      </view> 
+      <!-- <view bindtap="showImages">
+         本地保存
+      </view>  -->
+      <view bindtap="saveResult">
+         本地保存
+      </view> 
+   </view>
+</view>
+<explain id="explain"  isShow="{{isShow}}"></explain>
+<editorMode id="editorMode" bind:updateText="editorText"></editorMode>
+<sendMailMode id="sendMailMode" bind:mailText="sendMail"></sendMailMode>
+<operatorMode id="operatorMode" bind:toOperater="toOperater"></operatorMode>
+<saveResult id="saveResult" bind:setTitle="setTitle"></saveResult>
+<shareMode id="share" ></shareMode>
+

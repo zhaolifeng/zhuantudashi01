@@ -14,15 +14,23 @@
 
          <view class="infoItem">
                <view class="item" wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record" >
-                  <view style="font-size:18px;font-weight:500;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-                        {{record.name}}
-                  </view>
-                  <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-                  ：
-                  </view>
-                  <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
-                        {{record.value}}
-                  </view>
+                  <block wx:if="{{type=='wendang'}}">
+                     <view style="width:100%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                           {{record.value}}
+                     </view>
+                  </block>
+                  <block wx:if="{{type != 'wendang'}}">
+                     <view style="font-size:18px;font-weight:500;width:30%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                           {{record.name}}
+                     </view>
+                     <view style="font-size:18px;font-weight:510" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                     ：
+                     </view>
+                     <view style="width:69.5%" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
+                           {{record.value}}
+                     </view>
+                  </block>
+
                </view>
          </view>
       </view>

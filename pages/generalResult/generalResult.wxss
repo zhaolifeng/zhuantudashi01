@@ -1,0 +1,121 @@
+.main {
+  width: 100vw;
+  display: flex;
+  height: 100vh;
+  overflow:hidden;
+  flex-direction: column;
+  font-size:18px;
+  justify-content: stretch;
+
+}
+.infoItemScroll{
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #f1f1f1;
+}
+.infoItems{
+  width: 100vw;
+  height:100vh;
+  /* overflow: auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  /* background-color: #222248; */
+  /* background-color: #eef0ff; */
+  background-color: #49518c;
+  align-items: center;
+  position: sticky;
+  top:0;
+
+  /* color: #333; */
+  color: #d4d3dc;
+  z-index: 999;
+}
+
+.page{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  height:50px;
+  padding-left:10px;
+}
+.submenu{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  height:50px;
+  padding-right:15px;
+  letter-spacing:10rpx;
+}
+
+
+.infoItem{
+ height:100%;
+ width:98vw;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+
+.item{
+ width:95vw;
+ min-height:35px;
+ height: auto;
+ word-break: break-all;
+ line-height:20px;
+ border-bottom:dashed 1px #ccc;
+ padding-top:10px;
+ font-weight:300;
+ display: flex;
+ justify-content: center;
+ line-height:25px;
+ color:#333;
+ width:98vw;
+ text-indent:2em;
+}
+.menu{
+  width:100vw;
+  height:9vh;
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: #000027; */
+  background-color: #6a5afe;
+  background-color: #49518c;
+  bottom: 0;
+  margin-bottom:0vh;
+}
+.menu view{
+  width:30vw;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d4d3dc;
+  letter-spacing:1px;
+  font-size: 1em;
+  font-weight: 600;
+}
+.menu view:nth-of-type(2){
+  border-left: solid 1px #cac4c4;
+  border-right: solid 1px #cac4c4;
+
+}
+.menu view:nth-of-type(3){
+  border-right: solid 1px #cac4c4;
+
+}

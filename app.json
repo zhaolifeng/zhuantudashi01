@@ -7,7 +7,11 @@
     "pages/imageList/imageList",
     "pages/groupMultiResult/groupMutliResult",
     "pages/multiResult/multiResult",
-    "pages/viewResult/viewResult"
+    "pages/viewResult/viewResult",
+    "pages/suanshu/suanshu",
+    "pages/danyeDeal/danyeDeal",
+    "pages/generalResult/generalResult",
+    "pages/fanyi/fanyi"
   ],
   "window": {
     "backgroundTextStyle": "light",

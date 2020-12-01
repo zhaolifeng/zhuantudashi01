@@ -3,7 +3,7 @@
     <view class="takephone">
       <camera device-position="back" flash="auto" binderror="error" style="width: 100%; height:100%"></camera>
     </view>
-    <lan id="lan" bind:setLan="setLan" wx:if="{{type == 'fanyi'}}"></lan>
+    <lan id="lan" bind:setLan="setLan"></lan>
     <view class="getphone">
       <view class="phone" bindtap="startCamera"  data-typeCode="{{typeCode}}">
       </view>

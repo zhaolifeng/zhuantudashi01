@@ -1,0 +1,15 @@
+<!--pages/suanshu/suanshu.wxml-->
+<view class="main" >
+   <head customBackReturn="{{backCount}}" title="识别结果" bind:navTo="navTo"></head>
+   <scroll-view class="infoItemScroll" scroll-y="true" scroll-x="true" style="height:{{mainHeight}}px;width:{{mainWidth}}px" >
+      <image calss="sourceImage" src="{{result.path}}" style="width:{{result.width*wf}}px;height:{{result.height*hf}}px"></image>
+      <block  wx:for="{{result.response}}" wx:key="a" wx:for-index="idh" wx:for-item="item">
+        <view class="mark" style="left:{{item.x*wf}}px;top:{{item.y*hf}}px;width:{{item.width*wf}}px;height:{{item.height*hf}}px;border-bottom: solid 3px {{item.result  == true ? 'green':'red'}};">
+        </view>
+      </block>
+
+   </scroll-view>
+</view>
+
+
+

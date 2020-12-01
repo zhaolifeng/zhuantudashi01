@@ -7,7 +7,8 @@ Page({
    */
   data: {
     maxCount:8,
-    prePath:"",
+    from:"auto",
+    to:"zh",
     newData:{path:[],response:[]},
     mode:false, //单选多选模式 f
     takePhones:0,  //拍照数量
@@ -30,13 +31,8 @@ Page({
     }
     if(typeCode.includes('0010') || typeCode.includes('0020') ||typeCode.includes('0030')){
       this.data.type="kazhengpiaoju"//票据类型的
-      this.data.prePath="https://www.coolpov.com/uploadFile/upload"
-    }else if(typeCode.includes('0040')){
-      this.data.type="wenben"//文本类型的
-      this.data.prePath="https://www.coolpov.com/uploadFile/upload"
     }else{
-      this.data.type="fanyi"//翻译
-      this.data.prePath="https://www.coolpov.com/uploadFile/uploadFanyi"
+      this.data.type="wenben"//文本类型的
     }
     console.log("***********typeeee***************"+this.data.type)
     wx.setNavigationBarTitle({
@@ -45,8 +41,7 @@ Page({
     let that=this;
     that.setData({
       typeCode:typeCode,
-      count:count,
-      type:this.data.type
+      count:count
     })
     //需要双面识别情况下判断是否需要双面识别
     if(count ==2 ){
@@ -146,11 +141,11 @@ Page({
         quality : "high",
         success: (res) => {
           var imagePath=res.tempImagePath;
-          var url=that.data.prePath;
+          var url='https://www.coolpov.com/uploadFile/upload';
           wx.uploadFile({
             filePath:imagePath,
             name: 'file',
-            formData:{"indexType":typeCode,"openUserId":openUserId,"from":that.data.from,"to":that.data.to},
+            formData:{"indexType":typeCode,"openUserId":openUserId},
             url: url,
             success(res){
               wx.hideLoading();
@@ -196,7 +191,7 @@ Page({
               }else{
                 that.data.newData.path=imagePath;
                 that.data.newData.response=newData
-                let path= that.data.type == 'wenben'||that.data.type == 'fanyi' ?'/pages/generalResult/generalResult':'/pages/multiResult/multiResult'
+                let path= that.data.type == 'wenben' ?'/pages/generalResult/generalResult':'/pages/multiResult/multiResult'
                 wx.navigateTo({
                   url: path,
                   success:function(res){
@@ -301,13 +296,12 @@ Page({
                 url: redirectPath+that.data.typeCode,
                 success:function(res){
                       // 通过eventChannel向被打开页面传送数据
-                     res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles,type:that.data.type,from:that.data.from,to:that.data.to})
+                     res.eventChannel.emit('acceptDataFromOpenerPage', {"imageFiles":imageFiles,type:that.data.type})
                 }
               })
             }     
     });
-  }
-  ,
+  },
   setLan:function(e){
     console.log("$$$$$$$$$$$$$$$$$"+JSON.stringify(e.detail.from))
     console.log("$$$$$$$$$$$$$$$$$"+JSON.stringify(e.detail.to))
@@ -315,6 +309,7 @@ Page({
       from:e.detail.from,
       to:e.detail.to
     })
+
   }
   // ,
   // mutliMessageImageUpload:function(){

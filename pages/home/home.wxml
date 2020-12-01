@@ -33,7 +33,7 @@
         <view class="line" wx:for="{{historyIndex}}" wx:key="a" wx:for-index="idx" wx:for-item="recode">
           <view class="index">{{idx+1}}.</view>
           <view class="tltles"> 
-          <text class="titletext" catchtap="shareRecord" data-key="{{idx}}">
+          <text class="titletext" catchtap="shareRecord" data-key="{{idx}}" data-type="{{recode.type}}">
            {{recode.title}}
           </text>
           </view>

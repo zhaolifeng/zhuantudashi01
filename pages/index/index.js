@@ -97,21 +97,28 @@ Page({
   check:function(event){
     console.log(event.currentTarget.dataset.gid);
     let gid=event.currentTarget.dataset.gid;
-    wx.navigateTo({
-      url: '/pages/check/check?typeCode='+gid
-    })
+    if(gid == "005002-1"){
+      wx.navigateTo({
+        url: '/pages/danyeDeal/danyeDeal?typeCode='+gid
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/check/check?typeCode='+gid
+      })
+    }
+
   },
 
   showtoast:function () {
     // var sendMailMode=this.selectComponent("#sendMailMode");
     // sendMailMode.sendMail();
 
-    var saveResult=this.selectComponent("#saveResult");
-    saveResult.saveResult();
-      // wx.navigateTo({
-      //   url: '/pages/groupMultiResult/groupMutliResult'
-      //   // url: '/pages/multiResult/multiResult'
-      // })
+    // var saveResult=this.selectComponent("#saveResult");
+    // saveResult.saveResult();
+      wx.navigateTo({
+        url: '/pages/fanyi/fanyi'
+        // url: '/pages/multiResult/multiResult'
+      })
 
   }
 })
