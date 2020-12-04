@@ -14,7 +14,8 @@
 
          <view class="infoItem">
                <view class="item" wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record" >
-                  <block wx:if="{{type =='wendang'}}">
+
+                  <block wx:if="{{type=='wendang'}}">
                      <view style="width:100%;text-indent:2em;" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
                            {{record.value}}
                      </view>
