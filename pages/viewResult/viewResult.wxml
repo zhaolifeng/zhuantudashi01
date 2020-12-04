@@ -1,6 +1,6 @@
 <!--pages/multiResult/multiResult.wxml-->
 <view class="main" >
-   <head customBackReturn="{{backCount}}" title="识别结果" bind:navTo="navTo"></head>
+   <head customBackReturn="{{backCount}}" title="记录结果" bind:navTo="navTo"></head>
    <scroll-view class="infoItemScroll" scroll-y="true" style="height:{{mainHeight}}px" >
       <view class="infoItems" wx:for="{{result}}" wx:key="s" wx:for-index="idh" wx:for-item="item">
          <view class="title">
@@ -14,7 +14,7 @@
 
          <view class="infoItem">
                <view class="item" wx:for="{{item.response}}" wx:key="a" wx:for-index="idx" wx:for-item="record" >
-                  <block wx:if="{{type=='wendang'}}">
+                  <block wx:if="{{type =='wendang'}}">
                      <view style="width:100%;text-indent:2em;" data-key="{{idh}}:!|#{{idx}}:!|#{{record.value}}" bindlongtap="editor">
                            {{record.value}}
                      </view>

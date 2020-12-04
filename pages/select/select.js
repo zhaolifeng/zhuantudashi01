@@ -83,53 +83,53 @@ Page({
     list: [],
     funList:[
         {
-          "id":"3",
+          "id":"0",
           "name":"通用",
           "titles":[
               {
-                  "id":"4-1",
+                  "id":"1-1",
                   "name":"印刷体",
                   "code":"004003-1-印刷体",
                   "image":"/pages/image/select/yingshuati.png",
                   "desc":"支持多场景、任意版面下整图文字的识别，包括中英文、字母、数字和日语、韩语、西班牙语等十余种多语言识别"
               },
               {
-                  "id":"4-2",
+                  "id":"1-2",
                   "name":"手写体",
                   "code":"004005-1-手写体",
                   "image":"/pages/image/select/shouxieti.png",
                   "desc":"支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强"
               },
               {
-                  "id":"4-3",
+                  "id":"1-3",
                   "name":"英文",
                   "code":"004001-1-英文",
                   "image":"/pages/image/select/yingwen.png",
                   "desc":"支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别"
               },
               {
-                  "id":"4-4",
+                  "id":"1-4",
                   "name":"二维码",
                   "code":"004006-1-二维码",
                   "image":"/pages/image/select/erweima.png",
                   "desc":"支持二维码的识别"
               },
               {
-                  "id":"4-5",
+                  "id":"1-5",
                   "name":"条形码",
                   "code":"004006-1-条形码",
                   "image":"/pages/image/select/tiaoxingma.png",
                   "desc":"支持条形码"
               },
               {
-                  "id":"5-2",
+                  "id":"1-6",
                   "name":"算式校对",
                   "code":"005002-1-算式校对",
                   "image":"/pages/image/select/suanshi.png",
                   "desc":"支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等"
               },
               {
-                  "id":"5-2",
+                  "id":"1-7",
                   "name":"翻译",
                   "code":"006001-1-翻译",
                   "image":"/pages/image/select/fanyi.png",
@@ -140,26 +140,26 @@ Page({
           "desc":""
       },
       {
-          "id":"0",
+          "id":"1",
           "name":"卡证",
           "titles":[
               
                   {
-                      "id":"1-1",
+                      "id":"2-1",
                       "name":"身份证",
                       "code":"002007-2-身份证",
                       "image":"/pages/image/select/codeId.png",
                       "desc":"支持二代身份证人像面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、包括签发机关、有效期限"
                   },
                  {
-                      "id":"1-2",
+                      "id":"2-2",
                       "name":"护照",
                       "code":"002013-1-护照",
                       "image":"/pages/image/select/passport.png",
                       "desc":"支持中国大陆护照、中国香港护照、泰国护照及其他国外护照个人资料页多个字段的检测与识别"
                   },
                  {
-                      "id":"1-3",
+                      "id":"2-3",
                       "name":"户口本",
                       "code":"002017-1-户口本",
                       "image":"/pages/image/select/hukou.png",
@@ -173,21 +173,21 @@ Page({
                       "desc":"支持港澳台居住证的正面及反面的关键字段识别，包含姓名、性别、出生、地址、身份证号、通行证号码、签发机关、有效期限、签发次数"
                   },
                   {
-                      "id":"2-1",
+                      "id":"2-4",
                       "name":"港澳台内地通行",
                       "code":"002009-1-港澳台内地通行",
                       "image":"/pages/image/select/neiditong.png",
                       "desc":"支持港澳居民来往内地通行证及台湾居民来往大陆通行证识别，包含中英文姓名、出生日期、性别、有效期限、签发机关、证件号码、换证次数、证件类型"
                   },
                   {
-                      "id":"2-2",
+                      "id":"2-5",
                       "name":"港澳台通行证",
                       "code":"002014-1-港澳台通行证",
                       "image":"/pages/image/select/gangaotong.png",
                       "desc":"支持对卡式港澳台通行证的识别，包括签发地点、签发机关、有效期限、性别、出生日期、英文姓名、姓名、证件号等字段"
                   },
                   {
-                      "id":"1-4",
+                      "id":"2-6",
                       "name":"银行卡",
                       "code":"002001-1-银行卡",
                       "image":"/pages/image/select/bank.png",
@@ -220,7 +220,7 @@ Page({
           "desc":""
       },
       {
-          "id":"1",
+          "id":"2",
           "name":"票据",
           "titles":[
                   {
@@ -340,7 +340,7 @@ Page({
           "desc":""
       },
       {
-          "id":"2",
+          "id":"3",
           "name":"车相关",
           "titles":[
                   {
