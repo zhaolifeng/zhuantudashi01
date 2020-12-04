@@ -12,12 +12,6 @@ Page({
     selected:1,
     fankui:""
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function () {
     this.setData({
       selected:1
@@ -211,7 +205,7 @@ deleRecord:function(e){
      historyIndex:historyIndex
  })
 },
-shareRecord:function(e){
+showRecord:function(e){
   var index = e.target.dataset.key;
   var type = e.target.dataset.type;
   var hisResults=wx.getStorageSync('hisResults');

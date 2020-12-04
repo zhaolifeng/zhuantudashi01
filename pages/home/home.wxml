@@ -33,11 +33,11 @@
         <view class="line" wx:for="{{historyIndex}}" wx:key="a" wx:for-index="idx" wx:for-item="recode">
           <view class="index">{{idx+1}}.</view>
           <view class="tltles"> 
-          <text class="titletext" catchtap="shareRecord" data-key="{{idx}}" data-type="{{recode.type}}">
+          <text class="titletext" catchtap="showRecord" data-key="{{idx}}" data-type="{{recode.type}}">
            {{recode.title}}
           </text>
           </view>
-          <view class="time" catchtap="shareRecord" data-key="{{idx}}">{{recode.dateTime}}</view>
+          <view class="time" catchtap="showRecord" data-key="{{idx}}" data-type="{{recode.type}}">{{recode.dateTime}}</view>
           <view class="operate">
              <image catchtap="deleRecord" data-key="{{idx}}" style="height:30px;width:30px" src="/pages/image/home/delete.png"></image>
                           <!-- |
