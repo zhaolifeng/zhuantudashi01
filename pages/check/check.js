@@ -38,15 +38,18 @@ Page({
       this.data.type="fanyi"//翻译
       this.data.prePath="https://www.coolpov.com/uploadFile/uploadFanyi"
     }
-    console.log("***********typeeee***************"+this.data.type)
+   
     wx.setNavigationBarTitle({
       title: title,
     })
     let that=this;
+    let funkey = wx.getStorageSync("fun"+typeCode)
+    console.log("***********funkey***************"+funkey)
     that.setData({
       typeCode:typeCode,
       count:count,
-      type:this.data.type
+      type:this.data.type,
+      funkey:funkey
     })
     //需要双面识别情况下判断是否需要双面识别
     if(count ==2 ){

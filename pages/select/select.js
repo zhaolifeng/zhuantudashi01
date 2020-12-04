@@ -82,6 +82,63 @@ Page({
     VerticalNavTop: 0,
     list: [],
     funList:[
+        {
+          "id":"3",
+          "name":"通用",
+          "titles":[
+              {
+                  "id":"4-1",
+                  "name":"印刷体",
+                  "code":"004003-1-印刷体",
+                  "image":"/pages/image/select/yingshuati.png",
+                  "desc":"支持多场景、任意版面下整图文字的识别，包括中英文、字母、数字和日语、韩语、西班牙语等十余种多语言识别"
+              },
+              {
+                  "id":"4-2",
+                  "name":"手写体",
+                  "code":"004005-1-手写体",
+                  "image":"/pages/image/select/shouxieti.png",
+                  "desc":"支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强"
+              },
+              {
+                  "id":"4-3",
+                  "name":"英文",
+                  "code":"004001-1-英文",
+                  "image":"/pages/image/select/yingwen.png",
+                  "desc":"支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别"
+              },
+              {
+                  "id":"4-4",
+                  "name":"二维码",
+                  "code":"004006-1-二维码",
+                  "image":"/pages/image/select/erweima.png",
+                  "desc":"支持二维码的识别"
+              },
+              {
+                  "id":"4-5",
+                  "name":"条形码",
+                  "code":"004006-1-条形码",
+                  "image":"/pages/image/select/tiaoxingma.png",
+                  "desc":"支持条形码"
+              },
+              {
+                  "id":"5-2",
+                  "name":"算式校对",
+                  "code":"005002-1-算式校对",
+                  "image":"/pages/image/select/suanshi.png",
+                  "desc":"支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等"
+              },
+              {
+                  "id":"5-2",
+                  "name":"翻译",
+                  "code":"006001-1-翻译",
+                  "image":"/pages/image/select/fanyi.png",
+                  "desc":"可支持中、英、日、韩等200+语言互译"
+              }
+          ],
+          "image":"/pages/image/select/ship.png",
+          "desc":""
+      },
       {
           "id":"0",
           "name":"卡证",
@@ -321,63 +378,6 @@ Page({
                       "image":"/pages/image/select/cheliangdengji.png",
                       "desc":"支持国内机动车登记证书主要字段的结构化识别，包括机动车所有人、身份证明名称、号码、车辆型号、车辆识别代号、发动机号、制造厂名称等"
                   }
-          ],
-          "image":"/pages/image/select/ship.png",
-          "desc":""
-      },
-        {
-          "id":"3",
-          "name":"通用",
-          "titles":[
-              {
-                  "id":"4-1",
-                  "name":"印刷体",
-                  "code":"004003-1-印刷体",
-                  "image":"/pages/image/select/yingshuati.png",
-                  "desc":"支持多场景、任意版面下整图文字的识别，包括中英文、字母、数字和日语、韩语、西班牙语等十余种多语言识别"
-              },
-              {
-                  "id":"4-2",
-                  "name":"手写体",
-                  "code":"004005-1-手写体",
-                  "image":"/pages/image/select/shouxieti.png",
-                  "desc":"支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强"
-              },
-              {
-                  "id":"4-3",
-                  "name":"英文",
-                  "code":"004001-1-英文",
-                  "image":"/pages/image/select/yingwen.png",
-                  "desc":"支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别"
-              },
-              {
-                  "id":"4-4",
-                  "name":"二维码",
-                  "code":"004006-1-二维码",
-                  "image":"/pages/image/select/erweima.png",
-                  "desc":"支持二维码的识别"
-              },
-              {
-                  "id":"4-5",
-                  "name":"条形码",
-                  "code":"004006-1-条形码",
-                  "image":"/pages/image/select/tiaoxingma.png",
-                  "desc":"支持条形码"
-              },
-              {
-                  "id":"5-2",
-                  "name":"算式校对",
-                  "code":"005002-1-算式校对",
-                  "image":"/pages/image/select/suanshi.png",
-                  "desc":"支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等"
-              },
-              {
-                  "id":"5-2",
-                  "name":"翻译",
-                  "code":"006001-1-翻译",
-                  "image":"/pages/image/select/fanyi.png",
-                  "desc":"可支持中、英、日、韩等200+语言互译"
-              }
           ],
           "image":"/pages/image/select/ship.png",
           "desc":""

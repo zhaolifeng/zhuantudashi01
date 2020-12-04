@@ -1,0 +1,41 @@
+/* pages/component/funExplain/funExplain.wxss */
+
+.funexplainMain{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color:white;
+  font-size: 23px;
+}
+
+.desc{
+width:100vw;
+height:80vh;
+display:flex;
+justify-content: center;
+align-items: center;
+}
+
+.closeExplain{
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info{
+  width: 90vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-indent:2em;
+  line-height: 1.5em;
+}

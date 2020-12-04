@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "funExplain":"/pages/component/funExplain/funExplain"
   },
   "navigationBarTitleText": "首页"
 }

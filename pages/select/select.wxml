@@ -16,7 +16,7 @@
               <block wx:for="{{item.titles}}" wx:for-item="twodata" wx:key="index0">
                 <view class="iconfunction"  bindtap="check" data-gid="{{twodata.code}}">
                   <view class="icon">
-                    <image  src="{{twodata.image}}"></image>
+                    <image style="height:50px;width:50px" src="{{twodata.image}}"></image>
                   </view>
                   <view class="tite">
                     <text>{{twodata.name}}</text>

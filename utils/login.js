@@ -20,7 +20,7 @@ const getOpenId =()=> {
                     },
                     success (res) {             
                       var resData=res.data.data;
-                      openid=resData.openid
+                      let openid=resData.openid
                       wx.setStorageSync('openid', openid)    
                       return encodeUserId(openid);         
                     }
@@ -51,6 +51,7 @@ function encodeUserId(openid) {
   let f=openid
   let c=Math.round(new Date() / 1000)+""
   let e=f.slice(0,3)+d+a+b+f.slice(3,a)+c.slice(0,5)+f.slice(a,b)+c.slice(5)+f.slice(b);
+  console.log("******e**********"+e)
   return e;
 }
 module.exports={

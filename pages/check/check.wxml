@@ -29,4 +29,5 @@
     </view>
 </view> 
 <mytoast id="mytoast"></mytoast>
+<funExplain id="funExplain"   isHidden="{{funkey==''?false:true}}"  funKey="{{typeCode}}"></funExplain>
 

@@ -15,7 +15,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let count=1;
     let typeCode=options.typeCode;
     let title=""
     //一直向后传递的参数
@@ -23,35 +22,18 @@ Page({
     if(typeCode.indexOf("-") >0){
       let temp =typeCode.split("-");
       typeCode=temp[0];
-      count=temp[1];
       title=temp[2] ;
     }
     wx.setNavigationBarTitle({
       title: title,
     })
     let that=this;
+    let funkey = wx.getStorageSync("fun"+typeCode)
+    console.table(funkey)
     that.setData({
       typeCode:typeCode,
-      count:count
+      funkey:funkey
     })
-    //需要双面识别情况下判断是否需要双面识别
-    if(count ==2 ){
-      wx.showModal({
-        title: '识别模式提示',
-        content: '需要双面或双页识别吗？',
-        success (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
-            console.log('用户点击确定')
-            that.setData({
-              typeCode:typeCode,
-              count:1
-            })
-          }
-        }
-      })
-    }
   },
     /**
    * 生命周期函数--监听页面显示
@@ -66,37 +48,7 @@ Page({
     })
     console.log("------onShow-------"+this.data.takePhones)
   },
-  //拍照模式
-  changeMode:function (e){
-    var isMulti = e.detail.value;
-    var len = this.data.takeImageFiles.length;
-    var that=this;
-    if(!isMulti && len > 0){
-        wx.showModal({
-          title: '提示',
-          content: '转换后会丢失已拍摄图片',
-          success (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-              that.setData({
-                mode:false,
-                takePhones:0,
-                takeImageFiles:[]
-              })
-            } else if (res.cancel) {
-              console.log('用户点击取消')
-              that.setData({
-                mode:true
-              })
-            }
-          }
-        })
-    }else{
-      that.setData({
-        mode:isMulti
-      })
-    }
-  },
+  
   startCamera: function (event) {
     var typeCode=this.data.typeCode;
     var that =this;

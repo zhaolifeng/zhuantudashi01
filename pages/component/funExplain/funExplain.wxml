@@ -1,0 +1,21 @@
+<!--pages/component/funExplain/funExplain.wxml-->
+
+<view class="funexplainMain" hidden="{{isHidden}}">
+   <view class="desc">
+      <view class="info">
+        <block wx:if="{{type == 0}}">
+          {{desc}}
+        </block>
+        <block wx:if="{{type == 1}}">
+          <text>
+          {{desc}}
+        </text> 
+        </block>
+        
+      </view>
+    
+   </view>
+   <view class="closeExplain">
+    <button style="background-color:#49518c;width:62%;height:50px;color:white;letter-spacing:10rpx;padding-top:13px;font-size:18px" catchtap="closeExplain">知道了</button>
+   </view>
+</view>

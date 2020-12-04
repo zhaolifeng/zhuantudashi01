@@ -20,11 +20,9 @@ Page({
     let that=this;
     this.data.typeCode= options.typeCode;
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
-      console.table(data)
       that.data.imageFilesArray=data.imageFiles;
       that.data.type=data.type
       that.setImageFileInfo();
-      console.table(data)
       if(that.data.type == "fanyi"){
         that.data.from=data.from
         that.data.to=data.to
@@ -132,6 +130,7 @@ previewImage: function (e) {
      title: '正处理第'+(count+1)+'张',
    })
    var openUserId= util.getOpenId();
+   console.log("**********openUserId&&&&&&&&&"+openUserId)
   //  var url='https://www.coolpov.com/uploadFile/upload';
    var url=that.data.prePath;
    wx.uploadFile({
