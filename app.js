@@ -2,7 +2,8 @@
 App({
   onLaunch: function () {
     this.updateVersion()
-    this.overShare()
+    wx.setStorageSync('appName', "图转文大师")
+    // this.overShare()
     var url='https://www.coolpov.com/author/login';
     // 登录
     wx.login({

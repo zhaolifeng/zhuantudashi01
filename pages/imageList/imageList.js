@@ -106,13 +106,6 @@ previewImage: function (e) {
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   toIdentify:function(){
     var successUp = 0; //成功
     var failUp = 0; //失败

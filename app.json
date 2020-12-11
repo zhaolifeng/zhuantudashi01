@@ -10,8 +10,7 @@
     "pages/viewResult/viewResult",
     "pages/suanshu/suanshu",
     "pages/danyeDeal/danyeDeal",
-    "pages/generalResult/generalResult",
-    "pages/fanyi/fanyi"
+    "pages/generalResult/generalResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

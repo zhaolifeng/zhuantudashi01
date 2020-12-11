@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "mytoast":"/pages/component/toast/mytoast",
-    "lan":"/pages/component/lan/lan"
-  },
-  "navigationBarTitleText": "拍照"
-}

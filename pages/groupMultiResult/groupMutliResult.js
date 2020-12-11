@@ -68,13 +68,6 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   setImageFiles:function(){
     var temdata=this.data.result;
     var that=this;
@@ -142,7 +135,7 @@ Page({
     wx.showActionSheet({
       itemList:["相册选两张一组图片","聊天记录选两张一组图片"],
       success (res) {
-        console.log(res.tapIndex)
+        // console.log(res.tapIndex)
         let index=res.tapIndex;
         if(index==0){
           that.mutliImageUpload();
@@ -153,7 +146,7 @@ Page({
         
       },
       fail (res) {
-        console.log(res.errMsg)
+        // console.log(res.errMsg)
       }
     })
   },
@@ -163,7 +156,7 @@ Page({
     wx.showActionSheet({
       itemList:["相册选一张图片","聊天记录选一张图片"],
       success (res) {
-        console.log(res.tapIndex)
+        // console.log(res.tapIndex)
         let index=res.tapIndex;
         if(index==0){
           that.mutliImageUpload01(indexKey);
@@ -174,7 +167,7 @@ Page({
         
       },
       fail (res) {
-        console.log(res.errMsg)
+        // console.log(res.errMsg)
       }
     })
   },

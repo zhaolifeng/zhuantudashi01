@@ -17,6 +17,9 @@ Page({
     let funkey = wx.getStorageSync("fun100000")
     var openUserId= login.getOpenId();
     console.log("***************openUserId**************"+openUserId)
+    wx.setNavigationBarTitle({
+      title: wx.getStorageSync('appName'),
+    })
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
@@ -70,7 +73,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-   
+    return {
+      title: '图转文大师',
+      path: '/pages/index/index'
+      };
   },
 
 

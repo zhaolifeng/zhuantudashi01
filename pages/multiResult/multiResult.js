@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("############页面栈################"+getCurrentPages().length)
+    // console.log("############页面栈################"+getCurrentPages().length)
     this.data.typeCode=options.typeCode;
     const eventChannel = this.getOpenerEventChannel();
     let that=this;
@@ -29,7 +29,7 @@ Page({
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
       let temp=data.data;
       let backCount=data.backCount
-      console.log("$$$$@@@@@@@@@$$$backCount$$$$$$$$$"+backCount)
+      // console.log("$$$$@@@@@@@@@$$$backCount$$$$$$$$$"+backCount)
       that.setData({
         result:temp,
         backCount: backCount,
@@ -85,12 +85,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log("--------fengxiang----------------")
     return {
-      title: '图文快转',
-      desc: '图文快转',
-      path: '/pages/index/index'
-    }
+      title: '图转文大师',
+      path: '/pages/index/index',
+      imageUrl:"/pages/image/select/share.png"
+    };
   },
   editorText:function(e){
       var infos=e.detail.message.split(":!|#");
@@ -134,7 +133,7 @@ copyInfo:function(){
     success (res) {
       wx.getClipboardData({
         success (res) {
-          console.log("-----"+kk+"----------\n"+res.data) // data
+          // console.log("-----"+kk+"----------\n"+res.data) // data
           kk++;
           
         }
@@ -211,7 +210,8 @@ sendMail:function(e){
       title:"识别结果",
       recipientMail:mailAddr,
       content:copyData,
-      openUserId:openUserId
+      openUserId:openUserId,
+      subject:wx.getStorageSync('appName')
     },
     success (res) {
       wx.showToast({
@@ -219,7 +219,7 @@ sendMail:function(e){
         icon: 'success',
         duration: 2000
       })
-      console.log(res.data)
+      // console.log(res.data)
     },
     fail(res){
       wx.showToast({

@@ -26,7 +26,7 @@ Page({
       isShow=false
     }
     eventChannel.once('acceptDataFromOpenerPage', function(data) {
-      console.table(data)
+      // console.table(data)
       let temp=data.data;
       let backCount=data.backCount
       that.setData({
@@ -86,7 +86,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '图转文大师',
+      path: '/pages/index/index',
+      imageUrl:"/pages/image/select/share.png"
+            };
   },
   editorText:function(e){
       var infos=e.detail.message.split(":!|#");
@@ -116,11 +120,15 @@ copyInfo:function(){
   var copyData=""
   var sourceData=this.data.result;
   for(var i=0;i<sourceData.length;i++){   
-    copyData=copyData + "----------第"+(i+1)+"页-------------\n";    
+    // copyData=copyData + "----------第"+(i+1)+"页-------------\n";    
       let temp = sourceData[i].response;
       if(temp != undefined){
         for(var j=0;j<temp.length;j++){
-          copyData=copyData + temp[j].name+":"+temp[j].value+"\n";
+          if(temp[j].name == undefined){
+            copyData=copyData +temp[j].value+"\n";
+          }else{
+            copyData=copyData + temp[j].name+":"+temp[j].value+"\n";
+          }
         }  
       }         
   }
@@ -178,7 +186,11 @@ sendMail:function(e){
         let temp = sourceData[i].response;
         if(temp != undefined){
           for(var j=0;j<temp.length;j++){
-            copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+            if(temp[j].name == undefined){
+              copyData=copyData +temp[j].value+"<br>";
+            }else{
+              copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+            }
           }  
         }         
     }
@@ -186,7 +198,11 @@ sendMail:function(e){
       let temp = sourceData[index].response;
       if(temp != undefined){
         for(var j=0;j<temp.length;j++){
-          copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+          if(temp[j].name == undefined){
+            copyData=copyData +temp[j].value+"<br>";
+          }else{
+            copyData=copyData + temp[j].name+":"+temp[j].value+"<br>";
+          }
         }  
       }
   }
@@ -203,7 +219,8 @@ sendMail:function(e){
       title:"识别结果",
       recipientMail:mailAddr,
       content:copyData,
-      openUserId:openUserId
+      openUserId:openUserId,
+      subject:wx.getStorageSync('appName')
     },
     success (res) {
       wx.showToast({
