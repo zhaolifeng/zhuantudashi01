@@ -29,6 +29,7 @@
   background:#131111 ;
   border-radius: 50%;
   border:solid 5px #e9dfdf;
+  z-index: 9;
 }
 .phone:hover{
   background-color:rgb(72, 67, 67);
