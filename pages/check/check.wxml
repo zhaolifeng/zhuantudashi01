@@ -3,6 +3,23 @@
     <view class="takephone">
       <camera device-position="back" flash="auto" binderror="error" style="width: 100%; height:100%"></camera>
     </view>
+    <view class="cankao">
+            <view class="shuipin">
+                <view class="chuizhi"></view>
+                <view class="chuizhi"></view>
+                <view class="chuizhi"></view>
+            </view>
+            <view class="shuipin">
+                <view class="chuizhi"></view>
+                <view class="chuizhi" style="font-size:15px;color:red"><text>拍照时与参考线平行</text></view>
+                <view class="chuizhi"></view>
+            </view>
+            <view class="shuipin">
+                <view class="chuizhi"></view>
+                <view class="chuizhi"></view>
+                <view class="chuizhi"></view>
+            </view>
+         </view>
     <lan id="lan" bind:setLan="setLan" wx:if="{{type == 'fanyi'}}"></lan>
     <view class="getphone">
       <view class="phone" bindtap="startCamera"  data-typeCode="{{typeCode}}">
